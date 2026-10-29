@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Brand Kit · Ravindra Sisodia</title>
+  <meta name="description" content="A browser-native brand asset tool for Zop.Dev. 29 templates, 34 icons, tokens, presets, press kit. No backend.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+
+  <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme" title="Toggle theme (T)">
+    <span class="icon" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="currentColor">
+        <circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.5"/>
+        <path d="M12 3 A9 9 0 0 1 12 21 Z"/>
+      </svg>
+    </span>
+    <span class="lbl-dark">Dark</span>
+    <span class="lbl-light">Light</span>
+  </button>
+
+  <header class="shell-top" id="shellTop">
+    <div class="shell-top-l">
+      <a href="../index.html" class="shell-mark" data-cursor="hover">R</a>
+      <div class="shell-id"><strong>Ravindra Sisodia</strong><span class="sep">/</span>Selected Work</div>
+    </div>
+    <div class="shell-top-r">
+      <a href="../index.html" class="shell-cta" data-cursor="hover">All Work <span class="arrow">↗</span></a>
+    </div>
+  </header>
+
+  <div class="detail-back-row">
+    <a href="../index.html">← Index</a>
+    <div class="right">Case <strong>07 / 07</strong></div>
+  </div>
+
+  <section class="dp">
+    <div class="dp-wrap">
+      <div class="dp-eye fade-up">
+        <div class="dp-eye-l"><span class="num">CASE 07</span> · Brand Kit</div>
+        <div class="dp-eye-r">Zop.Dev · <strong>2025</strong></div>
+      </div>
+      <h1 class="dp-title fade-up d1">
+        Brand kit,<br>in <em>browser</em>.
+      </h1>
+      <div class="dp-meta">
+        <div class="dp-meta-cell fade-up d2"><span class="dp-meta-k">Role</span><span class="dp-meta-v">Product Designer</span></div>
+        <div class="dp-meta-cell fade-up d3"><span class="dp-meta-k">Surface</span><span class="dp-meta-v">Internal tool · brand-kit.html</span></div>
+        <div class="dp-meta-cell fade-up d4"><span class="dp-meta-k">Stack</span><span class="dp-meta-v">html-to-image · JSZip · jsPDF</span></div>
+        <div class="dp-meta-cell fade-up d5"><span class="dp-meta-k">Backend</span><span class="dp-meta-v">Zero</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="canvas">
+    <div class="canvas-wrap">
+      <div class="canvas-frame light">
+        <span class="frame-label">Fig.01 · Tool surface</span>
+        <span class="frame-stamp">RS-2025-06</span>
+        <svg viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+          <rect width="1600" height="900" fill="#FAF7EC"/>
+
+          <!-- App chrome / shell -->
+          <rect x="40" y="40" width="1520" height="820" fill="#FAF7EC" stroke="#D9D3BF"/>
+
+          <!-- Header -->
+          <rect x="40" y="40" width="1520" height="56" fill="#FAF7EC" stroke="#D9D3BF"/>
+          <text x="64" y="73" fill="#0A0A0A" font-family="Inter" font-size="14" font-weight="600">Brand kit</text>
+          <text x="148" y="73" fill="#525252" font-family="JetBrains Mono, monospace" font-size="10" letter-spacing="2">ZOP.DEV · INTERNAL</text>
+          <rect x="1420" y="56" width="120" height="24" fill="#0A0A0A"/>
+          <text x="1480" y="73" text-anchor="middle" fill="#FAF7EC" font-family="Inter" font-size="11" font-weight="600">Export ZIP →</text>
+
+          <!-- Tab strip -->
+          <g transform="translate(40,96)">
+            <rect width="1520" height="44" fill="#FAF7EC" stroke="#D9D3BF"/>
+            <text x="24" y="29" fill="#F58549" font-family="JetBrains Mono, monospace" font-size="11" font-weight="600" letter-spacing="2">TEMPLATES</text>
+            <rect x="20" y="42" width="100" height="2" fill="#F58549"/>
+            <text x="148" y="29" fill="#525252" font-family="JetBrains Mono, monospace" font-size="11" font-weight="600" letter-spacing="2">TOKENS</text>
+            <text x="248" y="29" fill="#525252" font-family="JetBrains Mono, monospace" font-size="11" font-weight="600" letter-spacing="2">ICONS</text>
+            <text x="340" y="29" fill="#525252" font-family="JetBrains Mono, monospace" font-size="11" font-weight="600" letter-spacing="2">PRESETS</text>
+            <text x="440" y="29" fill="#525252" font-family="JetBrains Mono, monospace" font-size="11" font-weight="600" letter-spacing="2">PRESS KIT</text>
+          </g>
+
+          <!-- 3-col body: sidebar (240) / preview (1fr) / editor (320) -->
+          <!-- Sidebar -->
+          <g transform="translate(40,140)">
+            <rect width="240" height="720" fill="#F0EBDB" stroke="#D9D3BF"/>
+            <text x="20" y="36" fill="#525252" font-family="JetBrains Mono, monospace" font-size="10" letter-spacing="2">29 TEMPLATES</text>
+
+            <g font-family="Inter" font-size="13" fill="#0A0A0A">
+              <text x="20" y="76" font-weight="600">Social</text>
+              <text x="20" y="100" fill="#525252">— LinkedIn cover</text>
+              <text x="20" y="120" fill="#525252">— X banner</text>
+              <text x="20" y="140" fill="#525252">— Zoom background</text>
+              <text x="20" y="160" fill="#525252">— OG card</text>
+              <text x="20" y="180" fill="#525252">— Square post</text>
+              <text x="20" y="200" fill="#F58549">— Carousel · 6 slides</text>
+
+              <text x="20" y="244" font-weight="600">Web</text>
+              <text x="20" y="268" fill="#525252">— Hero strip</text>
+              <text x="20" y="288" fill="#525252">— Email signature</text>
+              <text x="20" y="308" fill="#525252">— Newsletter header</text>
+
+              <text x="20" y="352" font-weight="600">Ads</text>
+              <text x="20" y="376" fill="#525252">— Display 300×250</text>
+              <text x="20" y="396" fill="#525252">— Display 728×90</text>
+
+              <text x="20" y="440" font-weight="600">Print</text>
+              <text x="20" y="464" fill="#525252">— Event poster</text>
+              <text x="20" y="484" fill="#525252">— Business card</text>
+              <text x="20" y="504" fill="#525252">— Booth backdrop</text>
+
+              <text x="20" y="548" font-weight="600">Video</text>
+              <text x="20" y="572" fill="#525252">— Title card</text>
+              <text x="20" y="592" fill="#525252">— Lower third</text>
+            </g>
+          </g>
+
+          <!-- Preview pane -->
+          <g transform="translate(280,140)">
+            <rect width="960" height="720" fill="#ECE7D7" stroke="#D9D3BF"/>
+            <text x="24" y="36" fill="#525252" font-family="JetBrains Mono, monospace" font-size="10" letter-spacing="2">PREVIEW · LINKEDIN CAROUSEL · SLIDE 2 OF 6</text>
+
+            <!-- Carousel slide artboard -->
+            <g transform="translate(120,84)">
+              <rect width="720" height="540" fill="#0A0A0A"/>
+              <text x="40" y="80" fill="#FAF7EC" font-family="JetBrains Mono, monospace" font-size="13" letter-spacing="3">CASE · 02 · RECOMMENDATION</text>
+              <text x="40" y="220" fill="#FAF7EC" font-family="Space Grotesk, sans-serif" font-size="86" font-weight="700" letter-spacing="-3">$53.5K+</text>
+              <text x="40" y="262" fill="#F58549" font-family="JetBrains Mono, monospace" font-size="13" letter-spacing="3">ANNUALISED · 20K+ RESOURCES</text>
+              <line x1="40" y1="304" x2="680" y2="304" stroke="#FAF7EC" opacity="0.2"/>
+              <text x="40" y="352" fill="#FAF7EC" font-family="Inter" font-size="22" font-weight="500">Audit, right-size, save.</text>
+              <text x="40" y="380" fill="#FAF7EC" font-family="Inter" font-size="22" font-weight="500" opacity="0.7">Across AWS, GCP, Azure.</text>
+              <text x="40" y="488" fill="#F58549" font-family="Inter" font-size="32" font-weight="400">✶</text>
+              <text x="86" y="488" fill="#FAF7EC" font-family="JetBrains Mono, monospace" font-size="11" letter-spacing="3">ZOP.DEV / DAY</text>
+              <text x="680" y="488" text-anchor="end" fill="#FAF7EC" opacity="0.5" font-family="JetBrains Mono, monospace" font-size="11" letter-spacing="2">02 / 06</text>
+            </g>
+
+            <!-- Validator strip -->
+            <g transform="translate(24,650)">
+              <text fill="#525252" font-family="JetBrains Mono, monospace" font-size="10" letter-spacing="2">VALIDATORS</text>
+              <circle cx="6" cy="28" r="4" fill="#7FB236"/>
+              <text x="16" y="32" fill="#0A0A0A" font-family="JetBrains Mono, monospace" font-size="10">EM-DASH 0</text>
+              <circle cx="110" cy="28" r="4" fill="#7FB236"/>
+              <text x="120" y="32" fill="#0A0A0A" font-family="JetBrains Mono, monospace" font-size="10">BANNED WORDS 0</text>
+              <circle cx="262" cy="28" r="4" fill="#7FB236"/>
+              <text x="272" y="32" fill="#0A0A0A" font-family="JetBrains Mono, monospace" font-size="10">CONTRAST AA · 12.4 : 1</text>
+              <text x="912" y="32" text-anchor="end" fill="#F58549" font-family="JetBrains Mono, monospace" font-size="10" letter-spacing="2">ON-BRAND ✓</text>
+            </g>
+          </g>
+
+          <!-- Editor pane -->
+          <g transform="translate(1240,140)">
+            <rect width="320" height="720" fill="#FAF7EC" stroke="#D9D3BF"/>
+            <text x="20" y="36" fill="#525252" font-family="JetBrains Mono, monospace" font-size="10" letter-spacing="2">EDITOR</text>
+
+            <g font-family="Inter" font-size="12">
+              <text x="20" y="76" fill="#525252" font-family="JetBrains Mono, monospace" font-size="10" letter-spacing="2">HEADLINE</text>
+              <rect x="20" y="84" width="280" height="34" fill="#ECE7D7" stroke="#D9D3BF"/>
+              <text x="32" y="106" fill="#0A0A0A" font-weight="500">$53.5K+</text>
+
+              <text x="20" y="148" fill="#525252" font-family="JetBrains Mono, monospace" font-size="10" letter-spacing="2">SUBHEAD</text>
+              <rect x="20" y="156" width="280" height="34" fill="#ECE7D7" stroke="#D9D3BF"/>
+              <text x="32" y="178" fill="#0A0A0A">Annualised · 20K+ resources</text>
+
+              <text x="20" y="220" fill="#525252" font-family="JetBrains Mono, monospace" font-size="10" letter-spacing="2">BODY · LINE 1</text>
+              <rect x="20" y="228" width="280" height="34" fill="#ECE7D7" stroke="#D9D3BF"/>
+              <text x="32" y="250" fill="#0A0A0A">Audit, right-size, save.</text>
+
+              <text x="20" y="292" fill="#525252" font-family="JetBrains Mono, monospace" font-size="10" letter-spacing="2">SUB-BRAND</text>
+              <g transform="translate(20,300)">
+                <rect width="84" height="32" fill="#2A4494"/>
+                <text x="42" y="22" text-anchor="middle" fill="#FAF7EC" font-family="JetBrains Mono, monospace" font-size="10" letter-spacing="2">NIGHT</text>
+                <rect x="92" width="84" height="32" fill="#F58549"/>
+                <text x="134" y="22" text-anchor="middle" fill="#FAF7EC" font-family="JetBrains Mono, monospace" font-size="10" font-weight="600" letter-spacing="2">DAY ✓</text>
+                <rect x="184" width="84" height="32" fill="#7FB236"/>
+                <text x="226" y="22" text-anchor="middle" fill="#FAF7EC" font-family="JetBrains Mono, monospace" font-size="10" letter-spacing="2">CLOUD</text>
+              </g>
+
+              <text x="20" y="380" fill="#525252" font-family="JetBrains Mono, monospace" font-size="10" letter-spacing="2">EXPORT</text>
+              <rect x="20" y="388" width="84" height="30" fill="#FAF7EC" stroke="#0A0A0A"/>
+              <text x="62" y="408" text-anchor="middle" fill="#0A0A0A" font-family="Inter" font-size="11" font-weight="600">PNG</text>
+              <rect x="112" y="388" width="84" height="30" fill="#FAF7EC" stroke="#D9D3BF"/>
+              <text x="154" y="408" text-anchor="middle" fill="#525252" font-family="Inter" font-size="11" font-weight="500">JPG</text>
+              <rect x="204" y="388" width="84" height="30" fill="#FAF7EC" stroke="#D9D3BF"/>
+              <text x="246" y="408" text-anchor="middle" fill="#525252" font-family="Inter" font-size="11" font-weight="500">WEBP</text>
+
+              <rect x="20" y="436" width="280" height="40" fill="#0A0A0A"/>
+              <text x="160" y="462" text-anchor="middle" fill="#FAF7EC" font-family="Inter" font-size="13" font-weight="600">Export this slide →</text>
+            </g>
+          </g>
+
+          <line x1="40" y1="880" x2="1560" y2="880" stroke="#D9D3BF"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <section class="story">
+    <div class="story-wrap">
+      <article class="scene">
+        <div class="scene-text">
+          <span class="scene-num fade-up">01 · Five surfaces</span>
+          <h2 class="scene-h fade-up d1">One <em>tab strip</em>. Five jobs.</h2>
+          <p class="scene-d fade-up d2">
+            <strong>Templates · Tokens · Icons · Presets · Press kit.</strong> Each surface is a different brand job, behind one consistent shell. <span class="mk">29 templates. 34 icons. Zero backend.</span>
+          </p>
+          <div class="scene-meta fade-up d3">
+            <div><strong>29</strong>templates</div>
+            <div><strong>34</strong>icons</div>
+          </div>
+        </div>
+        <div class="scene-visual fade-up d2">
+          <span class="stamp">FIG.02</span>
+          <span class="stamp-r">Surface index</span>
+          <svg viewBox="0 0 600 450" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+            <rect width="600" height="450" fill="#FAF7EC"/>
+            <g font-family="JetBrains Mono, monospace" font-size="11" fill="#525252" letter-spacing="2">
+              <text x="40" y="60">5 SURFACES · 29 + 34 + N</text>
+            </g>
+            <g transform="translate(40,90)" font-family="Inter">
+              <rect width="520" height="56" fill="#ECE7D7" stroke="#D9D3BF"/>
+              <text x="20" y="22" font-family="JetBrains Mono, monospace" font-size="9" fill="#525252" letter-spacing="2">01 · TEMPLATES</text>
+              <text x="20" y="44" font-size="14" fill="#0A0A0A" font-weight="500">29 across social, web, ads, print, video</text>
+              <text x="500" y="36" text-anchor="end" font-family="JetBrains Mono, monospace" font-size="11" fill="#F58549">29</text>
+
+              <g transform="translate(0,66)">
+                <rect width="520" height="56" fill="#ECE7D7" stroke="#D9D3BF"/>
+                <text x="20" y="22" font-family="JetBrains Mono, monospace" font-size="9" fill="#525252" letter-spacing="2">02 · TOKENS</text>
+                <text x="20" y="44" font-size="14" fill="#0A0A0A" font-weight="500">Color · type · motion · spacing</text>
+                <text x="500" y="36" text-anchor="end" font-family="JetBrains Mono, monospace" font-size="11" fill="#F58549">COPY</text>
+              </g>
+
+              <g transform="translate(0,132)">
+                <rect width="520" height="56" fill="#ECE7D7" stroke="#D9D3BF"/>
+                <text x="20" y="22" font-family="JetBrains Mono, monospace" font-size="9" fill="#525252" letter-spacing="2">03 · ICONS</text>
+                <text x="20" y="44" font-size="14" fill="#0A0A0A" font-weight="500">34 icons · sprite or individual SVG</text>
+                <text x="500" y="36" text-anchor="end" font-family="JetBrains Mono, monospace" font-size="11" fill="#F58549">34</text>
+              </g>
+
+              <g transform="translate(0,198)">
+                <rect width="520" height="56" fill="#ECE7D7" stroke="#D9D3BF"/>
+                <text x="20" y="22" font-family="JetBrains Mono, monospace" font-size="9" fill="#525252" letter-spacing="2">04 · PRESETS</text>
+                <text x="20" y="44" font-size="14" fill="#0A0A0A" font-weight="500">Curated kits + asset library</text>
+                <text x="500" y="36" text-anchor="end" font-family="JetBrains Mono, monospace" font-size="11" fill="#F58549">KIT</text>
+              </g>
+
+              <g transform="translate(0,264)">
+                <rect width="520" height="56" fill="#ECE7D7" stroke="#D9D3BF"/>
+                <text x="20" y="22" font-family="JetBrains Mono, monospace" font-size="9" fill="#525252" letter-spacing="2">05 · PRESS KIT</text>
+                <text x="20" y="44" font-size="14" fill="#0A0A0A" font-weight="500">Marks · wordmarks · framed logos</text>
+                <text x="500" y="36" text-anchor="end" font-family="JetBrains Mono, monospace" font-size="11" fill="#F58549">SVG · PNG</text>
+              </g>
+            </g>
+          </svg>
+        </div>
+      </article>
+
+      <article class="scene flip">
+        <div class="scene-text">
+          <span class="scene-num fade-up">02 · Validators</span>
+          <h2 class="scene-h fade-up d1">The kit <em>refuses</em> off-brand.</h2>
+          <p class="scene-d fade-up d2">
+            Three inline checks fire while you type. <span class="mk">Em-dash count. Banned-word list. Contrast ratio.</span> The export button stays disabled until the design earns it.
+          </p>
+          <div class="scene-meta fade-up d3">
+            <div><strong>3 checks</strong>inline</div>
+            <div><strong>AA</strong>min contrast</div>
+          </div>
+        </div>
+        <div class="scene-visual dark fade-up d2">
+          <span class="stamp">FIG.03</span>
+          <span class="stamp-r">Validators</span>
+          <svg viewBox="0 0 600 450" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+            <rect width="600" height="450" fill="#0A0A0A"/>
+            <g font-family="Inter" fill="#F0EBDB">
+              <text x="40" y="60" font-family="JetBrains Mono, monospace" font-size="10" letter-spacing="2" opacity="0.5">VALIDATORS · LIVE</text>
+
+              <!-- check 1 -->
+              <g transform="translate(40,90)">
+                <rect width="520" height="86" fill="#18181c" stroke="#3a3a42"/>
+                <circle cx="24" cy="30" r="6" fill="#7FB236"/>
+                <text x="44" y="34" font-size="14" font-weight="600">Em-dash · 0 found</text>
+                <text x="44" y="56" font-family="JetBrains Mono, monospace" font-size="11" opacity="0.55">Use period, comma, or colon. Em-dash reads as AI-written.</text>
+                <text x="500" y="34" text-anchor="end" font-family="JetBrains Mono, monospace" font-size="11" fill="#7FB236" letter-spacing="2">PASS</text>
+              </g>
+
+              <!-- check 2 -->
+              <g transform="translate(40,196)">
+                <rect width="520" height="86" fill="#18181c" stroke="#3a3a42"/>
+                <circle cx="24" cy="30" r="6" fill="#F58549"/>
+                <text x="44" y="34" font-size="14" font-weight="600">Banned words · 1 hit</text>
+                <text x="44" y="56" font-family="JetBrains Mono, monospace" font-size="11" opacity="0.55">"leverage" → use "use". Or rewrite the sentence.</text>
+                <text x="500" y="34" text-anchor="end" font-family="JetBrains Mono, monospace" font-size="11" fill="#F58549" letter-spacing="2">WARN</text>
+              </g>
+
+              <!-- check 3 -->
+              <g transform="translate(40,302)">
+                <rect width="520" height="86" fill="#18181c" stroke="#3a3a42"/>
+                <circle cx="24" cy="30" r="6" fill="#7FB236"/>
+                <text x="44" y="34" font-size="14" font-weight="600">Contrast · 12.4 : 1</text>
+                <text x="44" y="56" font-family="JetBrains Mono, monospace" font-size="11" opacity="0.55">AA: 4.5:1 body, 3:1 large. AAA: 7:1 body.</text>
+                <text x="500" y="34" text-anchor="end" font-family="JetBrains Mono, monospace" font-size="11" fill="#7FB236" letter-spacing="2">AAA</text>
+              </g>
+            </g>
+          </svg>
+        </div>
+      </article>
+
+      <article class="scene">
+        <div class="scene-text">
+          <span class="scene-num fade-up">03 · Export</span>
+          <h2 class="scene-h fade-up d1">PNG, ZIP, <em>PDF</em>.</h2>
+          <p class="scene-d fade-up d2">
+            Single slide as PNG at native resolution. Whole carousel stitched into a multi-page PDF. <span class="mk">Entire kit bundled into a ZIP.</span> No server round-trip.
+          </p>
+          <div class="scene-meta fade-up d3">
+            <div><strong>html-to-image</strong>raster</div>
+            <div><strong>JSZip + jsPDF</strong>bundle</div>
+          </div>
+        </div>
+        <div class="scene-visual orange fade-up d2">
+          <span class="stamp">FIG.04</span>
+          <span class="stamp-r">Export pipeline</span>
+          <svg viewBox="0 0 600 450" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+            <rect width="600" height="450" fill="#F58549"/>
+
+            <g font-family="JetBrains Mono, monospace" fill="#FAF7EC" font-size="10" letter-spacing="2">
+              <text x="40" y="60">PIPELINE · CLIENT-ONLY</text>
+            </g>
+
+            <!-- 4 stages connected -->
+            <g transform="translate(40,90)">
+              <rect width="110" height="80" fill="#FAF7EC"/>
+              <text x="14" y="26" fill="#525252" font-family="JetBrains Mono, monospace" font-size="9" letter-spacing="2">01 · EDIT</text>
+              <text x="14" y="54" fill="#0A0A0A" font-family="Inter" font-size="14" font-weight="600">Fields</text>
+              <text x="14" y="72" fill="#525252" font-family="JetBrains Mono, monospace" font-size="9">DOM bind</text>
+
+              <path d="M118 40 L142 40" stroke="#FAF7EC" stroke-width="1.5"/>
+              <polygon points="138,36 148,40 138,44" fill="#FAF7EC"/>
+
+              <g transform="translate(150,0)">
+                <rect width="110" height="80" fill="#FAF7EC"/>
+                <text x="14" y="26" fill="#525252" font-family="JetBrains Mono, monospace" font-size="9" letter-spacing="2">02 · RENDER</text>
+                <text x="14" y="54" fill="#0A0A0A" font-family="Inter" font-size="14" font-weight="600">Preview</text>
+                <text x="14" y="72" fill="#525252" font-family="JetBrains Mono, monospace" font-size="9">Live DOM</text>
+              </g>
+
+              <path d="M268 40 L292 40" stroke="#FAF7EC" stroke-width="1.5"/>
+              <polygon points="288,36 298,40 288,44" fill="#FAF7EC"/>
+
+              <g transform="translate(300,0)">
+                <rect width="110" height="80" fill="#FAF7EC"/>
+                <text x="14" y="26" fill="#525252" font-family="JetBrains Mono, monospace" font-size="9" letter-spacing="2">03 · RASTER</text>
+                <text x="14" y="54" fill="#0A0A0A" font-family="Inter" font-size="14" font-weight="600">PNG</text>
+                <text x="14" y="72" fill="#525252" font-family="JetBrains Mono, monospace" font-size="9">html-to-image</text>
+              </g>
+
+              <path d="M418 40 L442 40" stroke="#FAF7EC" stroke-width="1.5"/>
+              <polygon points="438,36 448,40 438,44" fill="#FAF7EC"/>
+
+              <g transform="translate(450,0)">
+                <rect width="110" height="80" fill="#FAF7EC"/>
+                <text x="14" y="26" fill="#525252" font-family="JetBrains Mono, monospace" font-size="9" letter-spacing="2">04 · BUNDLE</text>
+                <text x="14" y="54" fill="#0A0A0A" font-family="Inter" font-size="14" font-weight="600">ZIP / PDF</text>
+                <text x="14" y="72" fill="#525252" font-family="JetBrains Mono, monospace" font-size="9">JSZip · jsPDF</text>
+              </g>
+            </g>
+
+            <line x1="40" y1="220" x2="560" y2="220" stroke="#FAF7EC" opacity="0.4"/>
+            <text x="40" y="270" fill="#FAF7EC" font-family="Inter" font-size="38" font-weight="700" letter-spacing="-1.5">Zero backend.</text>
+            <text x="40" y="306" fill="#FAF7EC" opacity="0.85" font-family="JetBrains Mono, monospace" font-size="11" letter-spacing="2">CDN ONLY · NO SERVER · NO BUILD</text>
+
+            <text x="40" y="372" fill="#FAF7EC" font-family="Inter" font-size="22" font-weight="500">Brand strictness ships</text>
+            <text x="40" y="400" fill="#FAF7EC" font-family="Inter" font-size="22" font-weight="500">with the asset, not after it.</text>
+          </svg>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="metric-band">
+    <div class="metric-band-wrap">
+      <div>
+        <div class="eyebrow fade-up"><span class="rule"></span><span class="num">04</span><span>Outcome</span></div>
+        <p class="metric-big fade-up d1">29 templates.<br><em>0</em> backend.</p>
+      </div>
+      <p class="metric-cap fade-up d2">Every team can produce on-brand assets without waiting on design. Validators ensure nothing off-brand ever ships.</p>
+    </div>
+    <div class="metric-band-bg" aria-hidden="true">✶</div>
+  </section>
+
+  <section class="metrics-strip">
+    <div class="metrics-strip-wrap">
+      <div class="ms fade-up"><div class="ms-num"><span data-count="29">0</span></div><div class="ms-label">Templates</div></div>
+      <div class="ms fade-up d1"><div class="ms-num"><span data-count="34">0</span></div><div class="ms-label">Icons</div></div>
+      <div class="ms fade-up d2"><div class="ms-num"><span data-count="5">0</span></div><div class="ms-label">Surfaces</div></div>
+      <div class="ms fade-up d3"><div class="ms-num"><span data-count="0">0</span></div><div class="ms-label">Backend Services</div></div>
+    </div>
+  </section>
+
+  <section class="next">
+    <div class="next-wrap">
+      <div class="next-eye">Back to ✶ Index</div>
+      <a href="../index.html" class="next-link">
+        <div>
+          <div class="next-name">All <em>work</em>, all years.</div>
+          <div class="next-tags">
+            <span class="next-tag">2020 → 2026</span>
+            <span class="next-tag">07 cases</span>
+            <span class="next-tag">Index</span>
+          </div>
+        </div>
+        <span class="next-ar">↑</span>
+      </a>
+    </div>
+  </section>
+
+  <footer class="shell-foot">
+    <span>© 2026 Ravindra Sisodia · Bengaluru, India</span>
+    <div class="shell-foot-links">
+      <a href="https://linkedin.com/in/ravindra-sisodia" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://behance.net/ravindrasisodia" target="_blank" rel="noopener">Behance</a>
+      <a href="https://dribbble.com/ravindrasisodia" target="_blank" rel="noopener">Dribbble</a>
+    </div>
+    <button class="shell-foot-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">Top ↑</button>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="../scripts.js"></script>
+</body>
+</html>

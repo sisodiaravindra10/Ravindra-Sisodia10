@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Design in Code · Ravindra Sisodia</title>
+  <meta name="description" content="Brief to production-ready in one session. Figma MCP. Claude Code. Tailwind.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+
+  <!-- THEME TOGGLE -->
+  <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme" title="Toggle theme (T)">
+    <span class="icon" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="currentColor">
+        <circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.5"/>
+        <path d="M12 3 A9 9 0 0 1 12 21 Z"/>
+      </svg>
+    </span>
+    <span class="lbl-dark">Dark</span>
+    <span class="lbl-light">Light</span>
+  </button>
+
+  <!-- HEADER -->
+  <header class="shell-top" id="shellTop">
+    <div class="shell-top-l">
+      <a href="../index.html" class="shell-mark" data-cursor="hover">R</a>
+      <div class="shell-id"><strong>Ravindra Sisodia</strong><span class="sep">/</span>Selected Work</div>
+    </div>
+    <div class="shell-top-r">
+      <a href="../index.html" class="shell-cta" data-cursor="hover">All Work <span class="arrow">↗</span></a>
+    </div>
+  </header>
+
+  <!-- BACK ROW -->
+  <div class="detail-back-row">
+    <a href="../index.html">← Index</a>
+    <div class="right">Case <strong>03 / 07</strong></div>
+  </div>
+
+  <!-- HERO -->
+  <section class="dp">
+    <div class="dp-wrap">
+      <div class="dp-eye fade-up">
+        <div class="dp-eye-l"><span class="num">CASE 03</span> · Design in Code</div>
+        <div class="dp-eye-r">Zop.Dev · <strong>2025</strong></div>
+      </div>
+      <h1 class="dp-title fade-up d1">
+        Design <em>→</em><br>Code.
+      </h1>
+      <div class="dp-meta">
+        <div class="dp-meta-cell fade-up d2"><span class="dp-meta-k">Role</span><span class="dp-meta-v">Product Designer</span></div>
+        <div class="dp-meta-cell fade-up d3"><span class="dp-meta-k">Company</span><span class="dp-meta-v">Zop.Dev</span></div>
+        <div class="dp-meta-cell fade-up d4"><span class="dp-meta-k">Stack</span><span class="dp-meta-v">Figma MCP · Claude Code · Tailwind</span></div>
+        <div class="dp-meta-cell fade-up d5"><span class="dp-meta-k">Outcome</span><span class="dp-meta-v">Days → Minutes</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CANVAS HERO -->
+  <section class="canvas">
+    <div class="canvas-wrap">
+      <div class="canvas-frame">
+        <span class="frame-label">Fig.01 · Workflow</span>
+        <span class="frame-stamp">RS-2025-01</span>
+        <svg viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <pattern id="grid1" width="40" height="40" patternUnits="userSpaceOnUse">
+              <path d="M40 0 L0 0 0 40" fill="none" stroke="oklch(0.96 0.014 75 / 0.06)" stroke-width="1"/>
+            </pattern>
+          </defs>
+          <rect width="1600" height="900" fill="oklch(0.18 0.009 60)"/>
+          <rect width="1600" height="900" fill="url(#grid1)"/>
+
+          <!-- Title -->
+          <text x="60" y="100" fill="oklch(0.96 0.014 75 / 0.5)" font-family="JetBrains Mono, monospace" font-size="16" letter-spacing="3">WORKFLOW · 2025</text>
+          <text x="60" y="180" fill="oklch(0.96 0.014 75)" font-family="Inter" font-weight="600" font-size="96" letter-spacing="-4">Brief → Ship.</text>
+          <text x="60" y="220" fill="oklch(0.68 0.197 42)" font-family="JetBrains Mono, monospace" font-size="14" letter-spacing="3">ONE SESSION</text>
+
+          <!-- Nodes -->
+          <g transform="translate(60, 340)">
+            <rect width="240" height="180" rx="8" fill="oklch(0.96 0.014 75 / 0.06)" stroke="oklch(0.96 0.014 75 / 0.35)"/>
+            <text x="20" y="40" fill="oklch(0.68 0.197 42)" font-family="JetBrains Mono, monospace" font-size="12" letter-spacing="2">01 · DESIGN</text>
+            <text x="20" y="100" fill="oklch(0.96 0.014 75)" font-family="Inter" font-weight="600" font-size="36" letter-spacing="-1">Figma</text>
+            <text x="20" y="140" fill="oklch(0.96 0.014 75 / 0.55)" font-family="JetBrains Mono, monospace" font-size="11">Variables · Tokens</text>
+            <text x="20" y="160" fill="oklch(0.96 0.014 75 / 0.55)" font-family="JetBrains Mono, monospace" font-size="11">Components</text>
+          </g>
+
+          <path d="M300 430 L420 430" stroke="oklch(0.68 0.197 42)" stroke-width="2" stroke-dasharray="6 6" fill="none" data-draw/>
+          <polygon points="418,422 432,430 418,438" fill="oklch(0.68 0.197 42)"/>
+          <text x="330" y="420" fill="oklch(0.68 0.197 42)" font-family="JetBrains Mono, monospace" font-size="10" letter-spacing="2">PIPE</text>
+
+          <g transform="translate(440, 340)">
+            <rect width="280" height="180" rx="8" fill="oklch(0.68 0.197 42 / 0.18)" stroke="oklch(0.68 0.197 42)" stroke-width="1.5"/>
+            <text x="20" y="40" fill="oklch(0.68 0.197 42)" font-family="JetBrains Mono, monospace" font-size="12" letter-spacing="2">02 · PROTOCOL</text>
+            <text x="20" y="100" fill="oklch(0.96 0.014 75)" font-family="Inter" font-weight="600" font-size="36" letter-spacing="-1">Figma MCP</text>
+            <text x="20" y="140" fill="oklch(0.96 0.014 75 / 0.55)" font-family="JetBrains Mono, monospace" font-size="11">Design source of truth</text>
+            <text x="20" y="160" fill="oklch(0.96 0.014 75 / 0.55)" font-family="JetBrains Mono, monospace" font-size="11">Live → AI agents</text>
+          </g>
+
+          <path d="M720 430 L840 430" stroke="oklch(0.68 0.197 42)" stroke-width="2" stroke-dasharray="6 6" fill="none" data-draw/>
+          <polygon points="838,422 852,430 838,438" fill="oklch(0.68 0.197 42)"/>
+
+          <g transform="translate(860, 340)">
+            <rect width="280" height="180" rx="8" fill="oklch(0.68 0.197 42 / 0.18)" stroke="oklch(0.68 0.197 42)" stroke-width="1.5"/>
+            <text x="20" y="40" fill="oklch(0.68 0.197 42)" font-family="JetBrains Mono, monospace" font-size="12" letter-spacing="2">03 · AGENT</text>
+            <text x="20" y="100" fill="oklch(0.96 0.014 75)" font-family="Inter" font-weight="600" font-size="36" letter-spacing="-1">Claude Code</text>
+            <text x="20" y="140" fill="oklch(0.96 0.014 75 / 0.55)" font-family="JetBrains Mono, monospace" font-size="11">Reads tokens · Writes code</text>
+            <text x="20" y="160" fill="oklch(0.96 0.014 75 / 0.55)" font-family="JetBrains Mono, monospace" font-size="11">Iterates in real time</text>
+          </g>
+
+          <path d="M1140 430 L1260 430" stroke="oklch(0.68 0.197 42)" stroke-width="2" stroke-dasharray="6 6" fill="none" data-draw/>
+          <polygon points="1258,422 1272,430 1258,438" fill="oklch(0.68 0.197 42)"/>
+
+          <g transform="translate(1280, 340)">
+            <rect width="240" height="180" rx="8" fill="oklch(0.96 0.014 75 / 0.06)" stroke="oklch(0.96 0.014 75 / 0.35)"/>
+            <text x="20" y="40" fill="oklch(0.68 0.197 42)" font-family="JetBrains Mono, monospace" font-size="12" letter-spacing="2">04 · OUTPUT</text>
+            <text x="20" y="100" fill="oklch(0.96 0.014 75)" font-family="Inter" font-weight="600" font-size="36" letter-spacing="-1">Tailwind</text>
+            <text x="20" y="140" fill="oklch(0.96 0.014 75 / 0.55)" font-family="JetBrains Mono, monospace" font-size="11">Production-ready</text>
+            <text x="20" y="160" fill="oklch(0.96 0.014 75 / 0.55)" font-family="JetBrains Mono, monospace" font-size="11">75 → 80% fidelity</text>
+          </g>
+
+          <!-- Timeline comparison -->
+          <text x="60" y="640" fill="oklch(0.96 0.014 75 / 0.5)" font-family="JetBrains Mono, monospace" font-size="12" letter-spacing="2">BEFORE · DAYS</text>
+          <rect x="60" y="660" width="900" height="10" fill="oklch(0.96 0.014 75 / 0.2)"/>
+          <text x="980" y="668" fill="oklch(0.96 0.014 75 / 0.5)" font-family="JetBrains Mono, monospace" font-size="11">~3—5 days</text>
+
+          <text x="60" y="730" fill="oklch(0.68 0.197 42)" font-family="JetBrains Mono, monospace" font-size="12" letter-spacing="2">AFTER · MINUTES</text>
+          <rect x="60" y="750" width="60" height="10" fill="oklch(0.68 0.197 42)" data-draw/>
+          <text x="140" y="758" fill="oklch(0.68 0.197 42)" font-family="JetBrains Mono, monospace" font-size="11">~1 session</text>
+
+          <!-- Footer signature -->
+          <line x1="60" y1="820" x2="1540" y2="820" stroke="oklch(0.96 0.014 75 / 0.15)"/>
+          <text x="60" y="850" fill="oklch(0.96 0.014 75 / 0.5)" font-family="JetBrains Mono, monospace" font-size="10" letter-spacing="2">RAVINDRA SISODIA · ZOP.DEV · 2025</text>
+          <text x="1540" y="850" text-anchor="end" fill="oklch(0.68 0.197 42)" font-family="JetBrains Mono, monospace" font-size="10" letter-spacing="2">FIG.01</text>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- STORY -->
+  <section class="story">
+    <div class="story-wrap">
+      <article class="scene">
+        <div class="scene-text">
+          <span class="scene-num fade-up">01 · The brief</span>
+          <h2 class="scene-h fade-up d1">From idea to ship, in <em>one session</em>.</h2>
+          <p class="scene-d fade-up d2">
+            Traditional design-to-engineering loops cost days. <span class="mk">One session compresses the entire arc.</span>
+          </p>
+          <div class="scene-meta fade-up d3">
+            <div><strong>~3—5 days</strong>before</div>
+            <div><strong>~60 min</strong>after</div>
+          </div>
+        </div>
+        <div class="scene-visual dark fade-up d2">
+          <span class="stamp">FIG.02</span>
+          <span class="stamp-r">Workflow / before</span>
+          <svg viewBox="0 0 600 450" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+            <rect width="600" height="450" fill="oklch(0.18 0.009 60)"/>
+            <g transform="translate(40,80)">
+              <text fill="oklch(0.96 0.014 75 / 0.5)" font-family="JetBrains Mono, monospace" font-size="10" letter-spacing="2">DAY 1</text>
+              <rect y="14" width="520" height="8" fill="oklch(0.96 0.014 75 / 0.2)"/>
+              <rect y="14" width="180" height="8" fill="oklch(0.96 0.014 75 / 0.4)"/>
+              <text y="44" fill="oklch(0.96 0.014 75 / 0.6)" font-family="Inter" font-size="12">Brief · Wireframes</text>
+            </g>
+            <g transform="translate(40,160)">
+              <text fill="oklch(0.96 0.014 75 / 0.5)" font-family="JetBrains Mono, monospace" font-size="10" letter-spacing="2">DAY 2—3</text>
+              <rect y="14" width="520" height="8" fill="oklch(0.96 0.014 75 / 0.2)"/>
+              <rect y="14" width="300" height="8" fill="oklch(0.96 0.014 75 / 0.4)"/>
+              <text y="44" fill="oklch(0.96 0.014 75 / 0.6)" font-family="Inter" font-size="12">High-fidelity · Reviews</text>
+            </g>
+            <g transform="translate(40,240)">
+              <text fill="oklch(0.96 0.014 75 / 0.5)" font-family="JetBrains Mono, monospace" font-size="10" letter-spacing="2">DAY 4—5</text>
+              <rect y="14" width="520" height="8" fill="oklch(0.96 0.014 75 / 0.2)"/>
+              <rect y="14" width="220" height="8" fill="oklch(0.96 0.014 75 / 0.4)"/>
+              <text y="44" fill="oklch(0.96 0.014 75 / 0.6)" font-family="Inter" font-size="12">Handoff · Implementation · QA</text>
+            </g>
+            <g transform="translate(40,340)">
+              <text fill="oklch(0.68 0.197 42)" font-family="JetBrains Mono, monospace" font-size="10" letter-spacing="2">NOW · SINGLE SESSION</text>
+              <rect y="14" width="520" height="8" fill="oklch(0.96 0.014 75 / 0.15)"/>
+              <rect y="14" width="60" height="8" fill="oklch(0.68 0.197 42)" data-draw/>
+              <text y="44" fill="oklch(0.96 0.014 75)" font-family="Inter" font-size="12" font-weight="600">Brief → Production-ready</text>
+            </g>
+          </svg>
+        </div>
+      </article>
+
+      <article class="scene flip">
+        <div class="scene-text">
+          <span class="scene-num fade-up">02 · The system</span>
+          <h2 class="scene-h fade-up d1">Tokens are the <em>contract</em>.</h2>
+          <p class="scene-d fade-up d2">
+            Figma variables and markdown documentation form a shared vocabulary read by both <strong>designers</strong> and <strong>AI agents</strong>.
+          </p>
+          <div class="scene-meta fade-up d3">
+            <div><strong>Variables</strong>tokens · scale</div>
+            <div><strong>Markdown</strong>agent-readable</div>
+          </div>
+        </div>
+        <div class="scene-visual fade-up d2">
+          <span class="stamp">FIG.03</span>
+          <span class="stamp-r">Token system</span>
+          <svg viewBox="0 0 600 450" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+            <rect width="600" height="450" fill="oklch(0.93 0.014 75)"/>
+            <g transform="translate(40,60)" font-family="JetBrains Mono, monospace" font-size="11" fill="oklch(0.18 0.009 60)">
+              <text y="0" font-size="10" letter-spacing="2" fill="oklch(0.55 0.008 65)">/* TOKENS */</text>
+              <text y="28">—color.surface</text><text x="200" y="28" fill="oklch(0.68 0.197 42)">oklch(0.96 0.014 75)</text>
+              <text y="50">—color.ink</text><text x="200" y="50" fill="oklch(0.68 0.197 42)">oklch(0.18 0.009 60)</text>
+              <text y="72">—color.accent</text><text x="200" y="72" fill="oklch(0.68 0.197 42)">oklch(0.68 0.197 42)</text>
+              <text y="94">—space.4</text><text x="200" y="94" fill="oklch(0.68 0.197 42)">16px</text>
+              <text y="116">—space.8</text><text x="200" y="116" fill="oklch(0.68 0.197 42)">32px</text>
+              <text y="138">—radius.sm</text><text x="200" y="138" fill="oklch(0.68 0.197 42)">8px</text>
+              <text y="160">—type.body</text><text x="200" y="160" fill="oklch(0.68 0.197 42)">Inter, 16/24</text>
+            </g>
+            <g transform="translate(370,60)">
+              <text fill="oklch(0.55 0.008 65)" font-family="JetBrains Mono, monospace" font-size="10" letter-spacing="2" y="0">/* PALETTE */</text>
+              <rect x="0" y="20" width="40" height="40" fill="oklch(0.965 0.014 75)" stroke="oklch(0.82 0.014 75)"/>
+              <rect x="50" y="20" width="40" height="40" fill="oklch(0.93 0.014 75)" stroke="oklch(0.82 0.014 75)"/>
+              <rect x="100" y="20" width="40" height="40" fill="oklch(0.88 0.016 75)" stroke="oklch(0.82 0.014 75)"/>
+              <rect x="0" y="70" width="40" height="40" fill="oklch(0.18 0.009 60)"/>
+              <rect x="50" y="70" width="40" height="40" fill="oklch(0.32 0.008 60)"/>
+              <rect x="100" y="70" width="40" height="40" fill="oklch(0.55 0.008 65)"/>
+              <rect x="0" y="120" width="140" height="40" fill="oklch(0.68 0.197 42)"/>
+            </g>
+            <line x1="40" y1="260" x2="560" y2="260" stroke="oklch(0.18 0.009 60)"/>
+            <text x="40" y="290" fill="oklch(0.55 0.008 65)" font-family="JetBrains Mono, monospace" font-size="10" letter-spacing="2">/* USAGE */</text>
+            <g transform="translate(40,310)" font-family="JetBrains Mono, monospace" font-size="11">
+              <text fill="oklch(0.32 0.008 60)"><tspan>className=</tspan><tspan fill="oklch(0.68 0.197 42)">"bg-surface text-ink"</tspan></text>
+              <text y="20" fill="oklch(0.32 0.008 60)"><tspan>className=</tspan><tspan fill="oklch(0.68 0.197 42)">"text-accent p-4 rounded-sm"</tspan></text>
+              <text y="40" fill="oklch(0.32 0.008 60)"><tspan>variant=</tspan><tspan fill="oklch(0.68 0.197 42)">"display-lg"</tspan></text>
+            </g>
+            <text x="40" y="420" fill="oklch(0.55 0.008 65)" font-family="JetBrains Mono, monospace" font-size="9" letter-spacing="2">DESIGN ↔ CODE · ONE CONTRACT</text>
+          </svg>
+        </div>
+      </article>
+
+      <article class="scene">
+        <div class="scene-text">
+          <span class="scene-num fade-up">03 · The agent</span>
+          <h2 class="scene-h fade-up d1">Claude Code <em>writes the screen</em>.</h2>
+          <p class="scene-d fade-up d2">
+            The MCP layer feeds tokens, components, and intent to Claude. <span class="mk">75—80% production fidelity</span>, in the same session.
+          </p>
+          <div class="scene-meta fade-up d3">
+            <div><strong>Reads</strong>Figma + MCP</div>
+            <div><strong>Writes</strong>Tailwind + React</div>
+          </div>
+        </div>
+        <div class="scene-visual dark fade-up d2">
+          <span class="stamp">FIG.04</span>
+          <span class="stamp-r">Agent loop</span>
+          <svg viewBox="0 0 600 450" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+            <rect width="600" height="450" fill="oklch(0.18 0.009 60)"/>
+            <g transform="translate(40,30)" font-family="JetBrains Mono, monospace" font-size="11" fill="oklch(0.96 0.014 75)">
+              <text y="20" fill="oklch(0.96 0.014 75 / 0.5)">› claude code</text>
+              <text y="40" fill="oklch(0.68 0.197 42)">› reading figma file...</text>
+              <text y="60" fill="oklch(0.96 0.014 75 / 0.7)">  ✓ 142 nodes</text>
+              <text y="80" fill="oklch(0.96 0.014 75 / 0.7)">  ✓ 38 tokens</text>
+              <text y="100" fill="oklch(0.96 0.014 75 / 0.7)">  ✓ 12 components</text>
+              <text y="130" fill="oklch(0.68 0.197 42)">› generating screen...</text>
+            </g>
+            <g transform="translate(40,200)" font-family="JetBrains Mono, monospace" font-size="10">
+              <rect x="0" y="0" width="520" height="220" fill="oklch(0.96 0.014 75 / 0.04)" stroke="oklch(0.96 0.014 75 / 0.15)"/>
+              <text x="14" y="22" fill="oklch(0.96 0.014 75 / 0.4)">// recommendation-card.tsx</text>
+              <text x="14" y="46" fill="oklch(0.96 0.014 75 / 0.8)"><tspan fill="oklch(0.68 0.197 42)">export</tspan> <tspan>function RecommendationCard()</tspan></text>
+              <text x="14" y="68" fill="oklch(0.96 0.014 75 / 0.8)">  <tspan fill="oklch(0.68 0.197 42)">return</tspan> &lt;article</text>
+              <text x="14" y="90" fill="oklch(0.96 0.014 75 / 0.8)">    className="rounded-sm border</text>
+              <text x="14" y="112" fill="oklch(0.96 0.014 75 / 0.8)">      border-line bg-surface p-6"&gt;</text>
+              <text x="14" y="134" fill="oklch(0.96 0.014 75 / 0.8)">    &lt;Heading variant="display-md"&gt;</text>
+              <text x="14" y="156" fill="oklch(0.96 0.014 75 / 0.8)">      Optimise 20K+ resources</text>
+              <text x="14" y="178" fill="oklch(0.96 0.014 75 / 0.8)">    &lt;/Heading&gt;</text>
+              <text x="14" y="200" fill="oklch(0.96 0.014 75 / 0.8)">  &lt;/article&gt;</text>
+            </g>
+          </svg>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- METRIC BAND -->
+  <section class="metric-band">
+    <div class="metric-band-wrap">
+      <div>
+        <div class="eyebrow fade-up"><span class="rule"></span><span class="num">04</span><span>Outcome</span></div>
+        <p class="metric-big fade-up d1">Days<br>→ Minutes.</p>
+      </div>
+      <p class="metric-cap fade-up d2">Iteration cycles collapsed. The team ships faster, with higher fidelity, and one less translation layer.</p>
+    </div>
+    <div class="metric-band-bg" aria-hidden="true">✶</div>
+  </section>
+
+  <!-- METRICS STRIP -->
+  <section class="metrics-strip">
+    <div class="metrics-strip-wrap">
+      <div class="ms fade-up"><div class="ms-num"><span data-count="20">0</span><span class="post">+</span></div><div class="ms-label">Feature Modules</div></div>
+      <div class="ms fade-up d1"><div class="ms-num"><span class="pre">$</span><span data-count="53.5" data-decimals="1">0</span><span class="post">K+</span></div><div class="ms-label">Annualised Savings</div></div>
+      <div class="ms fade-up d2"><div class="ms-num"><span data-count="20">0</span><span class="post">K+</span></div><div class="ms-label">Cloud Resources</div></div>
+      <div class="ms fade-up d3"><div class="ms-num"><span data-count="10">0</span><span class="post">+</span></div><div class="ms-label">Enterprise POCs</div></div>
+    </div>
+  </section>
+
+  <!-- NEXT PROJECT -->
+  <section class="next">
+    <div class="next-wrap">
+      <div class="next-eye">Next case ✶ 04 / 07</div>
+      <a href="design-system.html" class="next-link">
+        <div>
+          <div class="next-name">One <em>Source</em> of Truth.</div>
+          <div class="next-tags">
+            <span class="next-tag">Zop.Dev</span>
+            <span class="next-tag">Design System</span>
+            <span class="next-tag">20+ modules</span>
+          </div>
+        </div>
+        <span class="next-ar">→</span>
+      </a>
+    </div>
+  </section>
+
+  <footer class="shell-foot">
+    <span>© 2026 Ravindra Sisodia · Bengaluru, India</span>
+    <div class="shell-foot-links">
+      <a href="https://linkedin.com/in/ravindra-sisodia" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://behance.net/ravindrasisodia" target="_blank" rel="noopener">Behance</a>
+      <a href="https://dribbble.com/ravindrasisodia" target="_blank" rel="noopener">Dribbble</a>
+    </div>
+    <button class="shell-foot-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">Top ↑</button>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="../scripts.js"></script>
+</body>
+</html>

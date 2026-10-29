@@ -3,2252 +3,603 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ravindra Sisodia — Product Designer</title>
-  <meta name="description" content="Product Designer with 5 years of experience bridging high-fidelity design and production code. Expert in Figma design systems, AI-augmented workflows, and developer-ready handoff.">
+  <title>Ravindra Sisodia. Senior Product Designer.</title>
+  <meta name="description" content="Senior Product Designer. Five years across B2B SaaS, FinTech, enterprise. Design at code velocity with Claude Code and Figma MCP.">
   <meta name="author" content="Ravindra Sisodia">
-  <meta name="keywords" content="Product Designer, UI Designer, UX Designer, Figma, Design Systems, AI Workflows, Bengaluru, India">
   <link rel="canonical" href="https://ravindrasisodia.com/">
 
-  <!-- Open Graph -->
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://ravindrasisodia.com/">
-  <meta property="og:title" content="Ravindra Sisodia — Product Designer">
-  <meta property="og:description" content="Product Designer bridging high-fidelity design & production code. 5 years · Figma · AI Workflows · Design Systems.">
+  <meta property="og:title" content="Ravindra Sisodia. Senior Product Designer.">
+  <meta property="og:description" content="Design at code velocity. Five years across B2B SaaS, FinTech, enterprise.">
   <meta property="og:image" content="https://ravindrasisodia.com/profile.jpg">
-
-  <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:url" content="https://ravindrasisodia.com/">
-  <meta name="twitter:title" content="Ravindra Sisodia — Product Designer">
-  <meta name="twitter:description" content="Product Designer bridging high-fidelity design & production code. 5 years · Figma · AI Workflows · Design Systems.">
-  <meta name="twitter:image" content="https://ravindrasisodia.com/profile.jpg">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&family=Bebas+Neue&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
-  <style>
-    /* ========== RESET & BASE ========== */
-    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-    html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
-    body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; background: #1C1D1E; color: #fff; overflow-x: hidden; }
-    body.loading { overflow: hidden; }
-    img { max-width: 100%; display: block; }
-    a { text-decoration: none; color: inherit; }
-    ul { list-style: none; }
-    button { border: none; background: none; cursor: pointer; font-family: inherit; color: inherit; }
-
-    /* ========== CSS VARIABLES ========== */
-    :root {
-      --orange: #FF6200;
-      --dark: #1C1D1E;
-      --yellow: #FFCE2E;
-      --blue: #2546FF;
-      --pink: #FF34FF;
-      --light: #EFEDE8;
-      --white: #FFFFFF;
-      --black: #000000;
-      --green: #2C7D11;
-      --red: #FF0000;
-      --font-heading: 'Space Grotesk', sans-serif;
-      --font-body: 'Inter', sans-serif;
-      --heading-xl: clamp(60px, 6.944vw, 180px);
-      --heading-lg: clamp(36px, 4.5vw, 100px);
-      --heading-md: clamp(28px, 2.5vw, 50px);
-      --body-lg: clamp(16px, 1.2vw, 22px);
-      --body-md: clamp(14px, 1vw, 18px);
-      --body-sm: clamp(11px, 0.8vw, 14px);
-      --section-padding: clamp(40px, 6vw, 120px);
-      --grid-gap: clamp(12px, 1.5vw, 24px);
-    }
-
-    /* ========== THEMES ========== */
-    [data-theme="midnight"] {
-      --orange: #7C5CFC;
-      --dark: #0A0A12;
-      --yellow: #00E5A0;
-      --blue: #3D8BFF;
-      --pink: #FF5CAD;
-      --light: #13131F;
-      --green: #00E5A0;
-      --red: #FF4D6A;
-    }
-    [data-theme="mono"] {
-      --orange: #333333;
-      --dark: #FAFAFA;
-      --yellow: #E0E0E0;
-      --blue: #666666;
-      --pink: #999999;
-      --light: #FFFFFF;
-      --green: #555555;
-      --red: #444444;
-    }
-    [data-theme="mono"] body,
-    [data-theme="mono"] .footer { background: var(--dark); color: var(--black); }
-    [data-theme="mono"] .hero { background: var(--orange); }
-    [data-theme="mono"] .hero-name,
-    [data-theme="mono"] .cta-text { color: var(--white); }
-    [data-theme="mono"] .hero-subtitle { color: rgba(255,255,255,0.75); }
-    [data-theme="mono"] .hero-role-tag { color: var(--white); background: rgba(255,255,255,0.15); }
-    [data-theme="mono"] .hero-bottom-item { color: rgba(255,255,255,0.65); }
-    [data-theme="mono"] .hero-bottom-item strong { color: var(--white); }
-    [data-theme="mono"] .hero-bottom-bar { border-top-color: rgba(255,255,255,0.2); }
-    [data-theme="mono"] .hero-scroll-indicator { color: rgba(255,255,255,0.5); }
-    [data-theme="mono"] .hero-scroll-line { background: rgba(255,255,255,0.3); }
-    [data-theme="mono"] .cta { background: var(--orange); }
-    [data-theme="mono"] .cta-text { color: var(--white); }
-    [data-theme="mono"] .cta-line { background: rgba(255,255,255,0.3); }
-    [data-theme="mono"] .header { background: #E8E8E8; }
-    [data-theme="mono"] .about { background: #F2F2F2; color: var(--black); }
-    [data-theme="mono"] .about-text { color: rgba(0,0,0,0.7); }
-    [data-theme="mono"] .section-label { color: var(--black); }
-    [data-theme="mono"] .section-label .dot { background: var(--black); }
-
-    /* ========== FONT FAMILIES ========== */
-    [data-font="bebas"] { --font-heading: 'Bebas Neue', sans-serif; }
-    [data-font="instrument"] { --font-heading: 'Instrument Serif', serif; }
-
-    /* ========== SETTINGS PANEL ========== */
-    .settings-toggle {
-      position: fixed;
-      bottom: 28px;
-      right: 28px;
-      z-index: 1001;
-      width: 52px;
-      height: 52px;
-      border-radius: 50%;
-      background: var(--orange);
-      color: var(--white);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      box-shadow: 0 4px 24px rgba(0,0,0,0.25);
-      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-      font-size: 0;
-      border: none;
-    }
-    .settings-toggle svg { width: 22px; height: 22px; fill: currentColor; transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
-    .settings-toggle:hover { transform: scale(1.12); box-shadow: 0 6px 30px rgba(0,0,0,0.35); }
-    .settings-toggle.active svg { transform: rotate(60deg); }
-
-    .settings-panel {
-      position: fixed;
-      bottom: 92px;
-      right: 28px;
-      z-index: 1000;
-      background: var(--dark);
-      border: 1px solid rgba(255,255,255,0.08);
-      color: var(--white);
-      border-radius: 0;
-      padding: 0;
-      width: 280px;
-      box-shadow: 0 12px 60px rgba(0,0,0,0.5);
-      transform: translateY(16px);
-      opacity: 0;
-      visibility: hidden;
-      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-      overflow: hidden;
-    }
-    .settings-panel.open {
-      transform: translateY(0);
-      opacity: 1;
-      visibility: visible;
-    }
-    .settings-header {
-      padding: 16px 20px;
-      border-bottom: 1px solid rgba(255,255,255,0.08);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-    .settings-header span {
-      font-family: var(--font-heading);
-      font-size: 11px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.2em;
-    }
-    .settings-header .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--orange); }
-    .settings-group {
-      padding: 16px 20px;
-      border-bottom: 1px solid rgba(255,255,255,0.06);
-    }
-    .settings-group:last-child { border-bottom: none; }
-    .settings-label {
-      font-family: 'Inter', sans-serif;
-      font-size: 9px;
-      text-transform: uppercase;
-      letter-spacing: 0.2em;
-      color: rgba(255,255,255,0.35);
-      margin-bottom: 12px;
-      font-weight: 600;
-    }
-
-    /* Theme swatches */
-    .theme-options {
-      display: flex;
-      gap: 10px;
-    }
-    .theme-swatch {
-      flex: 1;
-      cursor: pointer;
-      border: 2px solid transparent;
-      border-radius: 0;
-      padding: 0;
-      background: none;
-      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-      position: relative;
-    }
-    .theme-swatch:hover { transform: translateY(-2px); }
-    .theme-swatch.active { border-color: var(--white); }
-    .theme-swatch-colors {
-      display: flex;
-      height: 40px;
-      overflow: hidden;
-    }
-    .theme-swatch-colors span { flex: 1; }
-    .theme-swatch-name {
-      font-family: 'Inter', sans-serif;
-      font-size: 9px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      color: rgba(255,255,255,0.5);
-      padding: 6px 0 0;
-      text-align: center;
-      display: block;
-      transition: color 0.2s ease;
-    }
-    .theme-swatch.active .theme-swatch-name { color: var(--white); }
-
-    /* Font options */
-    .font-options {
-      display: flex;
-      flex-direction: column;
-      gap: 0;
-    }
-    .font-option {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 13px 0;
-      min-height: 44px;
-      cursor: pointer;
-      border: none;
-      background: none;
-      color: rgba(255,255,255,0.4);
-      transition: all 0.2s ease;
-      border-bottom: 1px solid rgba(255,255,255,0.04);
-      width: 100%;
-      text-align: left;
-    }
-    .font-option:last-child { border-bottom: none; }
-    .font-option:hover { color: rgba(255,255,255,0.8); }
-    .font-option.active { color: var(--white); }
-    .font-option-preview {
-      font-size: 22px;
-      font-weight: 700;
-      line-height: 1;
-      letter-spacing: -0.02em;
-    }
-    .font-option[data-font-btn="default"] .font-option-preview { font-family: 'Space Grotesk', sans-serif; }
-    .font-option[data-font-btn="bebas"] .font-option-preview { font-family: 'Bebas Neue', sans-serif; font-size: 26px; }
-    .font-option[data-font-btn="instrument"] .font-option-preview { font-family: 'Instrument Serif', serif; font-style: italic; }
-    .font-option-name {
-      font-family: 'Inter', sans-serif;
-      font-size: 9px;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      font-weight: 600;
-    }
-    .font-option .active-dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: var(--orange);
-      opacity: 0;
-      transition: opacity 0.2s ease;
-      flex-shrink: 0;
-      margin-left: 10px;
-    }
-    .font-option.active .active-dot { opacity: 1; }
-
-    /* ========== PRELOADER ========== */
-    .preloader {
-      position: fixed;
-      inset: 0;
-      z-index: 9999;
-      background: var(--dark);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: opacity 0.6s ease, visibility 0.6s ease;
-    }
-    .preloader.done { opacity: 0; visibility: hidden; pointer-events: none; }
-
-    .preloader-rings {
-      position: relative;
-      width: 400px;
-      height: 400px;
-      animation: preloader-zoom 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-    }
-    @keyframes preloader-zoom {
-      from { transform: scale(0); opacity: 0; }
-      to { transform: scale(1); opacity: 1; }
-    }
-
-    .ring {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .ring svg {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      overflow: visible;
-    }
-    .ring svg text {
-      font-family: var(--font-heading);
-      font-weight: 700;
-    }
-    .ring-1 { width: 380px; height: 380px; margin-left: -190px; margin-top: -190px; animation: spin 8s linear infinite; }
-    .ring-2 { width: 290px; height: 290px; margin-left: -145px; margin-top: -145px; animation: spin-reverse 6s linear infinite; }
-    .ring-3 { width: 200px; height: 200px; margin-left: -100px; margin-top: -100px; animation: spin 5s linear infinite; }
-    .ring-4 { width: 120px; height: 120px; margin-left: -60px; margin-top: -60px; animation: spin-reverse 4s linear infinite; }
-
-    @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
-    @keyframes spin-reverse { from { transform: rotate(360deg); } to { transform: rotate(0deg); } }
-
-    /* ========== HEADER ========== */
-    .header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 1000;
-      height: 55px;
-      background: var(--orange);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 24px;
-      transform: translateY(-100%);
-      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    .header.visible { transform: translateY(0); }
-    .header-left { display: flex; align-items: center; gap: 12px; }
-    .header-logo {
-      width: 32px;
-      height: 32px;
-      background: var(--black);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .header-logo svg { width: 18px; height: 18px; }
-    .header-title {
-      font-family: var(--font-heading);
-      font-size: 14px;
-      font-weight: 600;
-      color: var(--black);
-      letter-spacing: -0.02em;
-    }
-    .header-right { display: flex; align-items: center; gap: 20px; }
-    .header-cta {
-      font-family: var(--font-heading);
-      font-size: 14px;
-      font-weight: 600;
-      color: var(--black);
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      transition: gap 0.3s ease;
-    }
-    .header-cta:hover { gap: 10px; }
-    .header-cta .arrow { transition: transform 0.3s ease; }
-    .header-cta:hover .arrow { transform: translateX(3px); }
-
-    .hamburger {
-      width: 44px;
-      height: 44px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 6px;
-      cursor: pointer;
-    }
-    .hamburger span {
-      display: block;
-      width: 22px;
-      height: 2px;
-      background: var(--black);
-      transition: all 0.3s ease;
-      transform-origin: center;
-    }
-    .hamburger.active span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
-    .hamburger.active span:nth-child(2) { opacity: 0; }
-    .hamburger.active span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
-
-    /* ========== DROPDOWN NAV ========== */
-    .nav-dropdown {
-      position: fixed;
-      top: 55px;
-      right: 0;
-      width: min(300px, 100vw);
-      background: var(--black);
-      z-index: 999;
-      padding: 30px 24px;
-      transform: translateX(100%);
-      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    .nav-dropdown.open { transform: translateX(0); }
-    .nav-dropdown a {
-      display: block;
-      font-family: var(--font-heading);
-      font-size: 24px;
-      font-weight: 600;
-      color: var(--white);
-      padding: 12px 0;
-      border-bottom: 1px solid rgba(255,255,255,0.1);
-      transition: color 0.3s ease, padding-left 0.3s ease;
-    }
-    .nav-dropdown a:hover { color: var(--orange); padding-left: 10px; }
-
-    /* ========== HERO SECTION ========== */
-    .hero {
-      background: var(--orange);
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      padding: 0 24px 40px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    /* Floating geometric shapes */
-    .hero-shapes {
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      z-index: 1;
-    }
-    .hero-shape {
-      position: absolute;
-      opacity: 0;
-    }
-    .hero-shape-circle {
-      width: clamp(80px, 12vw, 200px);
-      height: clamp(80px, 12vw, 200px);
-      border: 3px solid rgba(255,255,255,0.25);
-      border-radius: 50%;
-      top: 10%;
-      right: 8%;
-    }
-    .hero-shape-square {
-      width: clamp(50px, 8vw, 140px);
-      height: clamp(50px, 8vw, 140px);
-      background: rgba(255,255,255,0.08);
-      top: 20%;
-      left: 5%;
-      transform: rotate(15deg);
-    }
-    .hero-shape-diamond {
-      width: clamp(40px, 6vw, 100px);
-      height: clamp(40px, 6vw, 100px);
-      border: 2px solid rgba(0,0,0,0.15);
-      top: 35%;
-      right: 25%;
-      transform: rotate(45deg);
-    }
-    .hero-shape-dot-grid {
-      top: 15%;
-      right: 15%;
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: clamp(6px, 0.8vw, 12px);
-    }
-    .hero-shape-dot-grid span {
-      width: clamp(4px, 0.5vw, 8px);
-      height: clamp(4px, 0.5vw, 8px);
-      background: rgba(255,255,255,0.2);
-      border-radius: 50%;
-    }
-    .hero-shape-line-h {
-      width: clamp(100px, 20vw, 300px);
-      height: 2px;
-      background: rgba(255,255,255,0.15);
-      bottom: 35%;
-      right: 10%;
-    }
-    .hero-shape-line-v {
-      width: 2px;
-      height: clamp(80px, 15vw, 200px);
-      background: rgba(255,255,255,0.1);
-      top: 5%;
-      left: 40%;
-    }
-    .hero-shape-ring {
-      width: clamp(300px, 40vw, 600px);
-      height: clamp(300px, 40vw, 600px);
-      border: 1px solid rgba(255,255,255,0.07);
-      border-radius: 50%;
-      top: -10%;
-      right: -10%;
-    }
-    .hero-shape-cross {
-      top: 60%;
-      left: 15%;
-      font-size: clamp(30px, 4vw, 60px);
-      color: rgba(255,255,255,0.12);
-      font-weight: 300;
-      line-height: 1;
-    }
-
-    /* Hero content layers */
-    .hero-content {
-      position: relative;
-      z-index: 2;
-    }
-    .hero-name {
-      font-family: var(--font-heading);
-      font-size: clamp(100px, 20vw, 400px);
-      font-weight: 700;
-      color: var(--white);
-      line-height: 0.85;
-      letter-spacing: -0.04em;
-      cursor: default;
-    }
-    .hero-name .line {
-      display: block;
-      position: relative;
-      padding-bottom: 0.05em;
-    }
-    .hero-name .line-inner {
-      display: block;
-      will-change: transform;
-    }
-    body.loading .hero-name {
-      opacity: 0;
-    }
-    .hero-name .char {
-      display: inline-block;
-      transform: translateY(100%);
-    }
-
-    /* Outline stroke text behind main name */
-    .hero-name .char {
-      display: inline-block;
-      transition: color 0.3s ease, transform 0.3s ease;
-    }
-    .hero-name .char:hover {
-      color: var(--black);
-      transform: translateY(-8px) scale(1.05);
-    }
-    .hero-name-outline {
-      position: absolute;
-      bottom: 180px;
-      left: 30px;
-      font-family: var(--font-heading);
-      font-size: clamp(100px, 20vw, 400px);
-      font-weight: 700;
-      line-height: 0.85;
-      letter-spacing: -0.04em;
-      color: transparent;
-      -webkit-text-stroke: 1px rgba(255,255,255,0.12);
-      z-index: 1;
-      pointer-events: none;
-      user-select: none;
-      opacity: 0;
-    }
-
-    .hero-subtitle {
-      font-size: var(--body-lg);
-      font-weight: 500;
-      color: rgba(0,0,0,0.7);
-      margin-top: 20px;
-      letter-spacing: -0.01em;
-      overflow: hidden;
-    }
-    .hero-subtitle-inner {
-      display: inline-block;
-    }
-    body.loading .hero-subtitle-inner {
-      transform: translateY(100%);
-      opacity: 0;
-    }
-
-    /* Animated role keywords */
-    .hero-roles {
-      display: flex;
-      gap: 12px;
-      margin-top: 16px;
-      flex-wrap: wrap;
-    }
-    .hero-role-tag {
-      font-family: var(--font-heading);
-      font-size: clamp(11px, 0.9vw, 14px);
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: var(--black);
-      background: rgba(255,255,255,0.2);
-      padding: 6px 14px;
-      border-radius: 20px;
-      backdrop-filter: blur(4px);
-    }
-    body.loading .hero-role-tag {
-      opacity: 0;
-      transform: translateY(20px) scale(0.8);
-    }
-
-    /* Bottom bar with year + location */
-    .hero-bottom-bar {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      margin-top: 30px;
-      padding-top: 16px;
-      border-top: 1px solid rgba(0,0,0,0.15);
-      position: relative;
-      z-index: 2;
-    }
-    .hero-bottom-item {
-      font-size: var(--body-sm);
-      color: rgba(0,0,0,0.5);
-      font-weight: 500;
-    }
-    body.loading .hero-bottom-item {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    .hero-bottom-item strong {
-      color: rgba(0,0,0,0.8);
-      display: block;
-      font-size: var(--body-md);
-      margin-top: 2px;
-    }
-
-    .hero-scroll-indicator {
-      position: absolute;
-      bottom: 140px;
-      right: 28px;
-      writing-mode: vertical-rl;
-      font-size: 11px;
-      font-weight: 500;
-      color: rgba(0,0,0,0.4);
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      z-index: 2;
-      opacity: 0;
-    }
-    .hero-scroll-line {
-      position: absolute;
-      bottom: 130px;
-      right: 40px;
-      width: 1px;
-      height: 0;
-      background: rgba(0,0,0,0.25);
-      z-index: 2;
-    }
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
-    }
-
-    /* ========== ABOUT SECTION ========== */
-    .about {
-      background: var(--dark);
-      padding: var(--section-padding) 24px;
-      position: relative;
-    }
-    .section-label {
-      font-family: var(--font-heading);
-      font-size: var(--body-sm);
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      margin-bottom: 60px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      color: rgba(255,255,255,0.6);
-    }
-    .section-label .dot {
-      width: 8px;
-      height: 8px;
-      background: var(--orange);
-      border-radius: 50%;
-    }
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr 0.8fr;
-      gap: 40px;
-      margin-bottom: 80px;
-    }
-    .about-text {
-      font-size: var(--body-lg);
-      font-weight: 400;
-      line-height: 1.6;
-      color: rgba(255,255,255,0.8);
-    }
-    .about-text strong { color: var(--white); font-weight: 700; }
-    .about-profile {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-    }
-    .about-profile-img {
-      width: 100%;
-      aspect-ratio: 3/4;
-      background: url('profile.jpg') center center / cover no-repeat;
-      border-radius: 4px;
-      overflow: hidden;
-      position: relative;
-    }
-    .about-profile-img::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      display: none;
-      letter-spacing: 0.2em;
-    }
-    .about-profile-caption {
-      font-size: var(--body-sm);
-      line-height: 1.5;
-      color: rgba(255,255,255,0.6);
-    }
-    .about-profile-caption strong { color: var(--white); }
-    .about-accent-image {
-      width: 100%;
-      aspect-ratio: 16/10;
-      border-radius: 4px;
-      overflow: hidden;
-      position: relative;
-    }
-    .accent-img-1 {
-      background: linear-gradient(135deg, var(--pink) 0%, var(--blue) 50%, var(--pink) 100%);
-    }
-    .accent-img-1::before {
-      content: 'a';
-      position: absolute;
-      font-family: var(--font-heading);
-      font-size: clamp(200px, 25vw, 500px);
-      font-weight: 700;
-      color: var(--blue);
-      bottom: -10%;
-      right: 5%;
-      line-height: 0.8;
-    }
-    .about-accent-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 40px;
-      align-items: start;
-    }
-    .about-accent-text {
-      font-size: var(--body-md);
-      line-height: 1.6;
-      color: rgba(255,255,255,0.7);
-      padding-top: 20px;
-    }
-
-    /* ========== DIVIDER ========== */
-    .section-divider {
-      padding: 40px 24px;
-      background: var(--dark);
-    }
-    .divider-line {
-      height: 2px;
-      background: var(--orange);
-      width: 100%;
-      position: relative;
-    }
-    .divider-arrow {
-      color: var(--orange);
-      font-size: 60px;
-      margin-top: 10px;
-      display: block;
-      font-family: var(--font-heading);
-    }
-
-    /* ========== PROCESS SECTION (YELLOW) ========== */
-    .process {
-      background: var(--yellow);
-      padding: var(--section-padding) 24px;
-      color: var(--black);
-    }
-    .process .section-label { color: rgba(0,0,0,0.5); }
-    .process .section-label .dot { background: var(--black); }
-    .process-title {
-      font-family: var(--font-heading);
-      font-size: clamp(36px, 5vw, 90px);
-      font-weight: 700;
-      line-height: 1.05;
-      letter-spacing: -0.03em;
-      color: var(--black);
-      max-width: 900px;
-      margin-bottom: 60px;
-    }
-    .process-controls {
-      display: flex;
-      align-items: center;
-      gap: 30px;
-      padding: 16px 0;
-      border-top: 2px solid var(--black);
-      border-bottom: 2px solid var(--black);
-      margin-bottom: 60px;
-      flex-wrap: wrap;
-    }
-    .process-control {
-      font-family: var(--font-heading);
-      font-size: 14px;
-      font-weight: 600;
-      padding: 10px 18px;
-      min-height: 44px;
-      border: 2px solid var(--black);
-      border-radius: 20px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-    .process-control:hover, .process-control.active {
-      background: var(--black);
-      color: var(--yellow);
-    }
-    .process-cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: var(--grid-gap);
-    }
-    .process-card {
-      padding: 30px;
-      border-radius: 8px;
-      min-height: 280px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      transition: transform 0.3s ease;
-    }
-    .process-card:hover { transform: translateY(-4px); }
-    .process-card-number {
-      font-family: var(--font-heading);
-      font-size: 72px;
-      font-weight: 700;
-      line-height: 1;
-    }
-    .process-card-title {
-      font-family: var(--font-heading);
-      font-size: 22px;
-      font-weight: 700;
-      margin-top: 20px;
-    }
-    .process-card-desc {
-      font-size: 14px;
-      line-height: 1.5;
-      margin-top: 10px;
-      opacity: 0.8;
-    }
-    .card-orange { background: var(--orange); color: var(--white); }
-    .card-blue { background: var(--blue); color: var(--white); }
-    .card-black { background: var(--black); color: var(--white); }
-    .card-green { background: var(--green); color: var(--white); }
-    .card-pink { background: var(--pink); color: var(--black); }
-
-    /* ========== PROJECTS GRID (LIGHT BG) ========== */
-    .projects {
-      background: var(--light);
-      padding: var(--section-padding) 24px;
-      color: var(--black);
-    }
-    .projects .section-label { color: rgba(0,0,0,0.5); }
-    .projects .section-label .dot { background: var(--black); }
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      grid-auto-rows: minmax(300px, auto);
-      gap: var(--grid-gap);
-    }
-    .project-card {
-      border-radius: 6px;
-      overflow: hidden;
-      position: relative;
-      cursor: pointer;
-      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      padding: 24px;
-      min-height: 320px;
-    }
-    .project-card:hover { transform: scale(1.02); box-shadow: 0 20px 60px rgba(0,0,0,0.15); }
-    .project-card-span-2 { grid-column: span 2; }
-    .project-card-tall { grid-row: span 2; }
-    .project-card-tag {
-      font-size: 11px;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      opacity: 0.7;
-      margin-bottom: 8px;
-    }
-    .project-card-title {
-      font-family: var(--font-heading);
-      font-size: clamp(24px, 2.5vw, 42px);
-      font-weight: 700;
-      line-height: 1.1;
-      letter-spacing: -0.02em;
-    }
-    .pc-1 { background: linear-gradient(135deg, var(--pink), #9B30FF); color: var(--white); }
-    .pc-2 { background: var(--black); color: var(--white); }
-    .pc-3 { background: var(--blue); color: var(--white); }
-    .pc-4 { background: var(--orange); color: var(--white); }
-    .pc-5 { background: linear-gradient(135deg, var(--green), #1a5c0a); color: var(--white); }
-    .pc-6 { background: var(--yellow); color: var(--black); }
-    .pc-7 { background: linear-gradient(135deg, #FF6B6B, var(--red)); color: var(--white); }
-    .pc-8 { background: linear-gradient(135deg, #1C1D1E, #333); color: var(--white); }
-
-    /* ========== PROJECT DEEP DIVE ========== */
-    .project-dive {
-      background: var(--dark);
-      padding: var(--section-padding) 24px;
-    }
-    .dive-header {
-      margin-bottom: 60px;
-    }
-    .dive-title {
-      font-family: var(--font-heading);
-      font-size: var(--heading-xl);
-      font-weight: 700;
-      line-height: 0.9;
-      letter-spacing: -0.04em;
-      color: var(--white);
-    }
-    .dive-meta {
-      display: flex;
-      gap: 40px;
-      margin-top: 30px;
-      font-size: var(--body-sm);
-      color: rgba(255,255,255,0.5);
-    }
-    .dive-meta span strong { color: var(--white); display: block; font-size: var(--body-md); margin-top: 4px; }
-    .dive-content {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 40px;
-      margin-bottom: 80px;
-    }
-    .dive-text {
-      font-size: var(--body-lg);
-      line-height: 1.6;
-      color: rgba(255,255,255,0.8);
-    }
-    .dive-image {
-      width: 100%;
-      aspect-ratio: 16/10;
-      border-radius: 4px;
-      position: relative;
-      overflow: hidden;
-    }
-    .dive-image.img-blue {
-      background: var(--blue);
-    }
-    /* SVG bezier diagram overlay */
-    .dive-image.img-blue svg {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-    }
-    .dive-metrics {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 24px;
-      margin-bottom: 80px;
-    }
-    .metric {
-      text-align: center;
-    }
-    .metric-number {
-      font-family: var(--font-heading);
-      font-size: clamp(48px, 6vw, 120px);
-      font-weight: 700;
-      color: var(--white);
-      line-height: 1;
-    }
-    .metric-label {
-      font-size: var(--body-sm);
-      color: rgba(255,255,255,0.5);
-      margin-top: 8px;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-    }
-
-    /* ========== BIG NUMBERS SECTION ========== */
-    .big-numbers {
-      background: var(--light);
-      padding: 0 24px;
-      overflow: hidden;
-      color: var(--black);
-    }
-    .big-numbers-text {
-      font-family: var(--font-heading);
-      font-size: clamp(100px, 18vw, 350px);
-      font-weight: 900;
-      line-height: 0.85;
-      letter-spacing: -0.05em;
-      color: var(--black);
-      display: flex;
-      flex-wrap: wrap;
-    }
-    .big-numbers-text span {
-      display: inline-block;
-      background: var(--black);
-      color: var(--light);
-      padding: 0 0.05em;
-      margin: 2px;
-    }
-    .big-numbers-text span:nth-child(even) {
-      background: var(--light);
-      color: var(--black);
-    }
-
-    /* ========== SKILLS SECTION ========== */
-    .skills {
-      background: var(--light);
-      padding: var(--section-padding) 24px;
-      color: var(--black);
-    }
-    .skills .section-label { color: rgba(0,0,0,0.5); }
-    .skills .section-label .dot { background: var(--black); }
-    .skills-layout {
-      display: grid;
-      grid-template-columns: 1.2fr 1fr;
-      gap: 60px;
-      align-items: start;
-    }
-    .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(7, 1fr);
-      gap: 2px;
-    }
-    .skill-cell {
-      aspect-ratio: 1;
-      background: var(--black);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--white);
-      font-family: var(--font-heading);
-      font-weight: 700;
-      font-size: clamp(16px, 2vw, 32px);
-      transition: background 0.3s ease, transform 0.3s ease;
-      overflow: hidden;
-    }
-    .skill-cell:hover { background: var(--orange); transform: scale(1.05); z-index: 1; }
-    .skill-cell:nth-child(3n+1) { font-weight: 300; }
-    .skill-cell:nth-child(3n+2) { font-weight: 900; font-style: italic; }
-    .skills-text {
-      position: sticky;
-      top: 100px;
-    }
-    .skills-text h3 {
-      font-family: var(--font-heading);
-      font-size: var(--heading-md);
-      font-weight: 700;
-      margin-bottom: 24px;
-      line-height: 1.1;
-    }
-    .skills-text p {
-      font-size: var(--body-lg);
-      line-height: 1.6;
-      color: rgba(0,0,0,0.7);
-      margin-bottom: 16px;
-    }
-
-    /* ========== MARQUEE SLIDER ========== */
-    .marquee-section {
-      background: var(--dark);
-      padding: 60px 0;
-      overflow: hidden;
-    }
-    .marquee-track {
-      display: flex;
-      gap: 24px;
-      width: max-content;
-    }
-    .marquee-card {
-      width: 320px;
-      flex-shrink: 0;
-      border-radius: 8px;
-      overflow: hidden;
-      padding: 24px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      min-height: 400px;
-      transition: transform 0.3s ease;
-    }
-    .marquee-card:hover { transform: scale(1.03); }
-    .marquee-card-quote {
-      font-size: 18px;
-      font-weight: 500;
-      line-height: 1.5;
-      margin-bottom: 20px;
-    }
-    .marquee-card-author {
-      font-size: 14px;
-      font-weight: 700;
-    }
-    .marquee-card-role {
-      font-size: 12px;
-      opacity: 0.6;
-      margin-top: 4px;
-    }
-    .marquee-card-img {
-      width: 100%;
-      aspect-ratio: 16/9;
-      border-radius: 4px;
-      margin-bottom: 16px;
-    }
-    .mc-1 { background: var(--blue); color: var(--white); }
-    .mc-1 .marquee-card-img { background: linear-gradient(135deg, #1a3acc, #4060ff); }
-    .mc-2 { background: var(--pink); color: var(--black); }
-    .mc-2 .marquee-card-img { background: linear-gradient(135deg, #cc2acc, #ff60ff); }
-    .mc-3 { background: var(--orange); color: var(--white); }
-    .mc-3 .marquee-card-img { background: linear-gradient(135deg, #cc4e00, #ff8040); }
-    .mc-4 { background: var(--yellow); color: var(--black); }
-    .mc-4 .marquee-card-img { background: linear-gradient(135deg, #ccab20, #ffe060); }
-    .mc-5 { background: var(--green); color: var(--white); }
-    .mc-5 .marquee-card-img { background: linear-gradient(135deg, #1a5c0a, #40a020); }
-    .mc-6 { background: #333; color: var(--white); }
-    .mc-6 .marquee-card-img { background: linear-gradient(135deg, #222, #555); }
-
-    /* ========== CTA SECTION ========== */
-    .cta {
-      background: var(--orange);
-      padding: 80px 24px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      min-height: 60vh;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-    .cta-text {
-      font-family: var(--font-heading);
-      font-size: clamp(60px, 12vw, 240px);
-      font-weight: 700;
-      color: var(--white);
-      line-height: 0.9;
-      letter-spacing: -0.04em;
-      display: flex;
-      align-items: center;
-      gap: 20px;
-      flex-wrap: wrap;
-      justify-content: center;
-      cursor: pointer;
-      text-decoration: none;
-      transition: letter-spacing 0.4s cubic-bezier(0.16, 1, 0.3, 1), gap 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    .cta-text:hover {
-      letter-spacing: 0.02em;
-      gap: 40px;
-    }
-    .cta-text:hover .cta-arrow {
-      transform: translateX(15px) scale(1.1);
-    }
-    .cta-arrow {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    .cta-arrow svg {
-      width: clamp(60px, 10vw, 200px);
-      height: clamp(60px, 10vw, 200px);
-      fill: var(--white);
-    }
-    .cta-line {
-      width: 80%;
-      height: 3px;
-      background: var(--white);
-      margin: 20px auto 40px;
-    }
-    .cta-details {
-      display: flex;
-      gap: 40px;
-      font-size: var(--body-md);
-      color: rgba(0,0,0,0.7);
-    }
-    .cta-details a {
-      color: var(--cta-link-color, var(--black));
-      font-weight: 600;
-      position: relative;
-      transition: color 0.3s ease;
-    }
-    .cta-details a::after {
-      content: '';
-      position: absolute;
-      bottom: -2px;
-      left: 0;
-      width: 0;
-      height: 2px;
-      background: var(--black);
-      transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    .cta-details a:hover { color: var(--white); }
-    .cta-details a:hover::after { width: 100%; background: var(--white); }
-
-    /* ========== FOOTER ========== */
-    .footer {
-      background: var(--dark);
-      padding: 40px 24px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: var(--body-sm);
-      color: rgba(255,255,255,0.4);
-    }
-    .footer-links { display: flex; gap: 20px; }
-    .footer-links a { color: rgba(255,255,255,0.6); transition: color 0.3s; }
-    .footer-links a:hover { color: var(--white); }
-    .footer-back-top {
-      font-weight: 600;
-      color: rgba(255,255,255,0.6);
-      cursor: pointer;
-      transition: color 0.3s;
-    }
-    .footer-back-top:hover { color: var(--orange); }
-
-    /* ========== ANIMATION CLASSES ========== */
-    .fade-up {
-      opacity: 0;
-      transform: translateY(60px);
-    }
-    .fade-up.animated {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    /* Project cards & skill cells animate via GSAP only */
-
-    /* ========== RESPONSIVE ========== */
-    @media (max-width: 1024px) {
-      .about-grid { grid-template-columns: 1fr 1fr; }
-      .about-profile { grid-column: 1 / -1; flex-direction: row; gap: 24px; }
-      .about-profile-img { width: 200px; aspect-ratio: 1; flex-shrink: 0; }
-      .projects-grid { grid-template-columns: repeat(2, 1fr); }
-      .project-card-span-2 { grid-column: span 1; }
-      .dive-metrics { grid-template-columns: repeat(2, 1fr); }
-      .skills-layout { grid-template-columns: 1fr; }
-      .skills-grid { grid-template-columns: repeat(5, 1fr); }
-    }
-
-    @media (max-width: 768px) {
-      :root {
-        --heading-xl: clamp(40px, 12vw, 80px);
-        --section-padding: clamp(30px, 8vw, 60px);
-      }
-      .hero-name { font-size: clamp(50px, 18vw, 200px); }
-      .hero-scroll-indicator, .hero-scroll-line { display: none; }
-      .about-grid { grid-template-columns: 1fr; }
-      .about-profile { flex-direction: column; }
-      .about-profile-img { width: 100%; }
-      .about-accent-row { grid-template-columns: 1fr; }
-      .process-controls { gap: 10px; }
-      .process-cards { grid-template-columns: 1fr; }
-      .projects-grid { grid-template-columns: 1fr; }
-      .project-card-span-2 { grid-column: span 1; }
-      .project-card-tall { grid-row: span 1; }
-      .dive-content { grid-template-columns: 1fr; }
-      .dive-metrics { grid-template-columns: 1fr 1fr; }
-      .skills-grid { grid-template-columns: repeat(4, 1fr); }
-      .marquee-card { width: 240px; min-height: 300px; }
-      .marquee-card-quote { font-size: 16px; }
-      .cta-details { flex-direction: column; gap: 12px; align-items: center; }
-      .footer { flex-direction: column; gap: 16px; text-align: center; }
-      .header-cta span { display: none; }
-      .settings-panel {
-        width: min(280px, calc(100vw - 32px));
-        right: 16px;
-        bottom: 80px;
-      }
-      .settings-toggle {
-        bottom: 16px;
-        right: 16px;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .hero-name { font-size: clamp(40px, 22vw, 160px); }
-      .skills-grid { grid-template-columns: repeat(3, 1fr); }
-      .dive-metrics { grid-template-columns: 1fr; }
-      .marquee-card { width: 200px; min-height: 280px; }
-      .preloader-rings { width: 85vw; height: 85vw; }
-    }
-
-    /* ========== MONO THEME OVERRIDES (must be last) ========== */
-    [data-theme="mono"] .cta { --cta-link-color: rgba(255,255,255,0.7); }
-    [data-theme="mono"] .cta .cta-details { color: rgba(255,255,255,0.7); }
-    [data-theme="mono"] .cta .cta-details a:hover { color: #fff; }
-    [data-theme="mono"] .settings-panel { background: #1a1a1a; border-color: rgba(255,255,255,0.12); }
-    [data-theme="mono"] .settings-header .dot { background: #666; }
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,700;0,6..96,800;0,6..96,900;1,6..96,400;1,6..96,500;1,6..96,700;1,6..96,900&family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body class="loading">
 
-  <!-- ========== SETTINGS PANEL ========== -->
-  <button class="settings-toggle" id="settingsToggle" aria-label="Customize">
-    <svg viewBox="0 0 24 24"><path d="M12 15.5A3.5 3.5 0 0 1 8.5 12 3.5 3.5 0 0 1 12 8.5a3.5 3.5 0 0 1 3.5 3.5 3.5 3.5 0 0 1-3.5 3.5m7.43-2.53c.04-.32.07-.64.07-.97s-.03-.66-.07-.98l2.11-1.65a.5.5 0 0 0 .12-.64l-2-3.46a.5.5 0 0 0-.61-.22l-2.49 1a7.3 7.3 0 0 0-1.69-.98l-.38-2.65A.49.49 0 0 0 14 2h-4a.49.49 0 0 0-.49.42l-.38 2.65c-.61.25-1.17.59-1.69.98l-2.49-1a.5.5 0 0 0-.61.22l-2 3.46a.49.49 0 0 0 .12.64l2.11 1.65A8 8 0 0 0 4.5 12c0 .33.03.66.07.98l-2.11 1.65a.5.5 0 0 0-.12.64l2 3.46a.5.5 0 0 0 .61.22l2.49-1c.52.4 1.08.73 1.69.98l.38 2.65c.05.24.26.42.49.42h4c.24 0 .44-.18.49-.42l.38-2.65a7.2 7.2 0 0 0 1.69-.98l2.49 1a.5.5 0 0 0 .61-.22l2-3.46a.49.49 0 0 0-.12-.64z"/></svg>
-  </button>
-  <div class="settings-panel" id="settingsPanel">
-    <div class="settings-header">
-      <span>Customize</span>
-      <span class="dot"></span>
-    </div>
-    <div class="settings-group">
-      <div class="settings-label">Theme</div>
-      <div class="theme-options">
-        <button class="theme-swatch active" data-theme-btn="default">
-          <div class="theme-swatch-colors"><span style="background:#FF6200"></span><span style="background:#1C1D1E"></span><span style="background:#FFCE2E"></span><span style="background:#EFEDE8"></span></div>
-          <span class="theme-swatch-name">Flame</span>
-        </button>
-        <button class="theme-swatch" data-theme-btn="midnight">
-          <div class="theme-swatch-colors"><span style="background:#7C5CFC"></span><span style="background:#0A0A12"></span><span style="background:#00E5A0"></span><span style="background:#3D8BFF"></span></div>
-          <span class="theme-swatch-name">Midnight</span>
-        </button>
-        <button class="theme-swatch" data-theme-btn="mono">
-          <div class="theme-swatch-colors"><span style="background:#333"></span><span style="background:#FAFAFA"></span><span style="background:#E0E0E0"></span><span style="background:#666"></span></div>
-          <span class="theme-swatch-name">Mono</span>
-        </button>
-      </div>
-    </div>
-    <div class="settings-group">
-      <div class="settings-label">Typeface</div>
-      <div class="font-options">
-        <button class="font-option active" data-font-btn="default">
-          <span class="font-option-preview">Ag</span>
-          <span class="font-option-name">Grotesk</span>
-          <span class="active-dot"></span>
-        </button>
-        <button class="font-option" data-font-btn="bebas">
-          <span class="font-option-preview">Ag</span>
-          <span class="font-option-name">Bebas</span>
-          <span class="active-dot"></span>
-        </button>
-        <button class="font-option" data-font-btn="instrument">
-          <span class="font-option-preview">Ag</span>
-          <span class="font-option-name">Serif</span>
-          <span class="active-dot"></span>
-        </button>
-      </div>
-    </div>
-  </div>
-
-  <!-- ========== PRELOADER ========== -->
+  <!-- ============== PRELOADER ============== -->
   <div class="preloader" id="preloader">
-    <div class="preloader-rings">
-      <div class="ring ring-1">
-        <svg viewBox="0 0 380 380">
-          <defs><path id="ring1Path" d="M190,190 m-175,0 a175,175 0 1,1 350,0 a175,175 0 1,1 -350,0"/></defs>
-          <text fill="#FFCE2E" font-size="18"><textPath href="#ring1Path">PRODUCT DESIGNER PORTFOLIO RAVINDRA SISODIA CREATIVE DIGITAL EXPERIENCES UX UI </textPath></text>
-        </svg>
-      </div>
-      <div class="ring ring-2">
-        <svg viewBox="0 0 290 290">
-          <defs><path id="ring2Path" d="M145,145 m-130,0 a130,130 0 1,1 260,0 a130,130 0 1,1 -260,0"/></defs>
-          <text fill="#FF6200" font-size="16"><textPath href="#ring2Path">RESEARCH DESIGN PROTOTYPE TEST ITERATE SHIP IMPACT STRATEGY </textPath></text>
-        </svg>
-      </div>
-      <div class="ring ring-3">
-        <svg viewBox="0 0 200 200">
-          <defs><path id="ring3Path" d="M100,100 m-85,0 a85,85 0 1,1 170,0 a85,85 0 1,1 -170,0"/></defs>
-          <text fill="#FF0000" font-size="14"><textPath href="#ring3Path">FIGMA SKETCH FRAMER PRINCIPLE ADOBE </textPath></text>
-        </svg>
-      </div>
-      <div class="ring ring-4">
-        <svg viewBox="0 0 120 120">
-          <defs><path id="ring4Path" d="M60,60 m-45,0 a45,45 0 1,1 90,0 a45,45 0 1,1 -90,0"/></defs>
-          <text fill="#2546FF" font-size="12"><textPath href="#ring4Path">UX UI PRODUCT DESIGN</textPath></text>
-        </svg>
-      </div>
+    <div class="preloader-num"><span data-pre-num>00</span></div>
+    <div class="preloader-side">
+      <strong>RAVINDRA SISODIA</strong>
+      Senior Product Designer<br>
+      Portfolio · 2026<br>
+      Bengaluru, IN
     </div>
   </div>
 
-  <!-- ========== HEADER ========== -->
-  <header class="header" id="header">
-    <div class="header-left">
-      <div class="header-logo">
-        <svg viewBox="0 0 24 24" fill="white"><circle cx="12" cy="12" r="4"/><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83" stroke="white" stroke-width="1.5" fill="none"/></svg>
-      </div>
-      <span class="header-title">Ravindra Sisodia — Product Designer</span>
-    </div>
-    <div class="header-right">
-      <a href="#contact" class="header-cta">
-        <span>Let's Talk</span>
-        <span class="arrow">→</span>
-      </a>
-      <div class="hamburger" id="hamburger">
-        <span></span><span></span><span></span>
-      </div>
-    </div>
-  </header>
+  <!-- ============== THEME TOGGLE ============== -->
+  <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme" title="Toggle theme (T)">
+    <span class="icon" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="currentColor">
+        <circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.5"/>
+        <path d="M12 3 A9 9 0 0 1 12 21 Z"/>
+      </svg>
+    </span>
+    <span class="lbl-dark">Dark</span>
+    <span class="lbl-light">Light</span>
+  </button>
 
-  <!-- ========== DROPDOWN NAV ========== -->
-  <nav class="nav-dropdown" id="navDropdown">
-    <a href="#about" data-nav>About</a>
-    <a href="#process" data-nav>Process</a>
-    <a href="#work" data-nav>Work</a>
-    <a href="#case-study-1" data-nav>Case Studies</a>
-    <a href="#skills" data-nav>Skills</a>
-    <a href="#testimonials" data-nav>Testimonials</a>
-    <a href="#contact" data-nav>Contact</a>
-  </nav>
-
-  <!-- ========== HERO ========== -->
-  <section class="hero" id="hero">
-    <!-- Floating geometric shapes -->
-    <div class="hero-shapes">
-      <div class="hero-shape hero-shape-ring"></div>
-      <div class="hero-shape hero-shape-circle"></div>
-      <div class="hero-shape hero-shape-square"></div>
-      <div class="hero-shape hero-shape-diamond"></div>
-      <div class="hero-shape hero-shape-dot-grid">
-        <span></span><span></span><span></span><span></span><span></span>
-        <span></span><span></span><span></span><span></span><span></span>
-        <span></span><span></span><span></span><span></span><span></span>
-        <span></span><span></span><span></span><span></span><span></span>
-        <span></span><span></span><span></span><span></span><span></span>
-      </div>
-      <div class="hero-shape hero-shape-line-h"></div>
-      <div class="hero-shape hero-shape-line-v"></div>
-      <div class="hero-shape hero-shape-cross">+</div>
+  <!-- ============== HERO · GENERATIVE EACH VISIT ============== -->
+  <section class="hero hero-gen" id="hero">
+    <div class="hero-top">
+      <span class="hero-eyebrow" id="heroEyebrow">Senior Product Designer · Bengaluru, IN</span>
+      <h1 class="hero-name">Ravindra<br>Sisodia<span class="dot">.</span></h1>
     </div>
 
-    <!-- Outline text layer -->
-    <div class="hero-name-outline" id="heroOutline" aria-hidden="true">Ravindra<br>Sisodia</div>
-
-    <!-- Main content -->
-    <div class="hero-content">
-      <div class="hero-name" id="heroName">
-        <span class="line"><span class="line-inner">Ravindra</span></span>
-        <span class="line"><span class="line-inner">Sisodia</span></span>
-      </div>
-      <p class="hero-subtitle"><span class="hero-subtitle-inner">Bridging high-fidelity design & production code — AI-augmented workflows</span></p>
-      <div class="hero-roles">
-        <span class="hero-role-tag">Design Systems</span>
-        <span class="hero-role-tag">AI Workflows</span>
-        <span class="hero-role-tag">Figma Expert</span>
-        <span class="hero-role-tag">Prototyping</span>
-        <span class="hero-role-tag">User Research</span>
-      </div>
-      <div class="hero-bottom-bar">
-        <div class="hero-bottom-item">Based in<strong>Bengaluru, India</strong></div>
-        <div class="hero-bottom-item">Currently<strong>Zop.Dev</strong></div>
-        <div class="hero-bottom-item">Experience<strong>5 Years</strong></div>
+    <div class="hero-marquee-diag" aria-hidden="true">
+      <div class="hero-marquee-track" id="heroMarquee">
+        <span>Available 2026<span class="ar">→</span>Design + Code<span class="ar">→</span>Sr. Product Designer<span class="ar">→</span>Figma MCP<span class="ar">→</span>Bengaluru IN<span class="ar">→</span>Zop.Dev<span class="ar">→</span>5 Years<span class="ar">→</span>Open For Work<span class="ar">→</span></span>
+        <span>Available 2026<span class="ar">→</span>Design + Code<span class="ar">→</span>Sr. Product Designer<span class="ar">→</span>Figma MCP<span class="ar">→</span>Bengaluru IN<span class="ar">→</span>Zop.Dev<span class="ar">→</span>5 Years<span class="ar">→</span>Open For Work<span class="ar">→</span></span>
       </div>
     </div>
 
-    <span class="hero-scroll-indicator">Scroll to explore</span>
-    <div class="hero-scroll-line"></div>
-  </section>
+    <ul class="hero-pointers" id="heroPointers">
+      <li class="hero-pointer"><span class="ar">→</span> Open for senior product design roles in 2026.</li>
+      <li class="hero-pointer"><span class="ar">→</span> Designing in Figma + Claude Code at Zop.Dev.</li>
+      <li class="hero-pointer"><span class="ar">→</span> Bridging high-fidelity design and production code.</li>
+      <li class="hero-pointer"><span class="ar">→</span> Bengaluru, India.</li>
+    </ul>
 
-  <!-- ========== ABOUT ========== -->
-  <section class="about" id="about">
-    <div class="section-label fade-up"><span class="dot"></span> About</div>
-    <div class="about-grid">
-      <div class="about-text fade-up">
-        <strong>Product Designer with 5 years of experience</strong> bridging the gap between high-fidelity design and production code. Expert in Figma-native design systems, variables, and tokens — now enhanced by AI-augmented workflows using Claude Code, Figma MCP, and Tailwind to move from product briefs to functional mocks in a single session.
-      </div>
-      <div class="about-text fade-up">
-        Starting as a Junior Designer at FirstCry.com, I grew into a Design Lead managing a team of 6 at ArtWorksIT, shipping 30+ websites for enterprise clients. After honing my craft in finance-sector apps at ScreenRoot — designing for Yes Bank, Bandhan Bank, and ICICI Bank — I joined Zop.Dev where I now pioneer AI-powered design-to-code workflows that cut iteration time from days to minutes.
-      </div>
-      <div class="about-profile fade-up">
-        <div class="about-profile-img"></div>
-        <div class="about-profile-caption">
-          <strong>Ravindra Sisodia,</strong> a product designer based in Bengaluru, specialises in design systems, AI-augmented workflows, and bridging the gap between design and engineering.
-        </div>
-      </div>
-    </div>
-    <div class="about-accent-row">
-      <div class="about-accent-image accent-img-1 fade-up"></div>
-      <div class="about-accent-text fade-up">
-        My design philosophy: every design decision must earn its place in code. I hold a B.VOC in Digital Arts & Animation from Fergusson College, Pune — and have spent the last 5 years turning that foundation into a practice that lives at the intersection of craft, systems thinking, and engineering collaboration.
-      </div>
+    <div class="hero-variant">
+      <span class="hero-variant-k">Variant</span>
+      <strong id="heroVariant">#0001</strong>
+      <button id="heroRoll" class="hero-variant-roll" aria-label="Roll a new variant" title="Roll a new variant">↻ Roll</button>
     </div>
   </section>
 
-  <!-- ========== DIVIDER ========== -->
-  <div class="section-divider">
-    <div class="divider-line"></div>
-    <span class="divider-arrow">→</span>
+  <!-- ============== MARQUEE STRIP ============== -->
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+      <span>Senior Product Designer<span class="dot">✶</span>Design Systems<span class="dot">✶</span>Figma MCP<span class="dot">✶</span>Claude Code<span class="dot">✶</span>FinTech<span class="dot">✶</span>B2B SaaS<span class="dot">✶</span>Bengaluru<span class="dot">✶</span>2026<span class="dot">✶</span></span>
+      <span>Senior Product Designer<span class="dot">✶</span>Design Systems<span class="dot">✶</span>Figma MCP<span class="dot">✶</span>Claude Code<span class="dot">✶</span>FinTech<span class="dot">✶</span>B2B SaaS<span class="dot">✶</span>Bengaluru<span class="dot">✶</span>2026<span class="dot">✶</span></span>
+    </div>
   </div>
 
-  <!-- ========== PROCESS (YELLOW) ========== -->
-  <section class="process" id="process">
-    <div class="section-label fade-up"><span class="dot"></span> Design Process</div>
-    <h2 class="process-title fade-up">An AI-augmented design methodology — from brief to production-ready in a single session.</h2>
-    <div class="process-controls fade-up">
-      <button class="process-control active">All Steps</button>
-      <button class="process-control">Research</button>
-      <button class="process-control">Define</button>
-      <button class="process-control">Design</button>
-      <button class="process-control">Test</button>
-      <button class="process-control">Ship</button>
-    </div>
-    <div class="process-cards">
-      <div class="process-card card-orange fade-up">
-        <div>
-          <div class="process-card-number">01</div>
-          <div class="process-card-title">Discover</div>
+  <!-- ============== SELECTED WORK ============== -->
+  <section class="work" id="work">
+    <div class="work-wrap">
+      <header class="work-h">
+        <h2 class="work-title fade-up">
+          Selected <em>Work</em>.
+        </h2>
+        <div class="work-counter fade-up d1">
+          <strong>07 projects</strong><br>
+          2020 — 2026
         </div>
-        <div class="process-card-desc">Stakeholder interviews, user research, and competitive analysis — scoped fast using Notion and Figma FigJam to align teams before a single frame is drawn.</div>
+      </header>
+
+      <div class="work-list">
+        <a class="proj fade-up" href="work/recommendation-engine.html">
+          <span class="proj-num">01</span>
+          <span class="proj-name">
+            <span class="yr">2025</span>
+            Recommendation Engine.
+          </span>
+          <span class="proj-tags">
+            <span class="proj-tag">Zop.Dev</span>
+            <span class="proj-tag">$53.5K saved</span>
+            <span class="proj-tag">AI · UX</span>
+          </span>
+          <span class="proj-go">Case <span class="ar">→</span></span>
+          <span class="proj-preview" aria-hidden="true">
+            <svg viewBox="0 0 360 230" xmlns="http://www.w3.org/2000/svg">
+              <rect width="360" height="230" fill="oklch(0.68 0.197 42)"/>
+              <g transform="translate(40,40)">
+                <text fill="oklch(0.965 0.014 75)" font-family="Inter" font-size="46" font-weight="700" y="50">$53.5K</text>
+                <text fill="oklch(0.965 0.014 75 / 0.7)" font-family="JetBrains Mono, monospace" font-size="9" y="76" letter-spacing="2">ANNUALISED SAVINGS</text>
+              </g>
+              <g transform="translate(40,130)">
+                <g stroke="oklch(0.965 0.014 75 / 0.3)" stroke-width="1">
+                  <path d="M0 30 L280 30"/>
+                </g>
+                <g fill="oklch(0.965 0.014 75)">
+                  <rect x="0" y="20" width="6" height="20"/>
+                  <rect x="14" y="14" width="6" height="32"/>
+                  <rect x="28" y="22" width="6" height="16"/>
+                  <rect x="42" y="6" width="6" height="48"/>
+                  <rect x="56" y="18" width="6" height="24"/>
+                  <rect x="70" y="10" width="6" height="40"/>
+                  <rect x="84" y="20" width="6" height="20"/>
+                  <rect x="98" y="0" width="6" height="60"/>
+                  <rect x="112" y="14" width="6" height="32"/>
+                  <rect x="126" y="22" width="6" height="16"/>
+                  <rect x="140" y="6" width="6" height="48"/>
+                  <rect x="154" y="14" width="6" height="32"/>
+                  <rect x="168" y="22" width="6" height="16"/>
+                  <rect x="182" y="6" width="6" height="48"/>
+                  <rect x="196" y="18" width="6" height="24"/>
+                </g>
+              </g>
+            </svg>
+          </span>
+        </a>
+
+        <a class="proj fade-up" href="work/onboarding.html">
+          <span class="proj-num">02</span>
+          <span class="proj-name">
+            <span class="yr">2025</span>
+            20 → 7 minutes.
+          </span>
+          <span class="proj-tags">
+            <span class="proj-tag">Zop.Dev</span>
+            <span class="proj-tag">Onboarding</span>
+            <span class="proj-tag">65% faster</span>
+          </span>
+          <span class="proj-go">Case <span class="ar">→</span></span>
+          <span class="proj-preview" aria-hidden="true">
+            <svg viewBox="0 0 360 230" xmlns="http://www.w3.org/2000/svg">
+              <rect width="360" height="230" fill="oklch(0.93 0.014 75)"/>
+              <text x="40" y="100" fill="oklch(0.18 0.009 60)" font-family="Inter" font-size="46" font-weight="700">20</text>
+              <text x="105" y="100" fill="oklch(0.68 0.197 42)" font-family="Inter" font-size="46" font-weight="700">→ 7</text>
+              <text x="40" y="130" fill="oklch(0.55 0.008 65)" font-family="JetBrains Mono, monospace" font-size="9" letter-spacing="2">MINUTES TO COMPLETE</text>
+              <g transform="translate(40,160)">
+                <rect x="0" y="0" width="280" height="6" fill="oklch(0.82 0.014 75)"/>
+                <rect x="0" y="0" width="100" height="6" fill="oklch(0.68 0.197 42)"/>
+              </g>
+            </svg>
+          </span>
+        </a>
+
+        <a class="proj fade-up" href="work/design-in-code.html">
+          <span class="proj-num">03</span>
+          <span class="proj-name">
+            <span class="yr">2025</span>
+            Design in Code.
+          </span>
+          <span class="proj-tags">
+            <span class="proj-tag">Zop.Dev</span>
+            <span class="proj-tag">AI Workflow</span>
+            <span class="proj-tag">Figma MCP</span>
+          </span>
+          <span class="proj-go">Case <span class="ar">→</span></span>
+          <span class="proj-preview" aria-hidden="true">
+            <svg viewBox="0 0 360 230" xmlns="http://www.w3.org/2000/svg">
+              <rect width="360" height="230" fill="oklch(0.18 0.009 60)"/>
+              <g stroke="oklch(0.96 0.014 75 / 0.2)" stroke-width="1" fill="none">
+                <path d="M0 60 L360 60"/><path d="M0 110 L360 110"/><path d="M0 160 L360 160"/>
+              </g>
+              <g transform="translate(40,60)">
+                <rect width="90" height="100" rx="6" fill="oklch(0.96 0.014 75 / 0.08)" stroke="oklch(0.96 0.014 75 / 0.3)"/>
+                <text x="10" y="22" fill="oklch(0.68 0.197 42)" font-family="JetBrains Mono, monospace" font-size="8">FIGMA</text>
+                <text x="10" y="50" fill="oklch(0.96 0.014 75)" font-family="Inter" font-size="14" font-weight="600">Brief</text>
+              </g>
+              <path d="M130 110 L155 110" stroke="oklch(0.68 0.197 42)" stroke-width="1.4" stroke-dasharray="3 3"/>
+              <g transform="translate(155,80)">
+                <rect width="60" height="60" rx="6" fill="oklch(0.68 0.197 42 / 0.15)" stroke="oklch(0.68 0.197 42)"/>
+                <text x="10" y="22" fill="oklch(0.68 0.197 42)" font-family="JetBrains Mono, monospace" font-size="8">MCP</text>
+                <text x="10" y="44" fill="oklch(0.96 0.014 75)" font-family="Inter" font-size="12" font-weight="600">→</text>
+              </g>
+              <path d="M215 110 L240 110" stroke="oklch(0.68 0.197 42)" stroke-width="1.4" stroke-dasharray="3 3"/>
+              <g transform="translate(240,60)">
+                <rect width="90" height="100" rx="6" fill="oklch(0.96 0.014 75 / 0.08)" stroke="oklch(0.96 0.014 75 / 0.3)"/>
+                <text x="10" y="22" fill="oklch(0.68 0.197 42)" font-family="JetBrains Mono, monospace" font-size="8">CODE</text>
+                <text x="10" y="50" fill="oklch(0.96 0.014 75)" font-family="Inter" font-size="14" font-weight="600">Ship</text>
+              </g>
+            </svg>
+          </span>
+        </a>
+
+        <a class="proj fade-up" href="work/design-system.html">
+          <span class="proj-num">04</span>
+          <span class="proj-name">
+            <span class="yr">2025</span>
+            One Source of Truth.
+          </span>
+          <span class="proj-tags">
+            <span class="proj-tag">Zop.Dev</span>
+            <span class="proj-tag">Design System</span>
+            <span class="proj-tag">20+ modules</span>
+          </span>
+          <span class="proj-go">Case <span class="ar">→</span></span>
+          <span class="proj-preview" aria-hidden="true">
+            <svg viewBox="0 0 360 230" xmlns="http://www.w3.org/2000/svg">
+              <rect width="360" height="230" fill="oklch(0.88 0.016 75)"/>
+              <g transform="translate(40,40)" fill="none" stroke="oklch(0.18 0.009 60)" stroke-width="1.2">
+                <rect x="0" y="0" width="60" height="60"/>
+                <rect x="70" y="0" width="60" height="60"/>
+                <rect x="140" y="0" width="60" height="60"/>
+                <rect x="210" y="0" width="60" height="60"/>
+                <rect x="0" y="70" width="60" height="60"/>
+                <rect x="70" y="70" width="60" height="60" fill="oklch(0.68 0.197 42)" stroke="none"/>
+                <rect x="140" y="70" width="60" height="60"/>
+                <rect x="210" y="70" width="60" height="60"/>
+              </g>
+            </svg>
+          </span>
+        </a>
+
+        <a class="proj fade-up" href="work/zopdev-homepage.html">
+          <span class="proj-num">05</span>
+          <span class="proj-name">
+            <span class="yr">2025</span>
+            Build. Deploy. Govern.
+          </span>
+          <span class="proj-tags">
+            <span class="proj-tag">Zop.Dev</span>
+            <span class="proj-tag">Homepage v1.5</span>
+            <span class="proj-tag">AWS · GCP · Azure</span>
+          </span>
+          <span class="proj-go">Case <span class="ar">→</span></span>
+          <span class="proj-preview" aria-hidden="true">
+            <svg viewBox="0 0 360 230" xmlns="http://www.w3.org/2000/svg">
+              <rect width="360" height="230" fill="#FAF7EC"/>
+              <rect x="0" y="0" width="360" height="14" fill="#ECE7D7" stroke="#D9D3BF"/>
+              <circle cx="10" cy="7" r="2" fill="#D9D3BF"/>
+              <circle cx="18" cy="7" r="2" fill="#D9D3BF"/>
+              <circle cx="26" cy="7" r="2" fill="#D9D3BF"/>
+              <rect x="60" y="3" width="160" height="8" fill="#FAF7EC" stroke="#D9D3BF"/>
+              <text x="64" y="9" fill="#525252" font-family="JetBrains Mono, monospace" font-size="5" letter-spacing="1">zop.dev</text>
+              <rect x="0" y="14" width="360" height="22" fill="#FAF7EC" stroke="#D9D3BF"/>
+              <text x="10" y="29" fill="#0A0A0A" font-family="Space Grotesk, sans-serif" font-size="9" font-weight="700">Zop.Dev</text>
+              <rect x="280" y="20" width="32" height="10" fill="#FAF7EC" stroke="#0A0A0A"/>
+              <text x="296" y="27" text-anchor="middle" fill="#0A0A0A" font-family="Inter" font-size="5" font-weight="600">Sign in</text>
+              <rect x="316" y="20" width="36" height="10" fill="#0A0A0A"/>
+              <text x="334" y="27" text-anchor="middle" fill="#FAF7EC" font-family="Inter" font-size="5" font-weight="600">Demo →</text>
+              <rect x="14" y="52" width="100" height="12" rx="6" fill="#FAF7EC" stroke="#0A0A0A"/>
+              <circle cx="22" cy="58" r="2" fill="#7FB236"/>
+              <text x="30" y="60" fill="#F58549" font-family="JetBrains Mono, monospace" font-size="5" font-weight="700" letter-spacing="1">v1.5</text>
+              <text x="48" y="60" fill="#0A0A0A" font-family="Inter" font-size="5">Live cluster →</text>
+              <g font-family="Space Grotesk, sans-serif" font-size="28" font-weight="700" letter-spacing="-1">
+                <text x="14" y="110" fill="#0A0A0A">Build.</text>
+                <text x="78" y="110" fill="#2A4494">Deploy.</text>
+                <text x="158" y="110" fill="#F58549">Govern.</text>
+              </g>
+              <text x="14" y="138" fill="#0A0A0A" font-family="Space Grotesk, sans-serif" font-size="20" font-weight="500" letter-spacing="-1">On every cloud.</text>
+              <text x="14" y="156" fill="#525252" font-family="Inter" font-size="7">One operating layer across AWS, GCP, and Azure.</text>
+              <rect x="14" y="170" width="80" height="18" fill="#0A0A0A"/>
+              <text x="54" y="182" text-anchor="middle" fill="#FAF7EC" font-family="Inter" font-size="6" font-weight="600">Run the audit →</text>
+              <rect x="100" y="170" width="70" height="18" fill="#FAF7EC" stroke="#0A0A0A"/>
+              <text x="135" y="182" text-anchor="middle" fill="#0A0A0A" font-family="Inter" font-size="6" font-weight="600">Talk to sales →</text>
+              <text x="14" y="208" fill="#525252" font-family="Inter" font-size="5">Built by alumni of <tspan fill="#0A0A0A" font-weight="700">Meesho · Accenture · HashiCorp · OYO</tspan></text>
+              <g transform="translate(260, 80)" stroke="#0A0A0A" fill="none" opacity="0.4">
+                <circle cx="40" cy="40" r="40"/>
+                <circle cx="40" cy="40" r="28"/>
+                <ellipse cx="40" cy="40" rx="40" ry="14"/>
+              </g>
+              <circle cx="290" cy="100" r="2" fill="#F58549"/>
+              <circle cx="320" cy="120" r="2" fill="#2A4494"/>
+              <circle cx="280" cy="135" r="2" fill="#7FB236"/>
+            </svg>
+          </span>
+        </a>
+
+        <a class="proj fade-up" href="work/banking-ux.html">
+          <span class="proj-num">06</span>
+          <span class="proj-name">
+            <span class="yr">2024</span>
+            Banking, Made Legible.
+          </span>
+          <span class="proj-tags">
+            <span class="proj-tag">ScreenRoot</span>
+            <span class="proj-tag">Yes Bank · ICICI</span>
+            <span class="proj-tag">M+ users</span>
+          </span>
+          <span class="proj-go">Case <span class="ar">→</span></span>
+          <span class="proj-preview" aria-hidden="true">
+            <svg viewBox="0 0 360 230" xmlns="http://www.w3.org/2000/svg">
+              <rect width="360" height="230" fill="oklch(0.18 0.009 60)"/>
+              <g transform="translate(140,30)">
+                <rect width="80" height="160" rx="10" fill="oklch(0.965 0.014 75)"/>
+                <rect x="6" y="6" width="68" height="148" rx="6" fill="oklch(0.93 0.014 75)"/>
+                <rect x="12" y="20" width="36" height="6" rx="2" fill="oklch(0.18 0.009 60)"/>
+                <rect x="12" y="36" width="56" height="36" rx="4" fill="oklch(0.18 0.009 60)"/>
+                <rect x="16" y="46" width="36" height="6" rx="2" fill="oklch(0.965 0.014 75)"/>
+                <rect x="16" y="58" width="20" height="4" rx="2" fill="oklch(0.68 0.197 42)"/>
+                <circle cx="20" cy="92" r="6" fill="oklch(0.68 0.197 42)"/>
+                <circle cx="40" cy="92" r="6" fill="oklch(0.82 0.014 75)"/>
+                <circle cx="60" cy="92" r="6" fill="oklch(0.82 0.014 75)"/>
+                <rect x="12" y="108" width="56" height="14" rx="3" fill="oklch(0.93 0.014 75)" stroke="oklch(0.82 0.014 75)"/>
+                <rect x="12" y="128" width="56" height="14" rx="3" fill="oklch(0.93 0.014 75)" stroke="oklch(0.82 0.014 75)"/>
+              </g>
+            </svg>
+          </span>
+        </a>
+
+        <a class="proj fade-up" href="work/brand-system.html">
+          <span class="proj-num">07</span>
+          <span class="proj-name">
+            <span class="yr">2025</span>
+            Brand Kit, in Browser.
+          </span>
+          <span class="proj-tags">
+            <span class="proj-tag">Zop.Dev</span>
+            <span class="proj-tag">Internal tool</span>
+            <span class="proj-tag">29 templates</span>
+          </span>
+          <span class="proj-go">Case <span class="ar">→</span></span>
+          <span class="proj-preview" aria-hidden="true">
+            <svg viewBox="0 0 360 230" xmlns="http://www.w3.org/2000/svg">
+              <rect width="360" height="230" fill="#FAF7EC"/>
+              <rect x="0" y="0" width="360" height="22" fill="#ECE7D7" stroke="#D9D3BF"/>
+              <text x="10" y="15" fill="#525252" font-family="JetBrains Mono, monospace" font-size="7" letter-spacing="1">BRAND KIT · INTERNAL</text>
+              <g transform="translate(0,22)">
+                <rect width="360" height="18" fill="#FAF7EC" stroke="#D9D3BF"/>
+                <text x="10" y="13" fill="#F58549" font-family="JetBrains Mono, monospace" font-size="6.5" font-weight="700" letter-spacing="1">TEMPLATES</text>
+                <rect x="6" y="16" width="58" height="2" fill="#F58549"/>
+                <text x="76" y="13" fill="#525252" font-family="JetBrains Mono, monospace" font-size="6.5" letter-spacing="1">TOKENS</text>
+                <text x="130" y="13" fill="#525252" font-family="JetBrains Mono, monospace" font-size="6.5" letter-spacing="1">ICONS</text>
+                <text x="174" y="13" fill="#525252" font-family="JetBrains Mono, monospace" font-size="6.5" letter-spacing="1">PRESETS</text>
+                <text x="226" y="13" fill="#525252" font-family="JetBrains Mono, monospace" font-size="6.5" letter-spacing="1">PRESS</text>
+              </g>
+              <rect x="0" y="40" width="56" height="190" fill="#F0EBDB" stroke="#D9D3BF"/>
+              <text x="6" y="56" fill="#525252" font-family="JetBrains Mono, monospace" font-size="6" letter-spacing="1">29 ITEMS</text>
+              <g font-family="Inter" font-size="6" fill="#0A0A0A">
+                <text x="6" y="74">Social</text>
+                <text x="6" y="88" fill="#525252">— LinkedIn</text>
+                <text x="6" y="100" fill="#525252">— X banner</text>
+                <text x="6" y="112" fill="#525252">— OG card</text>
+                <text x="6" y="124" fill="#F58549">— Carousel</text>
+              </g>
+              <rect x="56" y="40" width="220" height="190" fill="#ECE7D7" stroke="#D9D3BF"/>
+              <rect x="92" y="62" width="148" height="120" fill="#0A0A0A"/>
+              <text x="100" y="86" fill="#F58549" font-family="JetBrains Mono, monospace" font-size="6" letter-spacing="1">CASE · 02</text>
+              <text x="100" y="120" fill="#FAF7EC" font-family="Inter" font-size="20" font-weight="700">$53.5K+</text>
+              <text x="100" y="134" fill="#F58549" font-family="JetBrains Mono, monospace" font-size="6" letter-spacing="1">ANNUALISED</text>
+              <text x="100" y="160" fill="#FAF7EC" font-family="Inter" font-size="9">Audit, right-size, save.</text>
+              <rect x="276" y="40" width="84" height="190" fill="#FAF7EC" stroke="#D9D3BF"/>
+              <text x="282" y="56" fill="#525252" font-family="JetBrains Mono, monospace" font-size="6" letter-spacing="1">EDITOR</text>
+              <rect x="282" y="68" width="72" height="14" fill="#ECE7D7" stroke="#D9D3BF"/>
+              <rect x="282" y="86" width="72" height="14" fill="#ECE7D7" stroke="#D9D3BF"/>
+              <rect x="282" y="104" width="72" height="14" fill="#ECE7D7" stroke="#D9D3BF"/>
+              <rect x="282" y="194" width="72" height="20" fill="#0A0A0A"/>
+              <text x="318" y="206" text-anchor="middle" fill="#FAF7EC" font-family="Inter" font-size="7" font-weight="700">Export →</text>
+            </svg>
+          </span>
+        </a>
       </div>
-      <div class="process-card card-blue fade-up">
-        <div>
-          <div class="process-card-number">02</div>
-          <div class="process-card-title">Define</div>
+
+      <div class="work-foot">
+        <div class="work-foot-l">
+          <strong>Archive</strong>
+          Older work not yet documented.<br>
+          Inquire for samples.
         </div>
-        <div class="process-card-desc">Problem statements, user flows, and system requirements crystallised into a Figma-first design brief with variables, tokens, and component scope pre-mapped.</div>
-      </div>
-      <div class="process-card card-black fade-up">
-        <div>
-          <div class="process-card-number">03</div>
-          <div class="process-card-title">Design</div>
+        <div class="work-foot-r">
+          <div><span>2021—24</span>30+ websites, ArtWorksIT (Design Lead)</div>
+          <div><span>2020—21</span>FirstCry.com (1,000+ daily assets)</div>
         </div>
-        <div class="process-card-desc">High-fidelity Figma mocks (75–80% production fidelity) built with a structured design system — variables, auto-layout, and developer-ready components from the first frame.</div>
-      </div>
-      <div class="process-card card-green fade-up">
-        <div>
-          <div class="process-card-number">04</div>
-          <div class="process-card-title">AI-Augment</div>
-        </div>
-        <div class="process-card-desc">Claude Code + Figma MCP + Tailwind translate designs into functional, production-ready code — reducing handoff friction and cutting iteration time from days to minutes.</div>
-      </div>
-      <div class="process-card card-pink fade-up">
-        <div>
-          <div class="process-card-number">05</div>
-          <div class="process-card-title">Ship</div>
-        </div>
-        <div class="process-card-desc">Markdown-documented design systems, annotated Figma files, and AI-assisted developer handoff ensure what ships matches what was designed — every time.</div>
       </div>
     </div>
   </section>
 
-  <!-- ========== PROJECTS GRID ========== -->
-  <section class="projects" id="work">
-    <div class="section-label fade-up"><span class="dot"></span> Selected Work</div>
-    <div class="projects-grid">
-      <div class="project-card pc-1 project-card-span-2">
-        <div class="project-card-tag">AI / Product Design · Zop.Dev</div>
-        <div class="project-card-title">Design-in-Code — from brief to production-ready in one session</div>
-      </div>
-      <div class="project-card pc-2 project-card-tall">
-        <div class="project-card-tag">Design System · Zop.Dev</div>
-        <div class="project-card-title">Figma variables & tokens design system for 20+ product modules</div>
-      </div>
-      <div class="project-card pc-3">
-        <div class="project-card-tag">Fintech · ScreenRoot</div>
-        <div class="project-card-title">Finance app redesign for Yes Bank & Bandhan Bank</div>
-      </div>
-      <div class="project-card pc-4">
-        <div class="project-card-tag">Brand & Web · Zop.Dev</div>
-        <div class="project-card-title">3 brand websites end-to-end in Framer</div>
-      </div>
-      <div class="project-card pc-5">
-        <div class="project-card-tag">Web Design · ArtWorksIT</div>
-        <div class="project-card-title">Design Lead — 30+ websites shipped for enterprise clients</div>
-      </div>
-      <div class="project-card pc-6 project-card-span-2">
-        <div class="project-card-tag">Visual Strategy · Zop.Dev</div>
-        <div class="project-card-title">AWS re:Invent marketing system — ebooks, social & event collateral</div>
-      </div>
-      <div class="project-card pc-7">
-        <div class="project-card-tag">E-commerce · FirstCry.com</div>
-        <div class="project-card-title">Visual design & photo editing for 50M+ product catalog</div>
-      </div>
-      <div class="project-card pc-8">
-        <div class="project-card-tag">Fintech · ScreenRoot</div>
-        <div class="project-card-title">ICICI Bank mobile app — UI design for finance sector</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ========== PROJECT DEEP DIVE 1 ========== -->
-  <section class="project-dive" id="case-study-1">
-    <div class="dive-header fade-up">
-      <div class="dive-title">Design-in-<br>Code</div>
-      <div class="dive-meta">
-        <span>Role<strong>Product Designer</strong></span>
-        <span>Company<strong>Zop.Dev</strong></span>
-        <span>Stack<strong>Figma MCP · Claude Code · Tailwind</strong></span>
-        <span>Impact<strong>Days → Minutes</strong></span>
-      </div>
-    </div>
-    <div class="dive-content">
-      <div class="dive-text fade-up">
-        At Zop.Dev, I pioneered a high-velocity workflow that moves from product brief to functional, production-ready mocks at 75–80% fidelity in a single session. Using Figma MCP as the design source of truth, Claude Code as the implementation engine, and Tailwind as the style layer, I eliminated the traditional back-and-forth between design and engineering. I also built and maintained the design system — Figma variables, tokens, and markdown documentation — enabling AI-assisted developer handoff across 20+ feature modules including an AI-driven Recommendation Engine and Auto-Tagging system.
-      </div>
-      <div class="dive-image img-blue fade-up">
-        <svg viewBox="0 0 600 375" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect width="600" height="375" fill="#2546FF"/>
-          <!-- Bezier curves mimicking the reference -->
-          <path d="M50 300 C150 300, 200 50, 350 150 S500 300, 550 100" stroke="white" stroke-width="2" fill="none"/>
-          <path d="M100 350 C200 200, 300 100, 400 250 S550 200, 580 50" stroke="rgba(255,255,255,0.4)" stroke-width="1.5" fill="none"/>
-          <!-- Control points -->
-          <circle cx="50" cy="300" r="4" fill="white"/><circle cx="200" cy="50" r="4" fill="white"/>
-          <circle cx="350" cy="150" r="4" fill="white"/><circle cx="550" cy="100" r="4" fill="white"/>
-          <circle cx="150" cy="300" r="3" stroke="white" stroke-width="1" fill="none"/>
-          <circle cx="500" cy="300" r="3" stroke="white" stroke-width="1" fill="none"/>
-          <!-- Coordinate labels -->
-          <text x="55" y="295" fill="rgba(255,255,255,0.6)" font-size="10" font-family="monospace">50, 300</text>
-          <text x="205" y="48" fill="rgba(255,255,255,0.6)" font-size="10" font-family="monospace">200, 50</text>
-          <text x="355" y="148" fill="rgba(255,255,255,0.6)" font-size="10" font-family="monospace">350, 150</text>
-          <text x="470" y="98" fill="rgba(255,255,255,0.6)" font-size="10" font-family="monospace">550, 100</text>
-          <!-- Grid lines -->
-          <line x1="0" y1="187" x2="600" y2="187" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
-          <line x1="300" y1="0" x2="300" y2="375" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
-        </svg>
-      </div>
-    </div>
-    <div class="dive-metrics">
-      <div class="metric fade-up">
-        <div class="metric-number" data-count="20">0</div>
-        <div class="metric-label">Feature Modules Shipped</div>
-      </div>
-      <div class="metric fade-up">
-        <div class="metric-number" data-count="80">0</div>
-        <div class="metric-label">% Production Fidelity</div>
-      </div>
-      <div class="metric fade-up">
-        <div class="metric-number" data-count="3">0</div>
-        <div class="metric-label">Brand Websites in Framer</div>
-      </div>
-      <div class="metric fade-up">
-        <div class="metric-number" data-count="10">0</div>
-        <div class="metric-label">Months at Zop.Dev</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ========== BIG NUMBERS ========== -->
-  <section class="big-numbers">
-    <div class="big-numbers-text">
-      <span>8</span><span>+</span><span>Y</span><span>E</span><span>A</span><span>R</span><span>S</span>
-    </div>
-  </section>
-
-  <!-- ========== PROJECT DEEP DIVE 2 ========== -->
-  <section class="project-dive" id="case-study-2">
-    <div class="dive-header fade-up">
-      <div class="dive-title">Finance<br>App Design</div>
-      <div class="dive-meta">
-        <span>Role<strong>UI Designer</strong></span>
-        <span>Company<strong>ScreenRoot, Goa</strong></span>
-        <span>Clients<strong>Yes Bank · Bandhan Bank · ICICI</strong></span>
-        <span>Duration<strong>10 months</strong></span>
-      </div>
-    </div>
-    <div class="dive-content">
-      <div class="dive-text fade-up">
-        At ScreenRoot I designed user interfaces for multiple finance-sector clients, each demanding strict clarity, trust-building hierarchy, and regulatory compliance. Working on mobile applications for Yes Bank, Bandhan Bank, and ICICI Bank, I owned end-to-end UI design — from information architecture and interaction patterns to pixel-perfect delivery. The challenge in finance is making complex transactional flows feel simple and trustworthy. Every screen had to balance density with readability, and compliance constraints with delightful UX.
-      </div>
-      <div class="dive-image fade-up" style="background: linear-gradient(135deg, var(--orange), #ff8840); display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 12px; padding: 30px;">
-        <div style="display: grid; grid-template-columns: repeat(6, 1fr); gap: 8px; width: 100%;">
-          <div style="aspect-ratio:1; background: var(--white); border-radius: 4px;"></div>
-          <div style="aspect-ratio:1; background: rgba(255,255,255,0.8); border-radius: 4px;"></div>
-          <div style="aspect-ratio:1; background: rgba(255,255,255,0.6); border-radius: 4px;"></div>
-          <div style="aspect-ratio:1; background: rgba(255,255,255,0.4); border-radius: 4px;"></div>
-          <div style="aspect-ratio:1; background: rgba(255,255,255,0.2); border-radius: 4px;"></div>
-          <div style="aspect-ratio:1; background: rgba(255,255,255,0.1); border-radius: 4px;"></div>
-          <div style="aspect-ratio:1; background: var(--blue); border-radius: 50%;"></div>
-          <div style="aspect-ratio:1; background: var(--yellow); border-radius: 50%;"></div>
-          <div style="aspect-ratio:1; background: var(--green); border-radius: 50%;"></div>
-          <div style="aspect-ratio:1; background: var(--pink); border-radius: 50%;"></div>
-          <div style="aspect-ratio:1; background: var(--red); border-radius: 50%;"></div>
-          <div style="aspect-ratio:1; background: var(--black); border-radius: 50%;"></div>
-        </div>
-      </div>
-    </div>
-    <div class="dive-metrics">
-      <div class="metric fade-up">
-        <div class="metric-number" data-count="3">0</div>
-        <div class="metric-label">Finance Brands Served</div>
-      </div>
-      <div class="metric fade-up">
-        <div class="metric-number" data-count="10">0</div>
-        <div class="metric-label">Months at ScreenRoot</div>
-      </div>
-      <div class="metric fade-up">
-        <div class="metric-number" data-count="30">0</div>
-        <div class="metric-label">Screens Designed</div>
-      </div>
-      <div class="metric fade-up">
-        <div class="metric-number" data-count="5">0</div>
-        <div class="metric-label">Years of Experience</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ========== SKILLS ========== -->
-  <section class="skills" id="skills">
-    <div class="section-label fade-up"><span class="dot"></span> Skills & Expertise</div>
-    <div class="skills-layout">
-      <div class="skills-grid fade-up">
-        <div class="skill-cell">Fg</div><div class="skill-cell">Ps</div><div class="skill-cell">Ai</div>
-        <div class="skill-cell">Fr</div><div class="skill-cell">Tw</div><div class="skill-cell">Cc</div>
-        <div class="skill-cell">Gm</div><div class="skill-cell">Mp</div><div class="skill-cell">Ds</div>
-        <div class="skill-cell">Pt</div><div class="skill-cell">Ur</div><div class="skill-cell">Pe</div>
-        <div class="skill-cell">Va</div><div class="skill-cell">Tk</div><div class="skill-cell">Dh</div>
-        <div class="skill-cell">Ui</div><div class="skill-cell">Ux</div><div class="skill-cell">Br</div>
-        <div class="skill-cell">An</div><div class="skill-cell">Ht</div><div class="skill-cell">Cs</div>
-        <div class="skill-cell">Nt</div><div class="skill-cell">Jr</div><div class="skill-cell">Mn</div>
-        <div class="skill-cell">Ag</div><div class="skill-cell">Wb</div><div class="skill-cell">Xd</div>
-        <div class="skill-cell">Zp</div>
-      </div>
-      <div class="skills-text fade-up">
-        <h3>A toolkit built at the intersection of design craft and AI-augmented engineering.</h3>
-        <p>Fluent in Figma's most advanced capabilities — variables, tokens, auto-layout, and dev mode — with hands-on experience using Claude Code and Figma MCP to bridge the gap between design and production code. Every tool I use serves one goal: faster, higher-fidelity delivery.</p>
-        <p>Beyond tools, I bring expertise in design systems architecture, finance-sector UI patterns, Framer web development, prompt engineering, and AI-assisted developer handoff workflows refined across 5 years and 4 companies.</p>
-        <p style="margin-top: 24px; font-size: var(--body-sm); color: rgba(0,0,0,0.4);">
-          Fg: Figma &middot; Ps: Photoshop &middot; Ai: Illustrator &middot; Fr: Framer &middot; Tw: Tailwind &middot; Cc: Claude Code &middot; Gm: Gemini &middot; Mp: Figma MCP &middot; Ds: Design Systems &middot; Pt: Prototyping &middot; Ur: User Research &middot; Pe: Prompt Engineering &middot; Va: Variables &middot; Tk: Tokens &middot; Dh: Dev Handoff &middot; Ui: UI Design &middot; Ux: UX Design &middot; Br: Branding &middot; An: Animation &middot; Ht: HTML &middot; Cs: CSS &middot; Nt: Notion &middot; Jr: Jira &middot; Mn: Miro &middot; Ag: Agile &middot; Wb: Webflow &middot; Xd: Adobe XD &middot; Zp: Zop.Dev
+  <!-- ============== DESIGN HISTORY ============== -->
+  <section class="history" id="history">
+    <div class="history-wrap">
+      <header class="history-h">
+        <h2 class="history-title fade-up">
+          Five years.<br>Four <em>companies</em>.
+        </h2>
+        <p class="history-side fade-up d1">
+          From e-commerce catalog at FirstCry to AI-augmented design at Zop.Dev. Each step compounded.
         </p>
+      </header>
+
+      <div class="timeline">
+        <article class="tl-row fade-up">
+          <div class="tl-year">2025 →</div>
+          <div class="tl-titlewrap">
+            <h3 class="tl-role">Product Designer</h3>
+            <span class="tl-company">Zop.Dev · Bangalore</span>
+            <span class="tl-meta">B2B SaaS · Cloud</span>
+          </div>
+          <ul class="tl-bullets">
+            <li class="tl-bullet">Pioneered an <strong>AI-augmented design-in-code workflow</strong> with Claude Code and Figma MCP. <span class="mk">Days → minutes.</span></li>
+            <li class="tl-bullet">Led UX for <strong>20+ feature modules</strong>, including a Recommendation Engine optimising <span class="mk">20K+ cloud resources</span> for <span class="mk">$53.5K+ annualised savings</span>.</li>
+            <li class="tl-bullet">Architected a Figma-variables design system feeding both designers and AI coding agents.</li>
+            <li class="tl-bullet">Onboarding redesign: <span class="mk">20 min → 7 min</span>, validated by usability testing.</li>
+          </ul>
+          <div class="tl-pills">
+            <span class="pill present">Jul 2025 → Present</span>
+            <span class="pill">10 mos</span>
+          </div>
+        </article>
+
+        <article class="tl-row fade-up">
+          <div class="tl-year">2024 → 25</div>
+          <div class="tl-titlewrap">
+            <h3 class="tl-role">UI Designer</h3>
+            <span class="tl-company">ScreenRoot · Goa</span>
+            <span class="tl-meta">FinTech · Mobile Banking</span>
+          </div>
+          <ul class="tl-bullets">
+            <li class="tl-bullet">Translated complex financial regulations into accessible UI used by <span class="mk">millions of retail banking customers</span>.</li>
+            <li class="tl-bullet">Optimised transaction flows and security interfaces for <strong>Yes Bank</strong> and <strong>ICICI Bank</strong>.</li>
+          </ul>
+          <div class="tl-pills">
+            <span class="pill">May 2024 → Feb 2025</span>
+            <span class="pill">10 mos</span>
+          </div>
+        </article>
+
+        <article class="tl-row fade-up">
+          <div class="tl-year">2021 → 24</div>
+          <div class="tl-titlewrap">
+            <h3 class="tl-role">UI/UX Designer → Design Lead</h3>
+            <span class="tl-company">ArtWorksIT · Bangalore</span>
+            <span class="tl-meta">Agency · Web & Mobile</span>
+          </div>
+          <ul class="tl-bullets">
+            <li class="tl-bullet">Led a team of <strong>six designers</strong> across <span class="mk">30+ websites and apps</span>, from wireframe to delivery.</li>
+            <li class="tl-bullet">Established team-wide processes and component libraries for consistent, scalable output.</li>
+          </ul>
+          <div class="tl-pills">
+            <span class="pill">Mar 2021 → Mar 2024</span>
+            <span class="pill">3 yrs</span>
+          </div>
+        </article>
+
+        <article class="tl-row fade-up">
+          <div class="tl-year">2020 → 21</div>
+          <div class="tl-titlewrap">
+            <h3 class="tl-role">Junior Designer</h3>
+            <span class="tl-company">FirstCry.com · Pune</span>
+            <span class="tl-meta">E-commerce · Catalog</span>
+          </div>
+          <ul class="tl-bullets">
+            <li class="tl-bullet">UI updates across listing pages and navigation, serving <strong>millions of shoppers</strong>.</li>
+            <li class="tl-bullet">Maintained a <span class="mk">24-hour 1,000+ asset pipeline</span> for UAE and China storefronts.</li>
+          </ul>
+          <div class="tl-pills">
+            <span class="pill">Sep 2020 → Feb 2021</span>
+            <span class="pill">6 mos</span>
+          </div>
+        </article>
       </div>
     </div>
   </section>
 
-  <!-- ========== MARQUEE / TESTIMONIALS ========== -->
-  <section class="marquee-section" id="testimonials">
-    <div class="marquee-track" id="marqueeTrack">
-      <div class="marquee-card mc-1">
-        <div class="marquee-card-img"></div>
-        <div class="marquee-card-quote">"Ravindra's AI-augmented workflow was unlike anything I'd seen — he went from our product brief to a functional, high-fidelity prototype in a single session. Genuinely changed how we think about design velocity."</div>
-        <div>
-          <div class="marquee-card-author">Priya Mehta</div>
-          <div class="marquee-card-role">Head of Product, Zop.Dev</div>
+  <!-- ============== IMPACT ============== -->
+  <section class="impact" id="impact">
+    <div class="impact-wrap">
+      <div class="eyebrow fade-up"><span class="rule"></span><span class="num">04</span><span>Measured Impact</span></div>
+      <h2 class="impact-h fade-up d1">
+        Outcomes, not <em>deliverables</em>.
+      </h2>
+      <div class="impact-table" role="table">
+        <div class="impact-row thead" role="row" aria-hidden="true">
+          <span>#</span><span>Metric</span><span>Value</span><span>Domain</span><span>Source</span>
         </div>
-      </div>
-      <div class="marquee-card mc-2">
-        <div class="marquee-card-img"></div>
-        <div class="marquee-card-quote">"His design system work using Figma variables and tokens saved our engineering team weeks of back-and-forth. The documentation was so good our AI tooling could parse it directly."</div>
-        <div>
-          <div class="marquee-card-author">Arjun Sharma</div>
-          <div class="marquee-card-role">CTO, Zop.Dev</div>
+        <div class="impact-row fade-up" role="row">
+          <span class="i-num">01</span>
+          <span class="i-label">Annualised savings</span>
+          <span class="i-val"><span class="pre">$</span><span data-count="53.5" data-decimals="1">0</span><span class="post">K+</span></span>
+          <span class="i-tag">AI · UX</span>
+          <span class="i-meta">Zop.Dev · 2025</span>
         </div>
-      </div>
-      <div class="marquee-card mc-3">
-        <div class="marquee-card-img"></div>
-        <div class="marquee-card-quote">"Ravindra understands the unique challenges of finance UX — regulatory constraints, trust-building hierarchy, dense data layouts. He made our banking app feel effortless."</div>
-        <div>
-          <div class="marquee-card-author">Neha Kulkarni</div>
-          <div class="marquee-card-role">Design Manager, ScreenRoot</div>
+        <div class="impact-row fade-up" role="row">
+          <span class="i-num">02</span>
+          <span class="i-label">Cloud resources optimised</span>
+          <span class="i-val"><span data-count="20">0</span><span class="post">K+</span></span>
+          <span class="i-tag">Cloud · Scale</span>
+          <span class="i-meta">Enterprise · 2025</span>
         </div>
-      </div>
-      <div class="marquee-card mc-4">
-        <div class="marquee-card-img"></div>
-        <div class="marquee-card-quote">"As a Design Lead he didn't just deliver great work — he elevated the entire team. The processes and systems Ravindra introduced are still the backbone of how we work today."</div>
-        <div>
-          <div class="marquee-card-author">Rohan Desai</div>
-          <div class="marquee-card-role">Creative Director, ArtWorksIT</div>
+        <div class="impact-row fade-up" role="row">
+          <span class="i-num">03</span>
+          <span class="i-label">Feature modules shipped</span>
+          <span class="i-val"><span data-count="20">0</span><span class="post">+</span></span>
+          <span class="i-tag">B2B SaaS</span>
+          <span class="i-meta">Zop.Dev · 2025</span>
         </div>
-      </div>
-      <div class="marquee-card mc-5">
-        <div class="marquee-card-img"></div>
-        <div class="marquee-card-quote">"The rare designer who speaks both user and engineering fluently. Ravindra's work with Claude Code and Figma MCP completely changed our handoff process."</div>
-        <div>
-          <div class="marquee-card-author">Aisha Patel</div>
-          <div class="marquee-card-role">PM, SaaS Platform</div>
+        <div class="impact-row fade-up" role="row">
+          <span class="i-num">04</span>
+          <span class="i-label">Enterprise POCs delivered</span>
+          <span class="i-val"><span data-count="10">0</span><span class="post">+</span></span>
+          <span class="i-tag">FMCG · Retail · Logistics</span>
+          <span class="i-meta">2025</span>
         </div>
-      </div>
-      <div class="marquee-card mc-6">
-        <div class="marquee-card-img"></div>
-        <div class="marquee-card-quote">"He doesn't just design screens — he designs systems of thinking. The Figma token architecture Ravindra built scaled seamlessly as our product grew 3x."</div>
-        <div>
-          <div class="marquee-card-author">David Okonkwo</div>
-          <div class="marquee-card-role">Engineering Lead, Fintech Startup</div>
+        <div class="impact-row fade-up" role="row">
+          <span class="i-num">05</span>
+          <span class="i-label">Onboarding time cut</span>
+          <span class="i-val"><span data-count="65">0</span><span class="post">%</span></span>
+          <span class="i-tag">UX Research</span>
+          <span class="i-meta">20 → 7 min</span>
         </div>
-      </div>
-      <!-- Duplicated for seamless loop -->
-      <div class="marquee-card mc-1">
-        <div class="marquee-card-img"></div>
-        <div class="marquee-card-quote">"Ravindra's AI-augmented workflow was unlike anything I'd seen — he went from our product brief to a functional, high-fidelity prototype in a single session. Genuinely changed how we think about design velocity."</div>
-        <div>
-          <div class="marquee-card-author">Priya Mehta</div>
-          <div class="marquee-card-role">Head of Product, Zop.Dev</div>
-        </div>
-      </div>
-      <div class="marquee-card mc-2">
-        <div class="marquee-card-img"></div>
-        <div class="marquee-card-quote">"His design system work using Figma variables and tokens saved our engineering team weeks of back-and-forth. The documentation was so good our AI tooling could parse it directly."</div>
-        <div>
-          <div class="marquee-card-author">Arjun Sharma</div>
-          <div class="marquee-card-role">CTO, Zop.Dev</div>
-        </div>
-      </div>
-      <div class="marquee-card mc-3">
-        <div class="marquee-card-img"></div>
-        <div class="marquee-card-quote">"Ravindra understands the unique challenges of finance UX — regulatory constraints, trust-building hierarchy, dense data layouts. He made our banking app feel effortless."</div>
-        <div>
-          <div class="marquee-card-author">Neha Kulkarni</div>
-          <div class="marquee-card-role">Design Manager, ScreenRoot</div>
+        <div class="impact-row fade-up" role="row">
+          <span class="i-num">06</span>
+          <span class="i-label">Websites and apps shipped</span>
+          <span class="i-val"><span data-count="30">0</span><span class="post">+</span></span>
+          <span class="i-tag">Agency · Design Lead</span>
+          <span class="i-meta">ArtWorksIT · 2021—24</span>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ========== CTA ========== -->
-  <section class="cta" id="contact">
-    <a href="mailto:sisodia.ravindra10@gmail.com" class="cta-text fade-up">
-      <span>Let's Talk</span>
-      <span class="cta-arrow">
-        <svg viewBox="0 0 100 100"><polygon points="20,15 80,50 20,85" /><rect x="0" y="42" width="60" height="16"/></svg>
-      </span>
-    </a>
-    <div class="cta-line"></div>
-    <div class="cta-details fade-up">
-      <a href="mailto:sisodia.ravindra10@gmail.com">sisodia.ravindra10@gmail.com</a>
-      <a href="https://linkedin.com/in/ravindra-sisodia" target="_blank">LinkedIn</a>
-      <a href="https://behance.net/ravindrasisodia" target="_blank">Behance</a>
-      <a href="https://dribbble.com/ravindrasisodia" target="_blank">Dribbble</a>
+  <!-- ============== MANIFESTO · SPOTLIGHT REVEAL ============== -->
+  <section class="philo philo-spot" id="manifesto">
+    <div class="philo-wrap">
+      <div class="eyebrow fade-up"><span class="rule"></span><span class="num">05</span><span>Manifesto</span></div>
+      <ol class="manifesto">
+        <li class="ma-row">
+          <span class="ma-num">01</span>
+          <span class="ma-line">Tokens are the <em>contract</em>.</span>
+        </li>
+        <li class="ma-row">
+          <span class="ma-num">02</span>
+          <span class="ma-line">Markdown is the <em>API</em>.</span>
+        </li>
+        <li class="ma-row">
+          <span class="ma-num">03</span>
+          <span class="ma-line">The shortest path is the <em>kindest</em>.</span>
+        </li>
+        <li class="ma-row">
+          <span class="ma-num">04</span>
+          <span class="ma-line">Every decision earns its place in <em>code</em>.</span>
+        </li>
+        <li class="ma-row">
+          <span class="ma-num">05</span>
+          <span class="ma-line">Compliance is the <em>floor</em>, not the ceiling.</span>
+        </li>
+      </ol>
+    </div>
+    <div class="philo-spot-glow" aria-hidden="true"></div>
+    <span class="philo-spot-cursor" aria-hidden="true"></span>
+    <span class="philo-spot-hint">Move your cursor to reveal →</span>
+  </section>
+
+  <!-- ============== CONTACT ============== -->
+  <section class="contact" id="contact">
+    <div class="contact-wrap">
+      <div class="contact-eye fade-up">
+        <span class="dot"></span>
+        <span>Open to senior product design roles, 2026</span>
+      </div>
+      <h2 class="contact-head fade-up d1">
+        Let's design <em>something</em>.
+      </h2>
+      <a href="mailto:sisodia.ravindra10@gmail.com" class="contact-cta fade-up d2">
+        <span>sisodia.ravindra10@gmail.com</span>
+        <span class="cta-ar">→</span>
+      </a>
+      <div class="contact-grid">
+        <div class="cc fade-up"><span class="cc-k">Email</span><span class="cc-v"><a href="mailto:sisodia.ravindra10@gmail.com">sisodia.ravindra10@gmail.com</a></span></div>
+        <div class="cc fade-up d1"><span class="cc-k">Phone</span><span class="cc-v"><a href="tel:+919168418778">+91 91684 18778</a></span></div>
+        <div class="cc fade-up d2"><span class="cc-k">Location</span><span class="cc-v">Bengaluru, India</span></div>
+        <div class="cc fade-up d3"><span class="cc-k">Channels</span><span class="cc-v"><a href="https://linkedin.com/in/ravindra-sisodia" target="_blank" rel="noopener">LinkedIn</a></span></div>
+      </div>
     </div>
   </section>
 
-  <!-- ========== FOOTER ========== -->
-  <footer class="footer">
-    <span>&copy; 2026 Ravindra Sisodia. All rights reserved.</span>
-    <div class="footer-links">
-      <a href="https://linkedin.com/in/ravindra-sisodia" target="_blank">LinkedIn</a>
-      <a href="https://behance.net/ravindrasisodia" target="_blank">Behance</a>
-      <a href="https://dribbble.com/ravindrasisodia" target="_blank">Dribbble</a>
+  <!-- Cursor-tracked project preview (populated by JS on .proj hover) -->
+  <div class="proj-cursor-preview" id="projPreview" aria-hidden="true"></div>
+
+  <footer class="shell-foot">
+    <span>© 2026 Ravindra Sisodia · Bengaluru, India</span>
+    <div class="shell-foot-links">
+      <a href="https://linkedin.com/in/ravindra-sisodia" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://behance.net/ravindrasisodia" target="_blank" rel="noopener">Behance</a>
+      <a href="https://dribbble.com/ravindrasisodia" target="_blank" rel="noopener">Dribbble</a>
     </div>
-    <button class="footer-back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">Back to top ↑</button>
+    <button class="shell-foot-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">Top ↑</button>
   </footer>
 
-  <!-- ========== SCRIPTS ========== -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-  <script>
-    // ========== PRELOADER ==========
-    window.addEventListener('load', () => {
-      setTimeout(() => {
-        document.getElementById('preloader').classList.add('done');
-        document.body.classList.remove('loading');
-        initAnimations();
-      }, 2000);
-    });
-
-    // ========== HEADER VISIBILITY ==========
-    let lastScroll = 0;
-    const header = document.getElementById('header');
-    window.addEventListener('scroll', () => {
-      const currentScroll = window.scrollY;
-      if (currentScroll > 300) {
-        header.classList.add('visible');
-      } else {
-        header.classList.remove('visible');
-      }
-      lastScroll = currentScroll;
-    });
-
-    // ========== HAMBURGER MENU ==========
-    const hamburger = document.getElementById('hamburger');
-    const navDropdown = document.getElementById('navDropdown');
-    hamburger.addEventListener('click', () => {
-      hamburger.classList.toggle('active');
-      navDropdown.classList.toggle('open');
-    });
-    document.querySelectorAll('[data-nav]').forEach(link => {
-      link.addEventListener('click', () => {
-        hamburger.classList.remove('active');
-        navDropdown.classList.remove('open');
-      });
-    });
-
-    // ========== PROCESS CONTROLS ==========
-    document.querySelectorAll('.process-control').forEach(btn => {
-      btn.addEventListener('click', () => {
-        document.querySelectorAll('.process-control').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-      });
-    });
-
-    // ========== GSAP ANIMATIONS ==========
-    function initAnimations() {
-      gsap.registerPlugin(ScrollTrigger);
-
-      // ===== HERO MASTER TIMELINE =====
-      const heroTL = gsap.timeline({ delay: 0.2 });
-
-      // 1) Name fades + drifts up as one unified block
-      heroTL.fromTo('.hero-name',
-        { opacity: 0, y: 30 },
-        { opacity: 1, y: 0, duration: 1.4, ease: 'power3.out' }
-      );
-
-      // 2) Outline text fades in + shifts
-      heroTL.fromTo('#heroOutline',
-        { opacity: 0, x: 0, y: 0 },
-        { opacity: 1, x: 15, y: -10, duration: 1, ease: 'power2.out' },
-        '-=0.7'
-      );
-
-      // 3) Subtitle text slides up
-      heroTL.fromTo('.hero-subtitle-inner',
-        { y: '100%', opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.8, ease: 'power3.out' },
-        '-=0.5'
-      );
-
-      // 4) Role tags pop in with stagger
-      heroTL.fromTo('.hero-role-tag',
-        { opacity: 0, y: 20, scale: 0.8 },
-        { opacity: 1, y: 0, scale: 1, duration: 0.5, stagger: 0.08, ease: 'back.out(1.7)' },
-        '-=0.4'
-      );
-
-      // 5) Bottom bar items slide in
-      heroTL.fromTo('.hero-bottom-item',
-        { opacity: 0, y: 20 },
-        { opacity: 1, y: 0, duration: 0.6, stagger: 0.1, ease: 'power3.out' },
-        '-=0.3'
-      );
-
-      // 6) Geometric shapes fade in + float
-      heroTL.fromTo('.hero-shape',
-        { opacity: 0 },
-        { opacity: 1, duration: 0.8, stagger: { each: 0.1, from: 'random' }, ease: 'power2.out' },
-        '-=0.6'
-      );
-
-      // 7) Scroll indicator + line
-      heroTL.fromTo('.hero-scroll-indicator',
-        { opacity: 0 },
-        { opacity: 1, duration: 0.5, ease: 'power2.out' },
-        '-=0.3'
-      );
-      heroTL.fromTo('.hero-scroll-line',
-        { height: 0 },
-        { height: 60, duration: 0.6, ease: 'power2.out' },
-        '-=0.3'
-      );
-
-      // ===== CONTINUOUS FLOATING SHAPES =====
-      gsap.to('.hero-shape-circle', {
-        y: -20, x: 10, rotation: 360,
-        duration: 12, repeat: -1, yoyo: true, ease: 'sine.inOut',
-      });
-      gsap.to('.hero-shape-square', {
-        y: 15, x: -10, rotation: -25,
-        duration: 10, repeat: -1, yoyo: true, ease: 'sine.inOut',
-      });
-      gsap.to('.hero-shape-diamond', {
-        y: -12, x: 8, rotation: 90,
-        duration: 8, repeat: -1, yoyo: true, ease: 'sine.inOut',
-      });
-      gsap.to('.hero-shape-dot-grid', {
-        y: -15, x: 5,
-        duration: 9, repeat: -1, yoyo: true, ease: 'sine.inOut',
-      });
-      gsap.to('.hero-shape-cross', {
-        rotation: 180, y: -10,
-        duration: 7, repeat: -1, yoyo: true, ease: 'sine.inOut',
-      });
-      gsap.to('.hero-shape-ring', {
-        rotation: 30, scale: 1.05,
-        duration: 20, repeat: -1, yoyo: true, ease: 'sine.inOut',
-      });
-
-      // ===== SCROLL INDICATOR BOUNCE =====
-      gsap.to('.hero-scroll-indicator', {
-        y: -10,
-        duration: 1.5,
-        repeat: -1,
-        yoyo: true,
-        ease: 'sine.inOut',
-        delay: 3,
-      });
-
-      // ===== HERO PARALLAX ON SCROLL =====
-      gsap.to('.hero-content', {
-        scrollTrigger: {
-          trigger: '.hero',
-          start: 'top top',
-          end: 'bottom top',
-          scrub: 0.5,
-        },
-        y: -50,
-        opacity: 0.3,
-        ease: 'none',
-      });
-      gsap.to('#heroOutline', {
-        scrollTrigger: {
-          trigger: '.hero',
-          start: 'top top',
-          end: 'bottom top',
-          scrub: 0.5,
-        },
-        y: -80,
-        ease: 'none',
-      });
-      gsap.to('.hero-shapes', {
-        scrollTrigger: {
-          trigger: '.hero',
-          start: 'top top',
-          end: 'bottom top',
-          scrub: 0.5,
-        },
-        y: 40,
-        opacity: 0,
-        ease: 'none',
-      });
-
-      // ===== MOUSE PARALLAX ON HERO =====
-      const hero = document.getElementById('hero');
-      hero.addEventListener('mousemove', (e) => {
-        const rect = hero.getBoundingClientRect();
-        const x = (e.clientX - rect.left) / rect.width - 0.5;
-        const y = (e.clientY - rect.top) / rect.height - 0.5;
-        gsap.to('.hero-shape-circle', { x: x * 30, y: y * 20, duration: 1, ease: 'power2.out' });
-        gsap.to('.hero-shape-square', { x: x * -20, y: y * -15, duration: 1, ease: 'power2.out' });
-        gsap.to('.hero-shape-diamond', { x: x * 25, y: y * 18, duration: 1, ease: 'power2.out' });
-        gsap.to('.hero-shape-dot-grid', { x: x * -15, y: y * -12, duration: 1, ease: 'power2.out' });
-        gsap.to('#heroOutline', { x: 15 + x * 8, y: -10 + y * 6, duration: 1.2, ease: 'power2.out' });
-      });
-
-      // Fade-up animations
-      gsap.utils.toArray('.fade-up').forEach(el => {
-        gsap.to(el, {
-          scrollTrigger: {
-            trigger: el,
-            start: 'top 85%',
-            toggleActions: 'play none none none'
-          },
-          opacity: 1,
-          y: 0,
-          duration: 0.8,
-          ease: 'power3.out'
-        });
-      });
-
-      // Counter animations
-      gsap.utils.toArray('.metric-number').forEach(el => {
-        const target = parseInt(el.getAttribute('data-count'));
-        if (!target) return;
-        gsap.to(el, {
-          scrollTrigger: {
-            trigger: el,
-            start: 'top 80%',
-            toggleActions: 'play none none none'
-          },
-          textContent: target,
-          duration: 1.5,
-          ease: 'power2.out',
-          snap: { textContent: 1 },
-          onUpdate: function() {
-            el.textContent = Math.round(parseFloat(el.textContent));
-          }
-        });
-      });
-
-      // Marquee animation
-      const track = document.getElementById('marqueeTrack');
-      const cards = track.querySelectorAll('.marquee-card');
-      const totalWidth = Array.from(cards).slice(0, 6).reduce((sum, card) => {
-        return sum + card.offsetWidth + 24;
-      }, 0);
-
-      const marqueeAnim = gsap.to(track, {
-        x: -totalWidth,
-        duration: 30,
-        ease: 'none',
-        repeat: -1,
-      });
-
-      // Pause on hover
-      track.addEventListener('mouseenter', () => marqueeAnim.pause());
-      track.addEventListener('mouseleave', () => marqueeAnim.resume());
-
-      // Parallax on accent image
-      gsap.to('.accent-img-1', {
-        scrollTrigger: {
-          trigger: '.accent-img-1',
-          start: 'top bottom',
-          end: 'bottom top',
-          scrub: 1
-        },
-        y: -40,
-        ease: 'none'
-      });
-
-      // Big numbers parallax
-      gsap.fromTo('.big-numbers-text span',
-        { y: 80, opacity: 0 },
-        {
-          scrollTrigger: {
-            trigger: '.big-numbers',
-            start: 'top 80%',
-            toggleActions: 'play none none none'
-          },
-          y: 0,
-          opacity: 1,
-          stagger: 0.08,
-          duration: 0.6,
-          ease: 'power3.out'
-        }
-      );
-
-      // Project cards stagger
-      gsap.utils.toArray('.project-card').forEach((card, i) => {
-        gsap.fromTo(card,
-          { opacity: 0, y: 40, scale: 0.96 },
-          {
-            scrollTrigger: {
-              trigger: card,
-              start: 'top 92%',
-              toggleActions: 'play none none none'
-            },
-            opacity: 1,
-            y: 0,
-            scale: 1,
-            duration: 0.7,
-            delay: i * 0.06,
-            ease: 'power3.out',
-          }
-        );
-      });
-
-      // Skills grid cells stagger
-      gsap.fromTo('.skill-cell',
-        { scale: 0, opacity: 0 },
-        {
-          scrollTrigger: {
-            trigger: '.skills-grid',
-            start: 'top 80%',
-            toggleActions: 'play none none none'
-          },
-          scale: 1,
-          opacity: 1,
-          stagger: {
-            each: 0.03,
-            from: 'random'
-          },
-          duration: 0.4,
-          ease: 'back.out(1.7)'
-        }
-      );
-
-      // CTA section
-      gsap.fromTo('.cta-text',
-        { y: 80, opacity: 0 },
-        {
-          scrollTrigger: {
-            trigger: '.cta',
-            start: 'top 60%',
-            toggleActions: 'play none none none'
-          },
-          y: 0,
-          opacity: 1,
-          duration: 1,
-          ease: 'power4.out'
-        }
-      );
-    }
-
-    // ===== SETTINGS PANEL =====
-    const settingsToggle = document.getElementById('settingsToggle');
-    const settingsPanel = document.getElementById('settingsPanel');
-
-    settingsToggle.addEventListener('click', () => {
-      settingsToggle.classList.toggle('active');
-      settingsPanel.classList.toggle('open');
-    });
-
-    // Theme switching
-    function applyThemeOverrides(theme) {
-      const ctaLinks = document.querySelectorAll('.cta-details a');
-      const ctaDetails = document.querySelector('.cta-details');
-      const ctaLine = document.querySelector('.cta-line');
-      if (theme === 'mono') {
-        ctaLinks.forEach(a => { a.style.color = 'rgba(255,255,255,0.7)'; });
-        if (ctaDetails) ctaDetails.style.color = 'rgba(255,255,255,0.7)';
-        if (ctaLine) ctaLine.style.background = 'rgba(255,255,255,0.3)';
-      } else {
-        ctaLinks.forEach(a => { a.style.color = ''; });
-        if (ctaDetails) ctaDetails.style.color = '';
-        if (ctaLine) ctaLine.style.background = '';
-      }
-    }
-    document.querySelectorAll('[data-theme-btn]').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const theme = btn.getAttribute('data-theme-btn');
-        document.documentElement.setAttribute('data-theme', theme === 'default' ? '' : theme);
-        if (theme === 'default') document.documentElement.removeAttribute('data-theme');
-        document.querySelectorAll('[data-theme-btn]').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        applyThemeOverrides(theme);
-      });
-    });
-
-    // Font switching
-    document.querySelectorAll('[data-font-btn]').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const font = btn.getAttribute('data-font-btn');
-        document.documentElement.setAttribute('data-font', font === 'default' ? '' : font);
-        if (font === 'default') document.documentElement.removeAttribute('data-font');
-        document.querySelectorAll('[data-font-btn]').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-      });
-    });
-
-    // ===== INTERACTIVE HERO: Split name into hoverable chars =====
-    document.querySelectorAll('.hero-name .line-inner').forEach(line => {
-      const text = line.textContent;
-      line.innerHTML = '';
-      text.split('').forEach(char => {
-        const span = document.createElement('span');
-        span.className = 'char';
-        span.textContent = char === ' ' ? '\u00A0' : char;
-        line.appendChild(span);
-      });
-    });
-
-    // Magnetic repel effect on hero shapes when cursor moves
-    const heroEl = document.getElementById('hero');
-    heroEl.addEventListener('mousemove', (e) => {
-      const chars = heroEl.querySelectorAll('.hero-name .char');
-      const rect = heroEl.getBoundingClientRect();
-      const mx = e.clientX - rect.left;
-      const my = e.clientY - rect.top;
-      chars.forEach(ch => {
-        const cr = ch.getBoundingClientRect();
-        const cx = cr.left + cr.width / 2 - rect.left;
-        const cy = cr.top + cr.height / 2 - rect.top;
-        const dist = Math.sqrt((mx - cx) ** 2 + (my - cy) ** 2);
-        if (dist < 200) {
-          const angle = Math.atan2(cy - my, cx - mx);
-          const force = (200 - dist) / 200 * 8;
-          gsap.to(ch, { x: Math.cos(angle) * force, y: Math.sin(angle) * force, duration: 0.3, ease: 'power2.out' });
-        } else {
-          gsap.to(ch, { x: 0, y: 0, duration: 0.6, ease: 'elastic.out(1, 0.5)' });
-        }
-      });
-    });
-
-    heroEl.addEventListener('mouseleave', () => {
-      heroEl.querySelectorAll('.hero-name .char').forEach(ch => {
-        gsap.to(ch, { x: 0, y: 0, duration: 0.8, ease: 'elastic.out(1, 0.5)' });
-      });
-    });
-  </script>
+  <script src="scripts.js"></script>
 </body>
 </html>

@@ -1,0 +1,1814 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ravindra Sisodia · Immersive</title>
+<meta name="description" content="Senior Product Designer. A 3D walkthrough of selected work, 2024 to 2026.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0B0B0C;
+  --sec:#101012;
+  --paper:#F2EEE6;
+  --dim:#C9C3B6;
+  --muted:#857F73;
+  --ember:#F58549;
+  --line:rgba(242,238,230,0.10);
+  --line2:rgba(242,238,230,0.06);
+  --ease-in:cubic-bezier(0.16,1,0.3,1);
+  --ease-hover:cubic-bezier(0.32,0.72,0,1);
+  --serif:'Instrument Serif',Georgia,serif;
+  --sans:'Inter',system-ui,sans-serif;
+  --mono:'JetBrains Mono',ui-monospace,monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  background:var(--ink);
+  color:var(--paper);
+  font-family:var(--sans);
+  font-weight:400;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+  overflow-x:hidden;
+  cursor:none;
+}
+body.no-cursor{cursor:auto}
+a{color:inherit;text-decoration:none}
+
+#scene{
+  position:fixed;
+  inset:0;
+  width:100vw;
+  height:100vh;
+  height:100dvh;
+  z-index:0;
+  display:block;
+}
+
+.grain{
+  position:fixed;
+  inset:0;
+  z-index:2;
+  pointer-events:none;
+  opacity:0.06;
+  mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+.vignette{
+  position:fixed;
+  inset:0;
+  z-index:2;
+  pointer-events:none;
+  background:radial-gradient(120% 90% at 50% 42%,transparent 42%,rgba(0,0,0,0.55) 100%);
+}
+
+.cursor{
+  position:fixed;
+  top:0;left:0;
+  width:9px;height:9px;
+  border-radius:50%;
+  background:var(--ember);
+  z-index:60;
+  pointer-events:none;
+  transform:translate(-50%,-50%);
+  transition:width .28s var(--ease-hover),height .28s var(--ease-hover),background .28s var(--ease-hover),opacity .3s;
+}
+.cursor.ring{
+  width:44px;height:44px;
+  background:transparent;
+  border:1px solid rgba(245,133,73,0.7);
+}
+@media (hover:none),(pointer:coarse){.cursor{display:none}body{cursor:auto}}
+
+#preloader{
+  position:fixed;
+  inset:0;
+  z-index:80;
+  background:var(--ink);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:1.4rem;
+  transition:opacity 1s var(--ease-in),visibility 1s var(--ease-in);
+}
+#preloader.done{opacity:0;visibility:hidden;pointer-events:none}
+.pre-name{
+  font-family:var(--serif);
+  font-size:clamp(2.2rem,6vw,4.4rem);
+  line-height:1;
+  letter-spacing:-0.01em;
+  color:var(--paper);
+  opacity:0;
+  transform:translateY(14px);
+  animation:preRise 1s var(--ease-in) .25s forwards;
+}
+.pre-name .em{color:var(--ember)}
+@keyframes preRise{to{opacity:1;transform:none}}
+.pre-count{
+  font-family:var(--mono);
+  font-size:11px;
+  letter-spacing:0.28em;
+  color:var(--muted);
+}
+.pre-bar{
+  width:min(220px,50vw);
+  height:1px;
+  background:var(--line);
+  position:relative;
+  overflow:hidden;
+}
+.pre-bar span{
+  position:absolute;
+  left:0;top:0;height:100%;
+  width:0%;
+  background:var(--ember);
+}
+
+nav{
+  position:fixed;
+  top:0;left:0;right:0;
+  z-index:40;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:1.5rem clamp(1.25rem,4vw,3rem);
+  mix-blend-mode:difference;
+}
+.wordmark{
+  display:flex;
+  align-items:center;
+  gap:.6rem;
+  font-family:var(--mono);
+  font-size:11px;
+  letter-spacing:0.22em;
+  text-transform:uppercase;
+  color:var(--paper);
+}
+.wordmark .sq{
+  width:10px;height:10px;
+  background:var(--ember);
+  display:inline-block;
+}
+.navlinks{
+  display:flex;
+  gap:1.6rem;
+  font-family:var(--mono);
+  font-size:11px;
+  letter-spacing:0.18em;
+  text-transform:uppercase;
+  color:var(--paper);
+}
+.navlinks a{position:relative;padding:.2rem 0;transition:opacity .3s var(--ease-hover)}
+.navlinks a::after{
+  content:"";position:absolute;left:0;bottom:-3px;height:1px;width:0;background:var(--paper);
+  transition:width .35s var(--ease-hover);
+}
+.navlinks a:hover::after{width:100%}
+@media (max-width:768px){.navlinks{display:none}}
+
+#doc{position:relative;z-index:10}
+.section{
+  position:relative;
+  min-height:150vh;
+  min-height:150dvh;
+  display:flex;
+  align-items:center;
+  padding:0 clamp(1.25rem,6vw,7rem);
+}
+.section.hero{min-height:130vh;min-height:130dvh}
+.section.short{min-height:120vh;min-height:120dvh}
+
+.eyebrow{
+  font-family:var(--mono);
+  font-size:11px;
+  letter-spacing:0.2em;
+  text-transform:uppercase;
+  color:var(--muted);
+  display:flex;
+  align-items:center;
+  gap:.7rem;
+}
+.eyebrow .dot{width:5px;height:5px;background:var(--ember);border-radius:50%;flex:none}
+
+.hero-inner{max-width:1100px}
+.hero h1{
+  font-family:var(--serif);
+  font-weight:400;
+  font-size:clamp(3.2rem,11vw,9rem);
+  line-height:0.92;
+  letter-spacing:-0.02em;
+  margin:1.4rem 0 1.6rem;
+}
+.hero h1 .light{font-style:italic;color:var(--dim)}
+.hero .sub{
+  max-width:44ch;
+  font-size:clamp(1rem,1.6vw,1.2rem);
+  line-height:1.6;
+  color:var(--dim);
+}
+.scroll-cue{
+  margin-top:3rem;
+  display:flex;
+  align-items:center;
+  gap:.8rem;
+  font-family:var(--mono);
+  font-size:10px;
+  letter-spacing:0.24em;
+  text-transform:uppercase;
+  color:var(--muted);
+}
+.scroll-cue .track{width:1px;height:40px;background:var(--line);position:relative;overflow:hidden}
+.scroll-cue .track::after{content:"";position:absolute;left:0;top:-40px;width:100%;height:40px;background:var(--ember);animation:cueDrop 2.4s var(--ease-in) infinite}
+@keyframes cueDrop{0%{top:-40px}55%{top:40px}100%{top:40px}}
+
+.proj{max-width:640px}
+.section.left .proj{margin-right:auto}
+.section.right{justify-content:flex-end}
+.section.right .proj{margin-left:auto;text-align:right}
+.section.right .eyebrow{justify-content:flex-end}
+.section.right .tags{justify-content:flex-end}
+.section.right .case-link{margin-left:auto}
+.proj .idx{
+  font-family:var(--mono);
+  font-size:11px;
+  letter-spacing:0.2em;
+  color:var(--ember);
+}
+.proj h2{
+  font-family:var(--serif);
+  font-weight:400;
+  font-size:clamp(2.6rem,7vw,5.4rem);
+  line-height:0.98;
+  letter-spacing:-0.02em;
+  margin:.9rem 0 1.2rem;
+}
+.proj .blurb{color:var(--dim);line-height:1.6;max-width:46ch;margin-bottom:1.4rem;font-size:1.02rem}
+.section.right .blurb{margin-left:auto}
+.tags{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1.8rem}
+.tags span{
+  font-family:var(--mono);
+  font-size:10px;
+  letter-spacing:0.12em;
+  text-transform:uppercase;
+  color:var(--dim);
+  border:1px solid var(--line);
+  border-radius:999px;
+  padding:.35rem .8rem;
+}
+.case-link{
+  display:inline-flex;
+  align-items:center;
+  gap:.6rem;
+  font-family:var(--mono);
+  font-size:11px;
+  letter-spacing:0.16em;
+  text-transform:uppercase;
+  color:var(--paper);
+  border-bottom:1px solid var(--line);
+  padding-bottom:.35rem;
+  width:fit-content;
+  transition:gap .35s var(--ease-hover),border-color .35s var(--ease-hover);
+}
+.case-link .arw{color:var(--ember);transition:transform .35s var(--ease-hover)}
+.case-link:hover{gap:1rem;border-color:var(--ember)}
+.case-link:hover .arw{transform:translateX(4px)}
+
+.reveal{opacity:0;transform:translateY(16px);transition:opacity .8s var(--ease-in),transform .8s var(--ease-in)}
+.reveal.in{opacity:1;transform:none}
+.reveal.d1{transition-delay:.08s}
+.reveal.d2{transition-delay:.16s}
+.reveal.d3{transition-delay:.24s}
+.reveal.d4{transition-delay:.32s}
+
+.lab-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:1px;
+  background:var(--line2);
+  border:1px solid var(--line);
+  width:100%;
+  max-width:1080px;
+}
+.lab-cell{
+  background:var(--sec);
+  padding:1.8rem 1.6rem;
+  min-height:190px;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  transition:background .4s var(--ease-hover);
+}
+.lab-cell:hover{background:#141416}
+.lab-cell .n{font-family:var(--mono);font-size:10px;letter-spacing:0.2em;color:var(--ember)}
+.lab-cell h3{font-family:var(--serif);font-weight:400;font-size:1.8rem;line-height:1;margin:.4rem 0 .6rem}
+.lab-cell p{color:var(--muted);font-size:.9rem;line-height:1.55}
+@media (max-width:860px){.lab-grid{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:560px){.lab-grid{grid-template-columns:1fr}}
+
+.about-wrap{
+  display:grid;
+  grid-template-columns:0.8fr 1.2fr;
+  gap:clamp(1.6rem,4vw,3.6rem);
+  align-items:center;
+  max-width:1080px;
+  width:100%;
+}
+.about-photo{
+  position:relative;
+  border:1px solid var(--line);
+  overflow:hidden;
+  aspect-ratio:3/4;
+}
+.about-photo img{width:100%;height:100%;object-fit:cover;filter:grayscale(0.35) contrast(1.02);display:block}
+.about-photo::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(11,11,12,0.55))}
+.about-body h2{font-family:var(--serif);font-weight:400;font-size:clamp(2.2rem,5vw,3.6rem);line-height:1;letter-spacing:-0.02em;margin:1rem 0 1.2rem}
+.about-body p{color:var(--dim);line-height:1.7;max-width:52ch;margin-bottom:1rem}
+.counters{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:1px;
+  background:var(--line2);
+  border:1px solid var(--line);
+  margin-top:1.8rem;
+}
+.counter{background:var(--sec);padding:1.2rem 1rem}
+.counter .v{font-family:var(--serif);font-size:clamp(1.6rem,3vw,2.4rem);color:var(--paper)}
+.counter .v .em{color:var(--ember)}
+.counter .l{font-family:var(--mono);font-size:9px;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);margin-top:.4rem}
+@media (max-width:820px){.about-wrap{grid-template-columns:1fr}.about-photo{max-width:340px}.counters{grid-template-columns:repeat(2,1fr)}}
+
+.exp-wrap{max-width:960px;width:100%}
+.exp-row{
+  display:grid;
+  grid-template-columns:120px 1fr auto;
+  gap:1.4rem;
+  padding:1.6rem 0;
+  border-top:1px solid var(--line);
+  align-items:baseline;
+}
+.exp-row:last-child{border-bottom:1px solid var(--line)}
+.exp-row .when{font-family:var(--mono);font-size:11px;letter-spacing:0.1em;color:var(--ember)}
+.exp-row .role{font-family:var(--serif);font-size:clamp(1.4rem,3vw,2.1rem);line-height:1.05}
+.exp-row .role em{font-style:italic;color:var(--dim);font-size:.7em}
+.exp-row .where{font-family:var(--mono);font-size:10px;letter-spacing:0.1em;color:var(--muted);text-align:right;text-transform:uppercase;max-width:220px}
+@media (max-width:720px){.exp-row{grid-template-columns:1fr;gap:.4rem}.exp-row .where{text-align:left}}
+
+.contact-inner{max-width:1000px;width:100%}
+.contact-inner h2{font-family:var(--serif);font-weight:400;font-size:clamp(2.8rem,9vw,7rem);line-height:0.95;letter-spacing:-0.02em;margin:1.2rem 0 1.8rem}
+.contact-inner h2 em{font-style:italic;color:var(--dim)}
+.cta{
+  display:inline-flex;
+  align-items:center;
+  gap:.8rem;
+  font-family:var(--mono);
+  font-size:12px;
+  letter-spacing:0.14em;
+  text-transform:uppercase;
+  color:var(--paper);
+  border:1px solid var(--ember);
+  border-radius:999px;
+  padding:.9rem 1.6rem;
+  transition:background .4s var(--ease-hover),color .4s var(--ease-hover);
+}
+.cta:hover{background:var(--ember);color:var(--ink)}
+.contact-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:1px;
+  background:var(--line2);
+  border:1px solid var(--line);
+  margin-top:2.6rem;
+}
+.contact-grid .cell{background:var(--sec);padding:1.3rem 1.2rem}
+.contact-grid .k{font-family:var(--mono);font-size:9px;letter-spacing:0.16em;text-transform:uppercase;color:var(--muted);margin-bottom:.5rem}
+.contact-grid .val{font-size:.92rem;color:var(--dim);line-height:1.4;word-break:break-word}
+.contact-grid a.val:hover{color:var(--ember)}
+@media (max-width:760px){.contact-grid{grid-template-columns:repeat(2,1fr)}}
+footer{
+  position:relative;z-index:10;
+  border-top:1px solid var(--line);
+  padding:2rem clamp(1.25rem,6vw,7rem);
+  display:flex;flex-wrap:wrap;gap:1.2rem;
+  align-items:center;justify-content:space-between;
+  background:var(--ink);
+}
+.foot-links{display:flex;flex-wrap:wrap;gap:1.4rem;font-family:var(--mono);font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted)}
+.foot-links a:hover{color:var(--ember)}
+.foot-copy{font-family:var(--mono);font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted)}
+
+#fallback{display:none}
+body.nofx #scene{display:none}
+body.nofx #doc{display:none}
+body.nofx #fallback{display:block;position:relative;z-index:10}
+body.nofx .vignette,body.nofx .grain{opacity:0.05}
+.fb-hero{
+  max-width:1100px;margin:0 auto;padding:10rem clamp(1.25rem,6vw,7rem) 4rem;
+}
+.fb-hero h1{
+  font-family:var(--serif);font-weight:400;font-size:clamp(3rem,10vw,8rem);
+  line-height:0.92;letter-spacing:-0.02em;margin:1.4rem 0 1.4rem;
+}
+.fb-hero h1 .light{font-style:italic;color:var(--dim)}
+.fb-hero .sub{max-width:44ch;font-size:clamp(1rem,1.6vw,1.2rem);line-height:1.6;color:var(--dim)}
+.fb-grid{
+  display:grid;grid-template-columns:repeat(2,1fr);gap:1px;
+  background:var(--line2);border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+}
+.fb-card{
+  display:block;background:var(--sec);padding:1.6rem clamp(1rem,4vw,2.4rem) 2rem;
+  transition:background .4s var(--ease-hover);
+}
+.fb-card:hover{background:#141416}
+.fb-card .meta{
+  display:flex;align-items:center;gap:.8rem;font-family:var(--mono);font-size:11px;
+  letter-spacing:0.16em;text-transform:uppercase;color:var(--ember);margin-bottom:.8rem;
+}
+.fb-card h2{font-family:var(--serif);font-weight:400;font-size:clamp(1.8rem,4vw,2.8rem);line-height:1;letter-spacing:-0.02em;margin:0 0 1.2rem}
+.fb-card img{width:100%;border:1px solid var(--line);display:block;margin-top:.6rem}
+.fb-card .go{
+  display:inline-flex;align-items:center;gap:.5rem;margin-top:1.2rem;
+  font-family:var(--mono);font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:var(--paper);
+}
+.fb-card .go .arw{color:var(--ember)}
+@media (max-width:760px){.fb-grid{grid-template-columns:1fr}}
+
+@media (prefers-reduced-motion:reduce){
+  .scroll-cue .track::after{animation:none}
+  .pre-name{animation:none;opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+
+<canvas id="scene" aria-hidden="true"></canvas>
+<div class="grain" aria-hidden="true"></div>
+<div class="vignette" aria-hidden="true"></div>
+<div class="cursor" id="cursor" aria-hidden="true"></div>
+
+<div id="preloader">
+  <div class="pre-name">Ravindra <span class="em">Sisodia</span></div>
+  <div class="pre-bar"><span id="preBar"></span></div>
+  <div class="pre-count"><span id="preCount">000</span> / 100</div>
+</div>
+
+<nav>
+  <a href="#hero" class="wordmark" data-nav="hero"><span class="sq"></span> Ravindra Sisodia</a>
+  <div class="navlinks">
+    <a href="#work" data-nav="work">Work</a>
+    <a href="#lab" data-nav="lab">Lab</a>
+    <a href="#about" data-nav="about">About</a>
+    <a href="#contact" data-nav="contact">Contact</a>
+  </div>
+</nav>
+
+<main id="doc">
+
+  <section class="section hero" id="hero">
+    <div class="hero-inner">
+      <div class="eyebrow reveal"><span class="dot"></span> Senior Product Designer · Bengaluru, IN · Open 2026</div>
+      <h1 class="reveal d1">Ravindra <span class="light">Sisodia</span></h1>
+      <p class="sub reveal d2">I design and ship product in the same motion, moving through the work instead of just showing it. Scroll to walk the corridor.</p>
+      <div class="scroll-cue reveal d3"><span class="track"></span> Scroll to enter</div>
+    </div>
+  </section>
+
+  <div id="work"></div>
+
+  <section class="section left" data-room="0">
+    <div class="proj">
+      <div class="idx reveal">01 / 2025</div>
+      <h2 class="reveal d1">Design in Code</h2>
+      <p class="blurb reveal d2">Figma pushed through MCP into real code, so a design decision and a shipped component are the same act. Fewer handoffs, no drift.</p>
+      <div class="tags reveal d3"><span>Zop.Dev</span><span>AI Workflow</span><span>Figma MCP</span></div>
+      <a class="case-link reveal d4" href="work/design-in-code.html" data-cursor>View case <span class="arw">-&gt;</span></a>
+    </div>
+  </section>
+
+  <section class="section right" data-room="1">
+    <div class="proj">
+      <div class="idx reveal">02 / 2025</div>
+      <h2 class="reveal d1">Recommendation Engine</h2>
+      <p class="blurb reveal d2">A recommendation layer that cut spend by $53.5K by surfacing the right resource at the right moment, tuned against real usage.</p>
+      <div class="tags reveal d3"><span>Zop.Dev</span><span>$53.5K saved</span><span>AI · UX</span></div>
+      <a class="case-link reveal d4" href="work/recommendation-engine.html" data-cursor>View case <span class="arw">-&gt;</span></a>
+    </div>
+  </section>
+
+  <section class="section left" data-room="2">
+    <div class="proj">
+      <div class="idx reveal">03 / 2025</div>
+      <h2 class="reveal d1">One Source of Truth</h2>
+      <p class="blurb reveal d2">A design system of 20+ modules, tokenised end to end, so a color or spacing change lands everywhere at once.</p>
+      <div class="tags reveal d3"><span>Zop.Dev</span><span>Design System</span><span>20+ modules</span></div>
+      <a class="case-link reveal d4" href="work/design-system.html" data-cursor>View case <span class="arw">-&gt;</span></a>
+    </div>
+  </section>
+
+  <section class="section right" data-room="3">
+    <div class="proj">
+      <div class="idx reveal">04 / 2025</div>
+      <h2 class="reveal d1">20 &#8594; 7 minutes</h2>
+      <p class="blurb reveal d2">Onboarding rebuilt around the first real task. Time to value dropped from twenty minutes to seven, a 65% cut.</p>
+      <div class="tags reveal d3"><span>Zop.Dev</span><span>Onboarding</span><span>65% faster</span></div>
+      <a class="case-link reveal d4" href="work/onboarding.html" data-cursor>View case <span class="arw">-&gt;</span></a>
+    </div>
+  </section>
+
+  <section class="section left" data-room="4">
+    <div class="proj">
+      <div class="idx reveal">05 / 2024</div>
+      <h2 class="reveal d1">Banking, Made Legible</h2>
+      <p class="blurb reveal d2">Retail banking flows for Yes Bank and ICICI, reworked for clarity under load. Built for millions of users, tested against the messy real cases.</p>
+      <div class="tags reveal d3"><span>ScreenRoot</span><span>Yes Bank · ICICI</span><span>M+ users</span></div>
+      <a class="case-link reveal d4" href="work/banking-ux.html" data-cursor>View case <span class="arw">-&gt;</span></a>
+    </div>
+  </section>
+
+  <section class="section right" data-room="5">
+    <div class="proj">
+      <div class="idx reveal">06 / 2025</div>
+      <h2 class="reveal d1">Brand Kit, in Browser</h2>
+      <p class="blurb reveal d2">An internal tool that turns brand rules into 29 ready templates, so any team ships on-brand without waiting on design.</p>
+      <div class="tags reveal d3"><span>Zop.Dev</span><span>Internal tool</span><span>29 templates</span></div>
+      <a class="case-link reveal d4" href="work/brand-system.html" data-cursor>View case <span class="arw">-&gt;</span></a>
+    </div>
+  </section>
+
+  <section class="section left" data-room="6">
+    <div class="proj">
+      <div class="idx reveal">07 / 2025</div>
+      <h2 class="reveal d1">Build. Deploy. Govern.</h2>
+      <p class="blurb reveal d2">The Zop.Dev homepage, v1.5. One narrative across AWS, GCP and Azure, framed so the platform reads in a single scroll.</p>
+      <div class="tags reveal d3"><span>Zop.Dev</span><span>Homepage v1.5</span><span>AWS · GCP · Azure</span></div>
+      <a class="case-link reveal d4" href="work/zopdev-homepage.html" data-cursor>View case <span class="arw">-&gt;</span></a>
+    </div>
+  </section>
+
+  <section class="section short" id="lab" data-room="7">
+    <div style="width:100%;max-width:1080px">
+      <div class="eyebrow reveal"><span class="dot"></span> The Lab · Nights and weekends</div>
+      <h2 class="reveal d1" style="font-family:var(--serif);font-weight:400;font-size:clamp(2.2rem,6vw,4rem);line-height:1;letter-spacing:-0.02em;margin:1rem 0 2rem">Small tools, shipped for real</h2>
+      <div class="lab-grid">
+        <div class="lab-cell reveal"><div><div class="n">01</div><h3>Crew</h3></div><p>A pixel-art agent overlay. One sprite walks the screen bottom for every running Claude Code chat.</p></div>
+        <div class="lab-cell reveal d1"><div><div class="n">02</div><h3>Shutter</h3></div><p>A shop shutter rolls up over three seconds when the Mac unlocks, with weight and a settle.</p></div>
+        <div class="lab-cell reveal d2"><div><div class="n">03</div><h3>Link-toys</h3></div><p>Six single-file generative web toys. Git-city, terrarium, sigil and more, each read from a link.</p></div>
+        <div class="lab-cell reveal d1"><div><div class="n">04</div><h3>Flipbook</h3></div><p>Drop in a PDF, get a real 3D page-turn book, export one shareable HTML that runs offline.</p></div>
+        <div class="lab-cell reveal d2"><div><div class="n">05</div><h3>Notchling</h3></div><p>A living creature in the notch, with a file shelf and the day's weather. A desktop companion.</p></div>
+        <div class="lab-cell reveal d3"><div><div class="n">06</div><h3>Lime</h3></div><p>A reusable friendly-green fintech design system, tokens and components captured from a reference build.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section short" id="about" data-room="8">
+    <div class="about-wrap">
+      <div class="about-photo reveal">
+        <img src="profile.jpg" alt="Portrait of Ravindra Sisodia">
+      </div>
+      <div class="about-body">
+        <div class="eyebrow reveal"><span class="dot"></span> About</div>
+        <h2 class="reveal d1">Design and ship, one motion</h2>
+        <p class="reveal d2">Senior Product Designer at Zop.Dev in Bengaluru. Five years across e-commerce, agency, banking and cloud, now designing and shipping in the same motion with Figma and Claude Code.</p>
+        <p class="reveal d3">I care about the decision that survives handoff, the flow that holds up under real load, and the small tool that quietly saves an hour a day.</p>
+        <div class="counters reveal d3">
+          <div class="counter"><div class="v"><span class="em">$</span><span data-count="53.5" data-suffix="K+" data-dec="1">0</span></div><div class="l">Saved</div></div>
+          <div class="counter"><div class="v"><span data-count="20" data-suffix="+">0</span></div><div class="l">Modules</div></div>
+          <div class="counter"><div class="v"><span data-count="65" data-suffix="%">0</span></div><div class="l">Faster</div></div>
+          <div class="counter"><div class="v"><span data-count="5" data-suffix="">0</span></div><div class="l">Years</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section short" id="experience" data-room="9">
+    <div class="exp-wrap">
+      <div class="eyebrow reveal"><span class="dot"></span> Experience</div>
+      <h2 class="reveal d1" style="font-family:var(--serif);font-weight:400;font-size:clamp(2rem,5vw,3.4rem);line-height:1;letter-spacing:-0.02em;margin:1rem 0 1.6rem">Where I have been</h2>
+      <div class="exp-row reveal"><div class="when">2025 &#8594;</div><div class="role">Product Designer <em>Zop.Dev</em></div><div class="where">Bangalore · B2B SaaS · Cloud</div></div>
+      <div class="exp-row reveal d1"><div class="when">2024-25</div><div class="role">UI Designer <em>ScreenRoot</em></div><div class="where">Goa · FinTech · Yes Bank, ICICI</div></div>
+      <div class="exp-row reveal d2"><div class="when">2021-24</div><div class="role">UI/UX to Design Lead <em>ArtWorksIT</em></div><div class="where">Bangalore · Agency · Led six, 30+ sites</div></div>
+      <div class="exp-row reveal d3"><div class="when">2020-21</div><div class="role">Junior Designer <em>FirstCry.com</em></div><div class="where">Pune · E-commerce · 1,000+ asset pipeline</div></div>
+    </div>
+  </section>
+
+  <section class="section short" id="contact" data-room="10">
+    <div class="contact-inner">
+      <div class="eyebrow reveal"><span class="dot"></span> Open to senior product design roles, 2026</div>
+      <h2 class="reveal d1">Let's design <em>something</em></h2>
+      <a class="cta reveal d2" href="mailto:sisodia.ravindra10@gmail.com" data-cursor>Start a conversation <span class="arw">-&gt;</span></a>
+      <div class="contact-grid reveal d3">
+        <div class="cell"><div class="k">Email</div><a class="val" href="mailto:sisodia.ravindra10@gmail.com">sisodia.ravindra10@gmail.com</a></div>
+        <div class="cell"><div class="k">Phone</div><a class="val" href="tel:+919168418778">+91 91684 18778</a></div>
+        <div class="cell"><div class="k">Location</div><div class="val">Bengaluru, India</div></div>
+        <div class="cell"><div class="k">Channels</div><a class="val" href="https://linkedin.com/in/ravindra-sisodia" target="_blank" rel="noopener">linkedin.com/in/ravindra-sisodia</a></div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<div id="fallback" aria-hidden="false"></div>
+
+<footer>
+  <div class="foot-links">
+    <a href="index.html">Editorial version</a>
+    <a href="cinematic.html">Cinematic version</a>
+    <a href="https://linkedin.com/in/ravindra-sisodia" target="_blank" rel="noopener">LinkedIn</a>
+    <a href="mailto:sisodia.ravindra10@gmail.com">Email</a>
+  </div>
+  <div class="foot-copy">© 2026 Ravindra Sisodia</div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/shaders/CopyShader.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/shaders/LuminosityHighPassShader.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/shaders/GammaCorrectionShader.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/postprocessing/EffectComposer.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/postprocessing/RenderPass.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/postprocessing/ShaderPass.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/postprocessing/UnrealBloomPass.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+
+<script>
+(function(){
+"use strict";
+
+window.__ERRS=[];
+window.addEventListener('error', function(e){ window.__ERRS.push(String(e.message||e)); });
+
+var REDUCED = window.matchMedia && window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+var TOUCH = window.matchMedia && window.matchMedia('(hover:none),(pointer:coarse)').matches;
+
+var PROJECTS = [
+  {slug:'recommendation-engine', year:'2025', title:'Recommendation Engine', label:'$53.5K SAVED', motif:'recommendation-engine'},
+  {slug:'onboarding', year:'2025', title:'20 to 7 minutes', label:'65% FASTER', motif:'onboarding'},
+  {slug:'design-in-code', year:'2025', title:'Design in Code', label:'FIGMA / MCP / CODE', motif:'design-in-code'},
+  {slug:'design-system', year:'2025', title:'One Source of Truth', label:'20+ MODULES', motif:'design-system'},
+  {slug:'zopdev-homepage', year:'2025', title:'Build. Deploy. Govern.', label:'HOMEPAGE V1.5', motif:'zopdev-homepage'},
+  {slug:'banking-ux', year:'2024', title:'Banking, Made Legible', label:'YES BANK / ICICI', motif:'banking-ux'},
+  {slug:'brand-system', year:'2025', title:'Brand Kit, in Browser', label:'29 TEMPLATES', motif:'brand-system'}
+];
+
+var COL = { ink:'#0B0B0C', sec:'#101012', paper:'#F2EEE6', dim:'#C9C3B6', muted:'#857F73', ember:'#F58549' };
+
+function baseCanvas(){ var c=document.createElement('canvas'); c.width=1600; c.height=1000; return c; }
+function gradeBg(ctx,w,h){
+  var g=ctx.createLinearGradient(0,0,w,h);
+  g.addColorStop(0,'#141416'); g.addColorStop(0.55,'#0d0d0f'); g.addColorStop(1,'#0a0a0b');
+  ctx.fillStyle=g; ctx.fillRect(0,0,w,h);
+  var rg=ctx.createRadialGradient(w*0.74,h*0.30,40,w*0.74,h*0.30,w*0.55);
+  rg.addColorStop(0,'rgba(245,133,73,0.20)'); rg.addColorStop(1,'rgba(245,133,73,0)');
+  ctx.fillStyle=rg; ctx.fillRect(0,0,w,h);
+}
+function grain(ctx,w,h){
+  ctx.save();
+  for(var i=0;i<2600;i++){
+    ctx.fillStyle='rgba(242,238,230,'+(Math.random()*0.05)+')';
+    ctx.fillRect(Math.random()*w,Math.random()*h,1,1);
+  }
+  ctx.restore();
+}
+function frameLine(ctx,w,h){ ctx.strokeStyle='rgba(242,238,230,0.10)'; ctx.lineWidth=2; ctx.strokeRect(40,40,w-80,h-80); }
+function roundRect(ctx,x,y,w,h,r){
+  ctx.beginPath();
+  ctx.moveTo(x+r,y);
+  ctx.arcTo(x+w,y,x+w,y+h,r);
+  ctx.arcTo(x+w,y+h,x,y+h,r);
+  ctx.arcTo(x,y+h,x,y,r);
+  ctx.arcTo(x,y,x+w,y,r);
+  ctx.closePath();
+}
+
+var PAINTERS = {
+  'design-in-code': function(ctx,w,h){
+    var boxes=['FIGMA','MCP','CODE'], bw=320,bh=190,gap=120,startX=170,y=560;
+    for(var i=0;i<3;i++){
+      var x=startX+i*(bw+gap);
+      ctx.fillStyle=i===2?'rgba(245,133,73,0.14)':'rgba(242,238,230,0.03)'; ctx.fillRect(x,y,bw,bh);
+      ctx.strokeStyle=i===2?COL.ember:'rgba(242,238,230,0.16)'; ctx.lineWidth=2; ctx.strokeRect(x,y,bw,bh);
+      ctx.fillStyle=i===2?COL.ember:COL.dim; ctx.font='500 30px "JetBrains Mono", monospace'; ctx.textAlign='center';
+      ctx.fillText(boxes[i],x+bw/2,y+bh/2+10); ctx.textAlign='left';
+      if(i<2){
+        var ax=x+bw+18,ay=y+bh/2,bx=x+bw+gap-18;
+        ctx.strokeStyle=COL.ember; ctx.lineWidth=3; ctx.setLineDash([12,10]);
+        ctx.beginPath(); ctx.moveTo(ax,ay); ctx.lineTo(bx,ay); ctx.stroke(); ctx.setLineDash([]);
+        ctx.beginPath(); ctx.moveTo(bx,ay); ctx.lineTo(bx-16,ay-9); ctx.lineTo(bx-16,ay+9); ctx.closePath(); ctx.fill();
+      }
+    }
+  },
+  'recommendation-engine': function(ctx,w,h){
+    ctx.fillStyle=COL.paper; ctx.font='400 200px "Instrument Serif", Georgia, serif'; ctx.fillText('$53.5K',96,560);
+    var bx=1050,by=760,bw=70,gap=34,vals=[0.35,0.55,0.42,0.7,1.0,0.6];
+    for(var i=0;i<vals.length;i++){
+      var bh2=vals[i]*300, x=bx+i*(bw+gap), isE=(vals[i]===1.0);
+      ctx.fillStyle=isE?COL.ember:'rgba(242,238,230,0.16)'; ctx.fillRect(x,by-bh2,bw,bh2);
+    }
+    ctx.strokeStyle='rgba(242,238,230,0.12)'; ctx.lineWidth=2;
+    ctx.beginPath(); ctx.moveTo(bx-20,by+2); ctx.lineTo(w-96,by+2); ctx.stroke();
+  },
+  'design-system': function(ctx,w,h){
+    var cols=4,rows=2,cw=200,ch=150,gap=26,sx=170,sy=520,emberCell=5,k=0;
+    for(var r=0;r<rows;r++)for(var c=0;c<cols;c++){
+      var x=sx+c*(cw+gap),y=sy+r*(ch+gap),isE=(k===emberCell);
+      ctx.fillStyle=isE?'rgba(245,133,73,0.16)':'rgba(242,238,230,0.03)'; ctx.fillRect(x,y,cw,ch);
+      ctx.strokeStyle=isE?COL.ember:'rgba(242,238,230,0.14)'; ctx.lineWidth=2; ctx.strokeRect(x,y,cw,ch);
+      if(isE){ ctx.fillStyle=COL.ember; ctx.beginPath(); ctx.arc(x+cw/2,y+ch/2,20,0,Math.PI*2); ctx.fill(); }
+      k++;
+    }
+  },
+  'onboarding': function(ctx,w,h){
+    ctx.fillStyle=COL.paper; ctx.font='400 190px "Instrument Serif", Georgia, serif'; ctx.fillText('20',96,560);
+    ctx.fillStyle=COL.ember; ctx.font='400 120px "Instrument Serif", Georgia, serif'; ctx.fillText('→',360,545);
+    ctx.fillStyle=COL.paper; ctx.font='400 190px "Instrument Serif", Georgia, serif'; ctx.fillText('7',520,560);
+    ctx.font='400 60px "Instrument Serif", Georgia, serif'; ctx.fillStyle=COL.dim; ctx.fillText('minutes',620,545);
+    var px=170,py=720,pw=1180,ph=34;
+    ctx.fillStyle='rgba(242,238,230,0.08)'; ctx.fillRect(px,py,pw,ph);
+    ctx.fillStyle=COL.ember; ctx.fillRect(px,py,pw*0.65,ph);
+  },
+  'banking-ux': function(ctx,w,h){
+    var px=560,py=430,pw=320,ph=470,r=36;
+    roundRect(ctx,px,py,pw,ph,r); ctx.fillStyle='rgba(242,238,230,0.04)'; ctx.fill();
+    ctx.strokeStyle='rgba(242,238,230,0.18)'; ctx.lineWidth=3; ctx.stroke();
+    roundRect(ctx,px+34,py+60,pw-68,150,20);
+    var cg=ctx.createLinearGradient(px,py,px+pw,py+200);
+    cg.addColorStop(0,'rgba(245,133,73,0.9)'); cg.addColorStop(1,'rgba(245,133,73,0.4)');
+    ctx.fillStyle=cg; ctx.fill();
+    ctx.fillStyle='rgba(242,238,230,0.22)';
+    for(var i=0;i<4;i++){ roundRect(ctx,px+34,py+250+i*54,pw-120,20,10); ctx.fill(); }
+    ctx.fillStyle=COL.ember; roundRect(ctx,px+34,py+250,120,20,10); ctx.fill();
+  },
+  'brand-system': function(ctx,w,h){
+    var wx=140,wy=430,ww=1320,wh=460,r=14;
+    roundRect(ctx,wx,wy,ww,wh,r); ctx.fillStyle='rgba(242,238,230,0.03)'; ctx.fill();
+    ctx.strokeStyle='rgba(242,238,230,0.14)'; ctx.lineWidth=2; ctx.stroke();
+    ctx.fillStyle='rgba(242,238,230,0.05)'; ctx.fillRect(wx,wy,260,wh);
+    ctx.fillStyle=COL.ember; ctx.fillRect(wx,wy+40,260,44);
+    ctx.fillStyle='rgba(242,238,230,0.16)';
+    for(var i=1;i<5;i++) ctx.fillRect(wx+30,wy+40+i*70,200,16);
+    var cx=wx+320,cy=wy+60,cw=440,ch=320;
+    ctx.fillStyle='#0b0b0c'; roundRect(ctx,cx,cy,cw,ch,12); ctx.fill();
+    ctx.strokeStyle='rgba(242,238,230,0.12)'; ctx.lineWidth=2; ctx.stroke();
+    ctx.fillStyle=COL.paper; ctx.font='400 90px "Instrument Serif", Georgia, serif'; ctx.fillText('$53.5K+',cx+40,cy+180);
+    ctx.fillStyle=COL.muted; ctx.font='500 20px "JetBrains Mono", monospace'; ctx.fillText('CASE STUDY',cx+40,cy+240);
+  },
+  'zopdev-homepage': function(ctx,w,h){
+    ctx.save(); ctx.translate(w*0.72,h*0.62);
+    ctx.strokeStyle='rgba(242,238,230,0.10)'; ctx.lineWidth=2;
+    ctx.beginPath(); ctx.ellipse(0,0,300,130,0,0,Math.PI*2); ctx.stroke();
+    var dots=[['#5A8FF5',0.2],['#7FB236',2.4],['#F58549',4.4]];
+    for(var i=0;i<dots.length;i++){
+      var a=dots[i][1], x=Math.cos(a)*300, y=Math.sin(a)*130;
+      ctx.fillStyle=dots[i][0]; ctx.beginPath(); ctx.arc(x,y,14,0,Math.PI*2); ctx.fill();
+    }
+    ctx.restore();
+    ctx.font='400 100px "Instrument Serif", Georgia, serif';
+    ctx.fillStyle=COL.paper; ctx.fillText('Build.',100,520);
+    ctx.fillStyle=COL.paper; ctx.fillText('Deploy.',100,640);
+    ctx.fillStyle=COL.ember; ctx.fillText('Govern.',100,760);
+  }
+};
+
+function paintPoster(proj){
+  var c=baseCanvas(), ctx=c.getContext('2d'), w=c.width, h=c.height;
+  gradeBg(ctx,w,h);
+  ctx.textAlign='left'; ctx.textBaseline='alphabetic';
+  // The plate carries the label + motif only. The big title lives in the DOM
+  // overlay, so painting it here would double it on screen at each stop.
+  ctx.fillStyle=COL.dim; ctx.font='500 26px "JetBrains Mono", monospace'; ctx.fillText(proj.label,100,136);
+  ctx.fillStyle=COL.ember; ctx.fillRect(100,172,120,3);
+  var painter=PAINTERS[proj.motif];
+  if(painter){ try{ painter(ctx,w,h); }catch(e){} }
+  grain(ctx,w,h); frameLine(ctx,w,h);
+  return c;
+}
+
+var posterCanvases=[];
+function buildPosters(){ posterCanvases=PROJECTS.map(function(p){ return paintPoster(p); }); }
+buildPosters();
+
+function webglOK(){
+  try{
+    if(!window.THREE) return false;
+    var c=document.createElement('canvas');
+    return !!(window.WebGLRenderingContext && (c.getContext('webgl')||c.getContext('experimental-webgl')));
+  }catch(e){ return false; }
+}
+function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+function buildDomFallback(reason){
+  console.warn('[immersive] DOM fallback active:', reason);
+  var fb=document.getElementById('fallback');
+  if(!fb) return;
+  var html='<div class="fb-hero">'+
+    '<div class="eyebrow"><span class="dot"></span> Senior Product Designer · Bengaluru, IN · Open 2026</div>'+
+    '<h1>Ravindra <span class="light">Sisodia</span></h1>'+
+    '<p class="sub">I design and ship product in the same motion, moving through the work instead of just showing it. A gallery of selected work below.</p>'+
+    '</div><div class="fb-grid">';
+  PROJECTS.forEach(function(p,i){
+    var src=posterCanvases[i].toDataURL('image/jpeg',0.86);
+    var idx=('0'+(i+1)).slice(-2);
+    html+='<a class="fb-card" href="work/'+p.slug+'.html">'+
+      '<div class="meta"><span>'+idx+'</span><span>'+p.year+'</span></div>'+
+      '<h2>'+esc(p.title)+'</h2>'+
+      '<img src="'+src+'" alt="'+esc(p.title)+' poster">'+
+      '<span class="go">View case <span class="arw">-&gt;</span></span>'+
+      '</a>';
+  });
+  html+='</div>';
+  fb.innerHTML=html;
+  document.body.classList.add('nofx');
+  runCounters(true);
+  finishPreloader();
+}
+var activateFallback=buildDomFallback;
+
+var preloader=document.getElementById('preloader');
+var preBar=document.getElementById('preBar');
+var preCount=document.getElementById('preCount');
+var preVal=0, preTarget=12, preTimer=null, preDone=false;
+function tickPre(){
+  if(preDone) return;
+  preVal += (preTarget-preVal)*0.12;
+  if(preVal>99) preVal=99;
+  var shown=Math.min(99,Math.floor(preVal));
+  preCount.textContent=('000'+shown).slice(-3);
+  preBar.style.width=shown+'%';
+}
+function startPre(){ preTimer=setInterval(tickPre,60); }
+function setPreTarget(v){ preTarget=v; }
+function finishPreloader(){
+  if(preDone) return; preDone=true; clearInterval(preTimer);
+  preCount.textContent='100'; preBar.style.width='100%';
+  setTimeout(function(){
+    preloader.classList.add('done');
+    document.querySelectorAll('#hero .reveal').forEach(function(el){ el.classList.add('in'); });
+  },260);
+}
+startPre();
+
+var countersRun=false;
+function runCounters(instant){
+  if(countersRun) return; countersRun=true;
+  document.querySelectorAll('[data-count]').forEach(function(el){
+    var target=parseFloat(el.getAttribute('data-count'));
+    var suffix=el.getAttribute('data-suffix')||'';
+    var dec=parseInt(el.getAttribute('data-dec')||'0',10);
+    if(instant||REDUCED){ el.textContent=target.toFixed(dec)+suffix; return; }
+    var t0=null, dur=1400;
+    function step(ts){
+      if(!t0) t0=ts;
+      var p=Math.min(1,(ts-t0)/dur), e=1-Math.pow(1-p,3);
+      el.textContent=(target*e).toFixed(dec)+suffix;
+      if(p<1) requestAnimationFrame(step); else el.textContent=target.toFixed(dec)+suffix;
+    }
+    requestAnimationFrame(step);
+  });
+}
+
+var cursor=document.getElementById('cursor');
+if(!TOUCH && !REDUCED){
+  var cx=window.innerWidth/2, cy=window.innerHeight/2, tx=cx, ty=cy;
+  window.addEventListener('mousemove', function(e){ tx=e.clientX; ty=e.clientY; });
+  (function cursorLoop(){
+    cx+=(tx-cx)*0.2; cy+=(ty-cy)*0.2;
+    cursor.style.transform='translate('+cx+'px,'+cy+'px) translate(-50%,-50%)';
+    requestAnimationFrame(cursorLoop);
+  })();
+  document.querySelectorAll('a,[data-cursor]').forEach(function(el){
+    el.addEventListener('mouseenter', function(){ cursor.classList.add('ring'); });
+    el.addEventListener('mouseleave', function(){ cursor.classList.remove('ring'); });
+  });
+}else{
+  document.body.classList.add('no-cursor');
+  if(cursor) cursor.style.display='none';
+}
+
+var mouseX=0, mouseY=0;
+if(!TOUCH){
+  window.addEventListener('mousemove', function(e){
+    mouseX=(e.clientX/window.innerWidth)*2-1;
+    mouseY=(e.clientY/window.innerHeight)*2-1;
+  });
+}
+
+if(!webglOK()){ activateFallback('WebGL unavailable'); return; }
+var THREE=window.THREE;
+if(!THREE){ activateFallback('THREE failed to load'); return; }
+
+var canvas=document.getElementById('scene');
+var renderer, scene, camera, curve, centerpiece=null, spotPool=[];
+var emberStrips=[];
+var clock=new THREE.Clock();
+
+var CORRIDOR_W=8, CORRIDOR_H=6.5, STOP_SPACING=26, STOPS=12;
+
+var IS_SMALL = (window.matchMedia && window.matchMedia('(max-width:768px),(pointer:coarse)').matches);
+
+try{
+  renderer=new THREE.WebGLRenderer({canvas:canvas, antialias:!IS_SMALL, alpha:false, powerPreference:'high-performance'});
+}catch(e){ activateFallback('renderer init failed'); return; }
+renderer.setSize(window.innerWidth, window.innerHeight);
+renderer.setPixelRatio(Math.min(window.devicePixelRatio||1, IS_SMALL?1.5:2));
+// The render pipeline treats hex colors as LINEAR and gamma-encodes on output,
+// so raw #0b0b0c fog/clear would display as mid-gray (the "gray slab through
+// every gap" bug). Convert the ink to linear so it round-trips back to true ink.
+var INK_LINEAR=new THREE.Color(0x0b0b0c).convertSRGBToLinear();
+renderer.setClearColor(INK_LINEAR,1);
+renderer.outputEncoding=THREE.sRGBEncoding;
+
+scene=new THREE.Scene();
+scene.background=INK_LINEAR.clone();
+scene.fog=new THREE.FogExp2(INK_LINEAR.getHex(), IS_SMALL?0.024:0.031);
+
+// Tracked disposables so teardown is guaranteed (covers pooled/swapped objects
+// the scene-graph traversal might miss).
+var disposables=[];
+function track(x){ if(x) disposables.push(x); return x; }
+
+camera=new THREE.PerspectiveCamera(62, window.innerWidth/window.innerHeight, 0.1, 400);
+
+// Procedural surface textures: panel seams, directional streaks and fine noise
+// painted once at boot. The albedo tone lives in the canvas (material color
+// stays white), and the same canvas doubles as a bump map so raking light picks
+// up real surface variation instead of flat gradients.
+function surfaceTex(w,h,base,opts){
+  var c=document.createElement('canvas'); c.width=w; c.height=h;
+  var x=c.getContext('2d'), i;
+  x.fillStyle=base; x.fillRect(0,0,w,h);
+  for(i=0;i<(opts.bandsH||0);i++){
+    x.fillStyle='rgba(255,255,255,'+(Math.random()*0.013)+')';
+    x.fillRect(0,Math.random()*h,w,1+Math.random()*2);
+    x.fillStyle='rgba(0,0,0,'+(Math.random()*0.024)+')';
+    x.fillRect(0,Math.random()*h,w,1+Math.random()*2);
+  }
+  for(i=0;i<(opts.bandsV||0);i++){
+    x.fillStyle='rgba(255,255,255,'+(Math.random()*0.013)+')';
+    x.fillRect(Math.random()*w,0,1+Math.random()*2,h);
+    x.fillStyle='rgba(0,0,0,'+(Math.random()*0.024)+')';
+    x.fillRect(Math.random()*w,0,1+Math.random()*2,h);
+  }
+  for(i=0;i<(opts.noise||0);i++){
+    x.fillStyle=Math.random()<0.5?'rgba(255,255,255,0.02)':'rgba(0,0,0,0.03)';
+    x.fillRect(Math.random()*w,Math.random()*h,1,1);
+  }
+  var s;
+  if(opts.seamsV){ for(s=opts.seamsV;s<w;s+=opts.seamsV){ x.fillStyle='rgba(0,0,0,0.28)'; x.fillRect(s,0,2,h); x.fillStyle='rgba(255,255,255,0.045)'; x.fillRect(s+2,0,1,h); } }
+  if(opts.seamsH){ for(s=opts.seamsH;s<h;s+=opts.seamsH){ x.fillStyle='rgba(0,0,0,0.28)'; x.fillRect(0,s,w,2); x.fillStyle='rgba(255,255,255,0.045)'; x.fillRect(0,s+2,w,1); } }
+  return c;
+}
+function texPair(canvas,aniso){
+  var m=new THREE.CanvasTexture(canvas); m.encoding=THREE.sRGBEncoding;
+  var b=new THREE.CanvasTexture(canvas);
+  if(aniso && renderer.capabilities.getMaxAnisotropy){
+    var a=Math.min(8,renderer.capabilities.getMaxAnisotropy());
+    m.anisotropy=a; b.anisotropy=a;
+  }
+  track(m); track(b);
+  return {map:m, bump:b};
+}
+// Base tones are REFLECTANCE, not display color: near-black hexes decode to
+// under 1% linear albedo and swallow every light. These read as ink walls
+// under the corridor's dim light while still falling to black in shadow.
+var wallSurf=texPair(surfaceTex(2048,256,'#26262c',{bandsH:26,noise:5200,seamsV:256}),true);
+var wallDarkSurf=texPair(surfaceTex(1024,256,'#1c1c22',{bandsH:18,noise:2600,seamsV:256}),false);
+var floorSurf=texPair(surfaceTex(256,4096,'#222228',{bandsV:70,noise:9000,seamsH:512}),true);
+var ceilSurf=texPair(surfaceTex(256,2048,'#1e1e24',{bandsV:26,noise:3600,seamsH:512}),false);
+
+var wallMat=new THREE.MeshStandardMaterial({color:0xffffff, map:wallSurf.map, bumpMap:wallSurf.bump, bumpScale:0.012, roughness:0.85, metalness:0.15});
+var wallMatDark=new THREE.MeshStandardMaterial({color:0xffffff, map:wallDarkSurf.map, bumpMap:wallDarkSurf.bump, bumpScale:0.01, roughness:0.9, metalness:0.1});
+var floorMat=new THREE.MeshStandardMaterial({color:0xffffff, map:floorSurf.map, bumpMap:floorSurf.bump, bumpScale:0.02, roughness:0.34, metalness:0.55});
+var ceilMat=new THREE.MeshStandardMaterial({color:0xffffff, map:ceilSurf.map, bumpMap:ceilSurf.bump, bumpScale:0.008, roughness:0.9, metalness:0.1});
+var emberMat=new THREE.MeshBasicMaterial({color:0xD96A32});
+var emberGlowMat=new THREE.MeshStandardMaterial({color:0x1a1211, emissive:0xF58549, emissiveIntensity:1.15, roughness:0.5, metalness:0.2});
+var frameMat=new THREE.MeshStandardMaterial({color:0x050506, roughness:0.7, metalness:0.4});
+var ringMat=new THREE.MeshStandardMaterial({color:0x120d0b, emissive:0xF58549, emissiveIntensity:0.9, roughness:0.5});
+var floorStripMat=new THREE.MeshStandardMaterial({color:0x140f0d, emissive:0xF58549, emissiveIntensity:0.5, roughness:0.6});
+
+var boxGeo=new THREE.BoxGeometry(1,1,1);
+var planeGeo=new THREE.PlaneGeometry(1,1);
+track(boxGeo); track(planeGeo);
+track(wallMat); track(wallMatDark); track(floorMat); track(ceilMat);
+track(emberMat); track(emberGlowMat); track(frameMat); track(ringMat); track(floorStripMat);
+
+scene.add(new THREE.HemisphereLight(0x232833,0x0a0806,0.34));
+scene.add(new THREE.AmbientLight(0x12141a,0.2));
+
+var keyLight=new THREE.PointLight(0xF58549,0.75,26,2.0); scene.add(keyLight);
+var fillLight=new THREE.PointLight(0x5566aa,0.18,34,2.0); scene.add(fillLight);
+
+// Warm doorway pools: reused ceiling spotlights that snap to the nearest stops.
+// Aimed straight down, they draw crisp elliptical pools on the floor instead of
+// the shapeless wash a point light gives (bounded count).
+var poolLights=[];
+for(var pl=0;pl<3;pl++){
+  var p=new THREE.SpotLight(0xCE9468,0,17,Math.PI/4.4,0.9,1.6);
+  scene.add(p); scene.add(p.target);
+  poolLights.push(p);
+}
+function updatePools(camZ){
+  // nearest 3 stops to the camera get a warm pool at their doorway
+  var order=[];
+  for(var i=0;i<STOPS;i++) order.push(i);
+  order.sort(function(a,b){ return Math.abs(zForStop(a)-camZ)-Math.abs(zForStop(b)-camZ); });
+  for(var j=0;j<poolLights.length;j++){
+    var st=order[j], d=Math.abs(zForStop(st)-camZ), z=zForStop(st);
+    poolLights[j].position.set(0,CORRIDOR_H/2-0.4,z);
+    poolLights[j].target.position.set(0,-CORRIDOR_H/2,z);
+    poolLights[j].target.updateMatrixWorld();
+    poolLights[j].intensity=2.2*Math.max(0,1-d/(STOP_SPACING*1.4));
+  }
+}
+
+var SPOT_POOL_SIZE=4;
+for(var s=0;s<SPOT_POOL_SIZE;s++){
+  var sp=new THREE.SpotLight(0xfff0e6,0,30,Math.PI/7.5,0.45,1.6);
+  sp.target.position.set(0,0,0);
+  scene.add(sp); scene.add(sp.target);
+  spotPool.push(sp);
+}
+
+function zForStop(i){ return -i*STOP_SPACING; }
+var totalDepth=STOPS*STOP_SPACING+40;
+var midZ=-totalDepth/2+10;
+
+function addBox(geo,mat,x,y,z,sx,sy,sz){
+  var m=new THREE.Mesh(geo,mat);
+  m.position.set(x,y,z); m.scale.set(sx,sy,sz);
+  scene.add(m); return m;
+}
+
+addBox(boxGeo,floorMat,0,-CORRIDOR_H/2,midZ,CORRIDOR_W+0.6,0.4,totalDepth);
+addBox(boxGeo,ceilMat,0,CORRIDOR_H/2,midZ,CORRIDOR_W+0.6,0.4,totalDepth);
+
+// Side walls are built as SPANS between doorway gaps, so each room/chamber opens
+// off the corridor at x=+/-CORRIDOR_W/2. Gaps are registered per side, then the
+// remaining wall is filled between them. Camera at x in [-1.4,1.4] sees posters.
+var ALCOVE_W=12, CHAMBER_DEPTH=14;
+var gapsLeft=[], gapsRight=[];      // each gap: {z0, z1} z-range where the wall is open
+function registerGap(side,zc,halfLen){
+  var g={z0:zc-halfLen, z1:zc+halfLen};
+  if(side<0) gapsLeft.push(g); else gapsRight.push(g);
+}
+// project alcoves (stops 1..7): opening only on that project's side
+for(var gp=0; gp<PROJECTS.length; gp++){
+  var gside=(gp%2===0)?-1:1;
+  registerGap(gside, zForStop(gp+1), ALCOVE_W/2);
+}
+// chambers (stops 8..11): open on BOTH sides
+for(var gc=8; gc<=11; gc++){
+  registerGap(-1, zForStop(gc), CHAMBER_DEPTH/2);
+  registerGap(1, zForStop(gc), CHAMBER_DEPTH/2);
+}
+function buildSideWall(side, gaps){
+  var xOff=side*(CORRIDOR_W/2);
+  gaps.sort(function(a,b){ return a.z0-b.z0; });
+  // corridor extent in z: from zFront (+) to zBack (-)
+  var zFront=midZ+totalDepth/2;   // most positive z
+  var zBack=midZ-totalDepth/2;    // most negative z
+  // walk from zFront downward, filling spans between gap openings
+  var cursor=zFront;
+  for(var i=gaps.length-1;i>=0;i--){
+    var g=gaps[i];
+    // span from cursor down to the near edge of this gap (z1 is more positive)
+    var spanTop=cursor, spanBot=g.z1;
+    if(spanTop>spanBot){
+      var len=spanTop-spanBot, cz=(spanTop+spanBot)/2;
+      addBox(boxGeo,wallMat,xOff,0,cz,0.4,CORRIDOR_H,len);
+    }
+    cursor=g.z0; // continue below the far edge of the gap
+  }
+  if(cursor>zBack){
+    var len2=cursor-zBack, cz2=(cursor+zBack)/2;
+    addBox(boxGeo,wallMat,xOff,0,cz2,0.4,CORRIDOR_H,len2);
+  }
+}
+buildSideWall(-1,gapsLeft);
+buildSideWall(1,gapsRight);
+
+function addLightStrip(xOff){
+  var strip=addBox(boxGeo,emberGlowMat,xOff,CORRIDOR_H/2-0.35,midZ,0.12,0.12,totalDepth);
+  emberStrips.push(strip);
+  addBox(boxGeo,emberMat,xOff,CORRIDOR_H/2-0.35,midZ,0.06,0.06,totalDepth);
+  return strip;
+}
+addLightStrip(-CORRIDOR_W/2+0.5);
+addLightStrip(CORRIDOR_W/2-0.5);
+
+// Cove wash: emissive strips do not actually light the walls, so paint the
+// glow they would cast: an additive gradient plane hugging each upper wall,
+// bright at strip height and fading down. Grounds the corridor between stops.
+(function(){
+  var wc=document.createElement('canvas'); wc.width=64; wc.height=1024;
+  var wx=wc.getContext('2d');
+  var wg=wx.createLinearGradient(0,0,0,1024);
+  wg.addColorStop(0,'rgba(245,158,106,0.14)');
+  wg.addColorStop(0.4,'rgba(245,158,106,0.035)');
+  wg.addColorStop(1,'rgba(245,158,106,0)');
+  wx.fillStyle=wg; wx.fillRect(0,0,64,1024);
+  var washTex=new THREE.CanvasTexture(wc); track(washTex);
+  var washMat=new THREE.MeshBasicMaterial({map:washTex, transparent:true, blending:THREE.AdditiveBlending, depthWrite:false, side:THREE.DoubleSide});
+  track(washMat);
+  function addWash(xOff,rotY){
+    var w=new THREE.Mesh(planeGeo,washMat);
+    w.scale.set(totalDepth,1.8,1);
+    w.position.set(xOff,CORRIDOR_H/2-0.35-0.9,midZ);
+    w.rotation.y=rotY;
+    w.renderOrder=7;
+    scene.add(w);
+  }
+  // wall inner faces sit at +/-(CORRIDOR_W/2 - 0.2); float the wash just inside
+  addWash(-(CORRIDOR_W/2-0.23), Math.PI/2);
+  addWash(CORRIDOR_W/2-0.23, -Math.PI/2);
+})();
+
+addBox(boxGeo,floorStripMat,0,-CORRIDOR_H/2+0.22,midZ,0.14,0.02,totalDepth);
+
+var sconceMat=new THREE.MeshStandardMaterial({color:0x14100d, emissive:0xF58549, emissiveIntensity:1.1, roughness:0.5});
+track(sconceMat);
+for(var i=1;i<STOPS;i++){
+  var z=zForStop(i)+STOP_SPACING/2;
+  addBox(boxGeo,ringMat,0,CORRIDOR_H/2-0.15,z,CORRIDOR_W-0.4,0.08,0.14);
+  addBox(boxGeo,ringMat,-CORRIDOR_W/2+0.25,0,z,0.08,CORRIDOR_H-0.4,0.14);
+  addBox(boxGeo,ringMat,CORRIDOR_W/2-0.25,0,z,0.08,CORRIDOR_H-0.4,0.14);
+  // wall sconces beside each rib: small vertical ember bars, both walls
+  addBox(boxGeo,sconceMat,-CORRIDOR_W/2+0.24,0.5,z,0.05,0.55,0.05);
+  addBox(boxGeo,sconceMat,CORRIDOR_W/2-0.24,0.5,z,0.05,0.55,0.05);
+}
+
+// Fake-volumetric light cones: additive, no depth-write, read as haze under fog+bloom.
+var coneGeo=new THREE.ConeGeometry(1,1,24,1,true);
+var coneMat=new THREE.MeshBasicMaterial({color:0xF5B08A, transparent:true, opacity:0.022, blending:THREE.AdditiveBlending, depthWrite:false, side:THREE.DoubleSide});
+track(coneGeo); track(coneMat);
+function addCone(x,y,z,rTop,height){
+  var c=new THREE.Mesh(coneGeo,coneMat);
+  c.position.set(x,y,z); c.scale.set(rTop,height,rTop);
+  c.renderOrder=8; scene.add(c); return c;
+}
+
+// Floating dust motes through the whole corridor: one Points cloud, additive.
+var DUST_N=IS_SMALL?140:380;
+var dustPos=new Float32Array(DUST_N*3);
+for(var dn=0;dn<DUST_N;dn++){
+  dustPos[dn*3]=(Math.random()*2-1)*4.4;
+  dustPos[dn*3+1]=(Math.random()*2-1)*2.9;
+  dustPos[dn*3+2]=12-Math.random()*(totalDepth+18);
+}
+var dustGeo=new THREE.BufferGeometry();
+dustGeo.setAttribute('position', new THREE.BufferAttribute(dustPos,3));
+// sizeAttenuation OFF: attenuated motes that drift near the camera lens blow up
+// into giant translucent squares (the "gray slab" artifact). Constant 2px specks
+// read as dust at every depth and can never fill the frame.
+var dustMat=new THREE.PointsMaterial({color:0xE8B08A, size:2, transparent:true, opacity:0.5, blending:THREE.AdditiveBlending, depthWrite:false, sizeAttenuation:false});
+track(dustGeo); track(dustMat);
+var dust=new THREE.Points(dustGeo,dustMat);
+dust.renderOrder=9;
+scene.add(dust);
+
+var posterMeshes=[];
+function buildRoom(index,projIndex,side){
+  var z=zForStop(index);
+  var alcoveDepth=4.5, alcoveW=12;
+  var backX=side*(CORRIDOR_W/2+alcoveDepth);
+  addBox(boxGeo,wallMatDark,side*(CORRIDOR_W/2+alcoveDepth/2),0,z-alcoveW/2,alcoveDepth,CORRIDOR_H,0.3);
+  addBox(boxGeo,wallMatDark,side*(CORRIDOR_W/2+alcoveDepth/2),0,z+alcoveW/2,alcoveDepth,CORRIDOR_H,0.3);
+  addBox(boxGeo,wallMat,backX,0,z,0.3,CORRIDOR_H,alcoveW);
+  addBox(boxGeo,floorMat,side*(CORRIDOR_W/2+alcoveDepth/2),-CORRIDOR_H/2,z,alcoveDepth,0.3,alcoveW);
+  addBox(boxGeo,ceilMat,side*(CORRIDOR_W/2+alcoveDepth/2),CORRIDOR_H/2,z,alcoveDepth,0.3,alcoveW);
+
+  var tex=new THREE.CanvasTexture(posterCanvases[projIndex]);
+  tex.needsUpdate=true; tex.encoding=THREE.sRGBEncoding;
+  if(renderer.capabilities.getMaxAnisotropy) tex.anisotropy=Math.min(4,renderer.capabilities.getMaxAnisotropy());
+  track(tex);
+  // DoubleSide so the poster never shows a culled/dark backface if the camera
+  // ever reads it from behind. Both alcove sides read left-to-right (verified by
+  // the plane-normal / camera-right derivation: left theta=+PI/2, right theta=-PI/2).
+  var posterMat=new THREE.MeshStandardMaterial({map:tex, roughness:0.7, metalness:0.05, emissive:0xF2EEE6, emissiveMap:tex, emissiveIntensity:0.5, side:THREE.DoubleSide});
+  track(posterMat);
+  var pw=5.8, ph=pw*(1000/1600);
+  var poster=new THREE.Mesh(planeGeo,posterMat);
+  poster.scale.set(pw,ph,1);
+  var faceX=backX-side*0.2;
+  poster.position.set(faceX,0.2,z);
+  poster.rotation.y = side===-1 ? Math.PI/2 : -Math.PI/2;
+  scene.add(poster);
+  posterMeshes.push({mesh:poster, x:faceX, z:z, side:side});
+
+  var fr=new THREE.Mesh(planeGeo,frameMat);
+  fr.scale.set(pw+0.5,ph+0.5,1);
+  fr.position.set(faceX+side*0.02,0.2,z);
+  fr.rotation.y=poster.rotation.y;
+  scene.add(fr);
+
+  // ember underline bar beneath the poster
+  addBox(boxGeo,sconceMat,faceX-side*0.08,0.2-ph/2-0.4,z,0.06,0.07,pw*0.85);
+
+  // doorway frame at the corridor opening, with ember inner edges
+  var doorX=side*(CORRIDOR_W/2);
+  addBox(boxGeo,frameMat,doorX,0,z-alcoveW/2,0.32,CORRIDOR_H,0.22);
+  addBox(boxGeo,frameMat,doorX,0,z+alcoveW/2,0.32,CORRIDOR_H,0.22);
+  addBox(boxGeo,frameMat,doorX,CORRIDOR_H/2-0.3,z,0.32,0.6,alcoveW);
+  addBox(boxGeo,sconceMat,doorX,0,z-alcoveW/2+0.14,0.05,CORRIDOR_H-0.8,0.04);
+  addBox(boxGeo,sconceMat,doorX,0,z+alcoveW/2-0.14,0.05,CORRIDOR_H-0.8,0.04);
+
+  // downlight haze cone over the poster
+  var cone=addCone(faceX-side*1.3,1.8,z,1.2,3.0);
+  cone.rotation.x=Math.PI;
+
+  return {z:z, x:faceX, side:side};
+}
+
+for(var pi=0; pi<PROJECTS.length; pi++){
+  var side=(pi%2===0)?-1:1;
+  buildRoom(pi+1, pi, side);
+}
+
+var haloGeo=new THREE.TorusGeometry(1.9,0.035,8,64);
+var haloMat=new THREE.MeshStandardMaterial({color:0x140f0d, emissive:0xF58549, emissiveIntensity:0.85, roughness:0.6});
+track(haloGeo); track(haloMat);
+function buildChamber(index){
+  var z=zForStop(index), cw=16;
+  addBox(boxGeo,wallMatDark,-cw/2,0,z,0.3,CORRIDOR_H,14);
+  addBox(boxGeo,wallMatDark,cw/2,0,z,0.3,CORRIDOR_H,14);
+  addBox(boxGeo,floorMat,0,-CORRIDOR_H/2,z,cw,0.3,14);
+  addBox(boxGeo,ceilMat,0,CORRIDOR_H/2,z,cw,0.3,14);
+  addBox(boxGeo,ringMat,-cw/2+0.3,0,z,0.1,CORRIDOR_H-1,0.3);
+  addBox(boxGeo,ringMat,cw/2-0.3,0,z,0.1,CORRIDOR_H-1,0.3);
+  // plinths with small ember objects, flanking the path
+  addBox(boxGeo,frameMat,-4.4,-CORRIDOR_H/2+0.55,z-2.8,1.1,1.1,1.1);
+  addBox(boxGeo,sconceMat,-4.4,-CORRIDOR_H/2+1.32,z-2.8,0.32,0.32,0.32);
+  addBox(boxGeo,frameMat,4.4,-CORRIDOR_H/2+0.55,z+2.8,1.1,1.1,1.1);
+  addBox(boxGeo,sconceMat,4.4,-CORRIDOR_H/2+1.32,z+2.8,0.32,0.32,0.32);
+  // ember floor halo marks the chamber center
+  var halo=new THREE.Mesh(haloGeo,haloMat);
+  halo.position.set(0,-CORRIDOR_H/2+0.26,z);
+  halo.rotation.x=Math.PI/2;
+  scene.add(halo);
+  // central haze downlight, high enough that the camera never enters it
+  var cc=addCone(0,1.9,z,1.6,3.0);
+  cc.rotation.x=Math.PI;
+  // threshold beams define the chamber's entry and exit
+  addBox(boxGeo,ringMat,0,CORRIDOR_H/2-0.2,z-7,cw-1,0.1,0.16);
+  addBox(boxGeo,ringMat,0,CORRIDOR_H/2-0.2,z+7,cw-1,0.1,0.16);
+}
+buildChamber(8); buildChamber(9); buildChamber(10); buildChamber(11);
+addBox(boxGeo,wallMat,0,0,zForStop(STOPS-1)-12,CORRIDOR_W+0.6,CORRIDOR_H,0.4);
+
+// End-wall monogram: an ember "R." glowing out of the dark behind Contact.
+(function(){
+  var mc=document.createElement('canvas'); mc.width=512; mc.height=512;
+  var mx=mc.getContext('2d');
+  mx.fillStyle='#F58549';
+  mx.font='400 340px "Instrument Serif", Georgia, serif';
+  mx.textAlign='center'; mx.textBaseline='middle';
+  mx.fillText('R.',256,278);
+  var mt=new THREE.CanvasTexture(mc); mt.encoding=THREE.sRGBEncoding; track(mt);
+  var mm=new THREE.MeshBasicMaterial({map:mt, transparent:true, opacity:0.92});
+  track(mm);
+  var mono=new THREE.Mesh(planeGeo,mm);
+  mono.scale.set(3.4,3.4,1);
+  mono.position.set(0,0.3,zForStop(STOPS-1)-11.7);
+  scene.add(mono);
+})();
+
+var pathPts=[];
+for(var i=0;i<STOPS;i++){
+  var z=zForStop(i), lateral=0;
+  if(i>=1 && i<=7){ var sd=(i-1)%2===0?-1:1; lateral=sd*2.4; }
+  pathPts.push(new THREE.Vector3(lateral,0.1,z));
+}
+pathPts.unshift(new THREE.Vector3(0,0.2,STOP_SPACING*0.6));
+pathPts.push(new THREE.Vector3(0,0.1,zForStop(STOPS-1)-6));
+curve=new THREE.CatmullRomCurve3(pathPts,false,'catmullrom',0.5);
+// Parametric t for each STOP. pathPts[0] is the lead-in, pathPts[1..STOPS] are
+// stops 0..STOPS-1, pathPts[STOPS+1] is the tail. We drive the camera with
+// curve.getPoint(t) (uniform in control-point parameter, NOT arc length) so a
+// given stop always lands at a known, fixed t. Section-to-camera alignment is
+// then exact regardless of DOM section heights.
+var PTS_COUNT=pathPts.length; // STOPS+2
+function tForStop(i){ return (i+1)/(PTS_COUNT-1); }
+
+// Nudge the centerpiece off the path centerline so the camera frames it on
+// approach rather than flying through it (path stop 0 sits at z=0, x=0).
+var atriumCenter=new THREE.Vector3(0.9,0.5,zForStop(0)-2.2);
+
+// Camera focus points: as the camera nears a stop, its gaze blends from
+// straight-ahead toward that stop's subject (centerpiece, poster, monogram),
+// then releases back to the corridor. Gaussian weight in curve-parameter space.
+var focusPts=[{ t:tForStop(0), p:atriumCenter, sigma:0.042 }];
+for(var fi=0;fi<posterMeshes.length;fi++){
+  focusPts.push({ t:tForStop(fi+1), p:new THREE.Vector3(posterMeshes[fi].x,0.2,posterMeshes[fi].z), sigma:0.032 });
+}
+focusPts.push({ t:tForStop(STOPS-1), p:new THREE.Vector3(0,0.3,zForStop(STOPS-1)-11.7), sigma:0.05 });
+function addProceduralCenterpiece(){
+  var geo=new THREE.TorusKnotGeometry(1.0,0.32,160,24);
+  var mat=new THREE.MeshStandardMaterial({color:0x0e0e11, metalness:0.92, roughness:0.3, emissive:0xF58549, emissiveIntensity:0.08});
+  track(geo); track(mat);
+  centerpiece=new THREE.Mesh(geo,mat);
+  centerpiece.position.copy(atriumCenter);
+  centerpiece.scale.set(1.1,1.1,1.1);
+  scene.add(centerpiece);
+  var cl=new THREE.PointLight(0xF58549,0.6,11,2);
+  cl.position.set(atriumCenter.x+2,atriumCenter.y+2,atriumCenter.z+3);
+  scene.add(cl);
+  // cool rim from the other side so the knot reads as dark metal, not clay
+  var cr=new THREE.PointLight(0x7788bb,0.5,10,2);
+  cr.position.set(atriumCenter.x-2.2,atriumCenter.y+1.4,atriumCenter.z-2);
+  scene.add(cr);
+  // haze shaft above the centerpiece
+  var shaft=addCone(atriumCenter.x,atriumCenter.y+1.9,atriumCenter.z,1.1,2.7);
+  shaft.rotation.x=Math.PI;
+}
+
+var modelLoaded=false;
+var modelTimeout=setTimeout(function(){
+  if(!modelLoaded && !centerpiece){
+    console.warn('[immersive] model load timeout, using procedural centerpiece');
+    addProceduralCenterpiece();
+  }
+},8000);
+
+if(THREE.GLTFLoader){
+  try{
+    var loader=new THREE.GLTFLoader();
+    loader.load(
+      'https://cdn.jsdelivr.net/npm/three@0.128.0/examples/models/gltf/DamagedHelmet/glTF-Binary/DamagedHelmet.glb',
+      function(gltf){
+        if(centerpiece) return;
+        modelLoaded=true; clearTimeout(modelTimeout);
+        var model=gltf.scene;
+        var box=new THREE.Box3().setFromObject(model);
+        var size=box.getSize(new THREE.Vector3());
+        var cen=box.getCenter(new THREE.Vector3());
+        var maxDim=Math.max(size.x,size.y,size.z)||1;
+        var scale=2.4/maxDim;
+        model.scale.setScalar(scale);
+        model.position.sub(cen.multiplyScalar(scale));
+        var pivot=new THREE.Group();
+        pivot.add(model);
+        pivot.position.copy(atriumCenter);
+        scene.add(pivot);
+        centerpiece=pivot;
+        var cl=new THREE.PointLight(0xF58549,0.95,13,2);
+        cl.position.set(atriumCenter.x+2,atriumCenter.y+2.4,atriumCenter.z+3.5); scene.add(cl);
+        var cl2=new THREE.PointLight(0x6688cc,0.4,11,2);
+        cl2.position.set(atriumCenter.x-2.5,atriumCenter.y+1,atriumCenter.z+2); scene.add(cl2);
+        var shaft=addCone(atriumCenter.x,atriumCenter.y+1.9,atriumCenter.z,1.1,2.7);
+        shaft.rotation.x=Math.PI;
+      },
+      undefined,
+      function(err){
+        console.warn('[immersive] model failed to load, using procedural centerpiece', err);
+        clearTimeout(modelTimeout);
+        if(!centerpiece) addProceduralCenterpiece();
+      }
+    );
+  }catch(e){
+    console.warn('[immersive] GLTFLoader error, using procedural centerpiece', e);
+    clearTimeout(modelTimeout);
+    addProceduralCenterpiece();
+  }
+}else{
+  console.warn('[immersive] GLTFLoader missing, using procedural centerpiece');
+  clearTimeout(modelTimeout);
+  addProceduralCenterpiece();
+}
+
+// Reused scratch buffers so updateSpots allocates nothing per frame.
+var _spotIdx=[], _spotUsed=[];
+function updateSpots(camZ){
+  var range=STOP_SPACING*1.6, n=posterMeshes.length, k=spotPool.length, i, j;
+  for(i=0;i<n;i++) _spotUsed[i]=false;
+  // Select the k nearest posters to camZ by repeated partial-min (k is small, 4).
+  var count=0;
+  for(j=0;j<k;j++){
+    var best=-1, bestD=Infinity;
+    for(i=0;i<n;i++){
+      if(_spotUsed[i]) continue;
+      var d=Math.abs(posterMeshes[i].z-camZ);
+      if(d<bestD){ bestD=d; best=i; }
+    }
+    if(best<0) break;
+    _spotUsed[best]=true; _spotIdx[j]=best; count++;
+  }
+  for(j=0;j<k;j++){
+    var sp=spotPool[j];
+    if(j<count){
+      var pm=posterMeshes[_spotIdx[j]], dd=Math.abs(pm.z-camZ);
+      if(dd<range){
+        sp.position.set(pm.side*(CORRIDOR_W/2-0.5),1.9,pm.z+0.5);
+        sp.target.position.set(pm.x,0.2,pm.z);
+        sp.target.updateMatrixWorld();
+        sp.intensity=3.8*Math.max(0,1-dd/range);
+      }else{ sp.intensity=0; }
+    }else{ sp.intensity=0; }
+  }
+}
+
+// Post-processing: bloom makes every ember emissive actually glow. Gamma pass
+// compensates for the composer bypassing renderer.outputEncoding in r128.
+// Falls back to a plain render if any pass script failed to load.
+var composer=null;
+if(!IS_SMALL && THREE.EffectComposer && THREE.RenderPass && THREE.ShaderPass && THREE.UnrealBloomPass && THREE.GammaCorrectionShader){
+  try{
+    composer=new THREE.EffectComposer(renderer);
+    composer.addPass(new THREE.RenderPass(scene,camera));
+    composer.addPass(new THREE.UnrealBloomPass(new THREE.Vector2(window.innerWidth,window.innerHeight),0.42,0.85,0.66));
+    composer.addPass(new THREE.ShaderPass(THREE.GammaCorrectionShader));
+    composer.setPixelRatio(Math.min(window.devicePixelRatio||1,2));
+    composer.setSize(window.innerWidth,window.innerHeight);
+  }catch(e){ console.warn('[immersive] bloom unavailable, plain render', e); composer=null; }
+}
+function renderView(){ if(composer){ composer.render(); } else { renderer.render(scene,camera); } }
+
+var lenis=null;
+gsap.registerPlugin(ScrollTrigger);
+
+// camProxy.u is the parametric curve position the camera targets; camUSmooth is
+// the eased value actually rendered. u is computed from a SINGLE source of truth
+// (the piecewise map below) so there is never a multi-tween write conflict.
+var camProxy={ u: tForStop(0) };
+var camUSmooth=tForStop(0);
+
+// Ordered scroll sections mapped to camera stops 0..STOPS-1.
+// Document order: hero(0), 7 projects(1..7), lab(8), about(9), experience(10), contact(11).
+var sectionEls=[];
+(function(){
+  var hero=document.getElementById('hero');
+  if(hero) sectionEls.push(hero);
+  for(var r=0;r<7;r++){
+    var s=document.querySelector('.section[data-room="'+r+'"]');
+    if(s) sectionEls.push(s);
+  }
+  ['lab','about','experience','contact'].forEach(function(id){
+    var s=document.getElementById(id);
+    if(s) sectionEls.push(s);
+  });
+})();
+
+// Cache each section's CENTER scroll offset (scrollTop that centers it in the
+// viewport) and its target stop-t. Rebuilt on refresh so heights/URL-bar changes
+// stay correct. computeCamU maps current scrollTop -> u by piecewise-linear
+// interpolation between consecutive section centers, so "section N centered"
+// always lands "camera at stop N" regardless of unequal section heights.
+var secCenters=[]; // {y, u}
+function rebuildSectionMap(){
+  secCenters.length=0;
+  var vh=window.innerHeight;
+  for(var i=0;i<sectionEls.length;i++){
+    var el=sectionEls[i];
+    var top=el.getBoundingClientRect().top+(window.pageYOffset||document.documentElement.scrollTop||0);
+    var center=top+(el.offsetHeight-vh)/2;
+    if(center<0) center=0;
+    secCenters.push({ y:center, u:tForStop(i) });
+  }
+  // ensure monotonic increasing y
+  for(var j=1;j<secCenters.length;j++){
+    if(secCenters[j].y<=secCenters[j-1].y) secCenters[j].y=secCenters[j-1].y+1;
+  }
+}
+function computeCamU(){
+  if(secCenters.length===0) return tForStop(0);
+  var y=window.pageYOffset||document.documentElement.scrollTop||0;
+  if(y<=secCenters[0].y) return secCenters[0].u;
+  var last=secCenters.length-1;
+  if(y>=secCenters[last].y){
+    // past the final section center: ease from its stop toward the tail (u=1)
+    var docMax=(document.documentElement.scrollHeight-window.innerHeight);
+    var extra=docMax>secCenters[last].y ? (y-secCenters[last].y)/(docMax-secCenters[last].y) : 0;
+    return secCenters[last].u+(1-secCenters[last].u)*Math.min(1,Math.max(0,extra));
+  }
+  for(var i=0;i<last;i++){
+    var a=secCenters[i], b=secCenters[i+1];
+    if(y>=a.y && y<=b.y){
+      var f=(y-a.y)/(b.y-a.y);
+      // smoothstep inside each segment: camera velocity eases to zero at every
+      // section center (a dwell at each room) instead of kinking through it
+      f=f*f*(3-2*f);
+      return a.u+(b.u-a.u)*f;
+    }
+  }
+  return secCenters[last].u;
+}
+
+if(!REDUCED && typeof Lenis!=='undefined'){
+  lenis=new Lenis({ lerp:0.09, smoothWheel:true });
+  lenis.on('scroll', function(){ ScrollTrigger.update(); camProxy.u=computeCamU(); });
+  gsap.ticker.add(function(t){ lenis.raf(t*1000); });
+  gsap.ticker.lagSmoothing(0);
+}else if(!REDUCED){
+  window.addEventListener('scroll', function(){ camProxy.u=computeCamU(); }, {passive:true});
+}else{
+  window.addEventListener('scroll', function(){ camProxy.u=computeCamU(); }, {passive:true});
+}
+rebuildSectionMap();
+camProxy.u=computeCamU();
+camUSmooth=camProxy.u;
+ScrollTrigger.addEventListener('refresh', rebuildSectionMap);
+
+function scrollToId(id){
+  var el=document.getElementById(id); if(!el) return;
+  var off=(el.offsetHeight-window.innerHeight)/2;
+  if(off<0) off=0;
+  if(lenis){ lenis.scrollTo(el,{offset:off,duration:1.6}); }
+  else{
+    var y=el.getBoundingClientRect().top+(window.pageYOffset||0)+off;
+    window.scrollTo({top:y,behavior:REDUCED?'auto':'smooth'});
+  }
+}
+document.querySelectorAll('[data-nav]').forEach(function(a){
+  a.addEventListener('click', function(e){ e.preventDefault(); scrollToId(a.getAttribute('data-nav')); });
+});
+
+function setupReveals(){
+  document.querySelectorAll('.section:not(.hero)').forEach(function(sec){
+    var items=sec.querySelectorAll('.reveal');
+    ScrollTrigger.create({ trigger:sec, start:'top 78%', onEnter:function(){ items.forEach(function(el){ el.classList.add('in'); }); } });
+  });
+  var aboutSec=document.getElementById('about');
+  if(aboutSec){ ScrollTrigger.create({ trigger:aboutSec, start:'top 70%', onEnter:function(){ runCounters(false); } }); }
+}
+setupReveals();
+
+function onResize(){
+  var w=window.innerWidth, h=window.innerHeight;
+  camera.aspect=w/h; camera.updateProjectionMatrix();
+  renderer.setSize(w,h);
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio||1, IS_SMALL?1.5:2));
+  if(composer){
+    composer.setPixelRatio(Math.min(window.devicePixelRatio||1,2));
+    composer.setSize(w,h);
+  }
+  ScrollTrigger.refresh();
+}
+var resizeTO=null;
+window.addEventListener('resize', function(){
+  clearTimeout(resizeTO);
+  resizeTO=setTimeout(onResize,120);
+});
+
+var paused=false, running=true, contextLost=false;
+document.addEventListener('visibilitychange', function(){
+  paused=document.hidden;
+  if(!paused) clock.getDelta();
+});
+canvas.addEventListener('webglcontextlost', function(e){
+  e.preventDefault(); running=false; contextLost=true;
+  console.warn('[immersive] WebGL context lost, rendering halted');
+});
+canvas.addEventListener('webglcontextrestored', function(){
+  contextLost=false; running=true; clock.getDelta();
+  console.warn('[immersive] WebGL context restored');
+});
+
+var _v1=new THREE.Vector3(), _v2=new THREE.Vector3(), _tan=new THREE.Vector3(), _focus=new THREE.Vector3();
+var swayT=0, mouseLookX=0, mouseLookY=0;
+
+// Shared view solver: position along the curve, gaze blended toward the
+// strongest nearby focus point. Used by both the live loop and dev snapshots.
+function computeView(u){
+  curve.getPoint(u,_v1);
+  curve.getTangent(u,_tan);
+  if(_tan.lengthSq()<1e-8) _tan.set(0,0,-1);
+  _v2.copy(_v1).add(_tan);
+  // Blend ALL nearby focus points by Gaussian weight (no winner-take-all, no
+  // cutoff): the gaze hands over continuously from one room to the next
+  // instead of snapping at the crossover.
+  var totW=0; _focus.set(0,0,0);
+  for(var i=0;i<focusPts.length;i++){
+    var f=focusPts[i], d=(u-f.t)/f.sigma, w=Math.exp(-d*d);
+    totW+=w;
+    _focus.x+=f.p.x*w; _focus.y+=f.p.y*w; _focus.z+=f.p.z*w;
+  }
+  if(totW>0.001){
+    _focus.multiplyScalar(1/totW);
+    // pull strength follows the DOMINANT focus, not the sum: at a stop the
+    // gaze locks on (w~1), at the crossover between two rooms it releases to
+    // the corridor instead of staring at the blended midpoint wall
+    var maxW=0;
+    for(var j=0;j<focusPts.length;j++){
+      var fd=(u-focusPts[j].t)/focusPts[j].sigma, fw=Math.exp(-fd*fd);
+      if(fw>maxW) maxW=fw;
+    }
+    _v2.lerp(_focus,Math.min(0.85,maxW));
+  }
+}
+
+function frame(){
+  if(paused || !running || contextLost) return;
+  var dt=clock.getDelta();
+
+  // Ease camU toward the scroll-driven proxy. Under REDUCED, snap (no smoothing).
+  if(REDUCED){ camUSmooth=camProxy.u; }
+  else{ camUSmooth += (camProxy.u-camUSmooth)*0.085; swayT+=dt; }
+  var u=Math.min(1,Math.max(0,camUSmooth));
+
+  computeView(u);
+
+  var swayX=0, swayY=0;
+  if(!REDUCED){
+    swayX=Math.sin(swayT*0.5)*0.06;
+    swayY=Math.cos(swayT*0.4)*0.045;
+    mouseLookX += (mouseX*0.5-mouseLookX)*0.05;
+    mouseLookY += (mouseY*0.3-mouseLookY)*0.05;
+  }
+
+  camera.position.set(_v1.x+swayX+mouseLookX*0.6, _v1.y+swayY-mouseLookY*0.4, _v1.z);
+  _v2.x += mouseLookX*0.6;
+  _v2.y += -mouseLookY*0.4+swayY;
+  camera.lookAt(_v2);
+
+  keyLight.position.set(camera.position.x+1.2, camera.position.y+1.6, camera.position.z-2.5);
+  fillLight.position.set(camera.position.x-1.5, camera.position.y+0.5, camera.position.z+3);
+
+  updateSpots(camera.position.z);
+  updatePools(camera.position.z);
+
+  if(centerpiece && !REDUCED){
+    centerpiece.rotation.y += dt*0.35;
+    centerpiece.rotation.x = Math.sin(swayT*0.3)*0.12;
+    centerpiece.position.y = atriumCenter.y + Math.sin(swayT*0.6)*0.12;
+  }
+
+  if(!REDUCED){
+    emberGlowMat.emissiveIntensity = 1.05 + Math.sin(swayT*3.2)*0.1 + Math.sin(swayT*7.7)*0.04;
+    dust.rotation.z += dt*0.004;
+    dust.position.y = Math.sin(swayT*0.22)*0.18;
+  }
+
+  renderView();
+}
+
+if(REDUCED){
+  // Reduced motion: no continuous loop. Render once, then only on scroll.
+  var _rmScheduled=false;
+  function renderOnceRM(){
+    if(_rmScheduled) return;
+    _rmScheduled=true;
+    requestAnimationFrame(function(){ _rmScheduled=false; if(!paused&&running&&!contextLost) frame(); });
+  }
+  ScrollTrigger.addEventListener('refresh', renderOnceRM);
+  window.addEventListener('scroll', renderOnceRM, {passive:true});
+  frame();
+}else if(lenis){
+  gsap.ticker.add(frame);
+}else{
+  (function raf(){ if(!paused&&running&&!contextLost) frame(); requestAnimationFrame(raf); })();
+}
+
+function repaintPostersWithFonts(){
+  buildPosters();
+  posterMeshes.forEach(function(pm,i){
+    if(pm.mesh && pm.mesh.material && pm.mesh.material.map){
+      pm.mesh.material.map.image=posterCanvases[i];
+      pm.mesh.material.map.needsUpdate=true;
+      if(pm.mesh.material.emissiveMap){
+        pm.mesh.material.emissiveMap.image=posterCanvases[i];
+        pm.mesh.material.emissiveMap.needsUpdate=true;
+      }
+    }
+  });
+}
+
+if(document.fonts && document.fonts.ready){
+  document.fonts.ready.then(function(){
+    repaintPostersWithFonts();
+    setPreTarget(100);
+    finishPreloader();
+  });
+  setTimeout(function(){ setPreTarget(100); finishPreloader(); },3000);
+}else{
+  setPreTarget(100);
+  setTimeout(finishPreloader,700);
+}
+
+renderView();
+
+window.addEventListener('pagehide', function(){
+  try{
+    running=false;
+    if(lenis){ gsap.ticker.remove(frame); if(lenis.destroy) lenis.destroy(); }
+    // Traverse the live scene graph (catches loaded model + lights)...
+    scene.traverse(function(o){
+      if(o.geometry && o.geometry.dispose) o.geometry.dispose();
+      if(o.material){
+        if(Array.isArray(o.material)) o.material.forEach(function(m){ if(m.dispose) m.dispose(); });
+        else if(o.material.dispose) o.material.dispose();
+      }
+    });
+    // ...plus the tracked pool (shared/pooled/swapped-out objects a traversal misses).
+    for(var i=0;i<disposables.length;i++){ var d=disposables[i]; if(d && d.dispose) d.dispose(); }
+    renderer.dispose();
+  }catch(e){}
+});
+
+// Dev hook: position the camera at parametric u along the path, render one frame,
+// and POST a downscaled JPEG to the local dev server. Inert in production; only
+// runs when called explicitly (from the console or automation).
+window.__IMM = {
+  snap: function(u, name){
+    var t = Math.min(1, Math.max(0, u));
+    computeView(t);
+    camera.position.set(_v1.x, _v1.y, _v1.z);
+    camera.lookAt(_v2);
+    updateSpots(camera.position.z);
+    updatePools(camera.position.z);
+    renderView();
+    var src = renderer.domElement;
+    var c = document.createElement('canvas');
+    var W = 1100, H = Math.round(W * src.height / src.width);
+    c.width = W; c.height = H;
+    c.getContext('2d').drawImage(src, 0, 0, W, H);
+    return new Promise(function(res){
+      c.toBlob(function(b){
+        fetch('/shot?name=' + encodeURIComponent(name || ('u' + Math.round(t * 1000))), { method:'POST', body:b })
+          .then(function(){ res('saved'); }, function(e){ res('post-failed: ' + e); });
+      }, 'image/jpeg', 0.78);
+    });
+  },
+  state: function(){
+    return { u: camProxy.u, centerpiece: !!centerpiece, modelLoaded: modelLoaded, errs: window.__ERRS };
+  },
+  // Identify what the camera actually sees at parametric u and NDC (nx,ny):
+  // returns the first solid mesh hit (haze cones skipped) with its material name.
+  probe: function(u, nx, ny){
+    computeView(Math.min(1,Math.max(0,u)));
+    camera.position.set(_v1.x,_v1.y,_v1.z);
+    camera.lookAt(_v2);
+    camera.updateMatrixWorld();
+    var rc=new THREE.Raycaster();
+    rc.setFromCamera(new THREE.Vector2(nx||0,ny||0), camera);
+    var hits=rc.intersectObjects(scene.children,true);
+    var mats={wallMat:wallMat,wallMatDark:wallMatDark,floorMat:floorMat,ceilMat:ceilMat,frameMat:frameMat,sconceMat:sconceMat,emberMat:emberMat,emberGlowMat:emberGlowMat,ringMat:ringMat,haloMat:haloMat,floorStripMat:floorStripMat};
+    for(var i=0;i<hits.length;i++){
+      var o=hits[i].object;
+      if(o.material===coneMat || o.type==='Points') continue;
+      var name='other';
+      for(var k in mats){ if(o.material===mats[k]) name=k; }
+      var r=function(v){ return Math.round(v*10)/10; };
+      return JSON.stringify({ mat:name, hit:hits[i].point.toArray().map(r), objPos:o.object===undefined?null:o.position.toArray().map(r), scale:o.scale.toArray().map(r) });
+    }
+    return 'no solid hit';
+  }
+};
+
+// Dev auto-snap: /immersive.html?snap=0.1,0.5,0.9 posts a JPEG per u to the local
+// dev server, plus a final state report. Inert without the query param.
+(function(){
+  // ?scrollto=N smooth-scrolls to section N after load (dev/demo aid)
+  var sm = location.search.match(/[?&]scrollto=(\d+)/);
+  if(sm){
+    setTimeout(function(){
+      rebuildSectionMap();
+      var idx = Math.min(sectionEls.length - 1, parseInt(sm[1], 10) || 0);
+      var y = secCenters[idx] ? secCenters[idx].y : 0;
+      if(lenis){ lenis.scrollTo(y, { duration:2.4 }); } else { window.scrollTo(0, y); }
+    }, 1600);
+  }
+  // ?nocones=1 hides the haze cones (dev A/B test)
+  if(/[?&]nocones/.test(location.search)){ coneMat.visible=false; }
+  // ?hide=matName,matName hides materials by name (dev bisection)
+  var hm = location.search.match(/[?&]hide=([a-zA-Z,]+)/);
+  if(hm){
+    var HMATS={wallMat:wallMat,wallMatDark:wallMatDark,floorMat:floorMat,ceilMat:ceilMat,frameMat:frameMat,sconceMat:sconceMat,emberMat:emberMat,emberGlowMat:emberGlowMat,ringMat:ringMat,haloMat:haloMat,floorStripMat:floorStripMat,coneMat:coneMat,dustMat:dustMat};
+    hm[1].split(',').forEach(function(n){ if(HMATS[n]) HMATS[n].visible=false; });
+  }
+  // ?probe=U raycasts left/center/right at that camera position and posts what it sees
+  var pm = location.search.match(/[?&]probe=([\d.]+)/);
+  if(pm){
+    var pu = parseFloat(pm[1]);
+    setTimeout(function(){
+      var out = [-0.45, 0, 0.45].map(function(nx){ return window.__IMM.probe(pu, nx, 0); });
+      fetch('/shot?name=zz-probe', { method:'POST', body:'[' + out.join(',') + ']' });
+    }, 2500);
+  }
+  var m = location.search.match(/[?&]snap=([^&]+)/);
+  if(!m) return;
+  var us = m[1].split(',').map(parseFloat).filter(function(x){ return !isNaN(x); });
+  if(!us.length) return;
+  var t0 = Date.now();
+  (function waitReady(){
+    if(centerpiece || Date.now() - t0 > 9500){
+      var i = 0;
+      (function next(){
+        if(i >= us.length){
+          fetch('/shot?name=zz-state', { method:'POST',
+            body: JSON.stringify(window.__IMM.state()) });
+          return;
+        }
+        var u = us[i++];
+        window.__IMM.snap(u, 'snap-' + ('00' + Math.round(u * 100)).slice(-3)).then(function(){ setTimeout(next, 150); });
+      })();
+    } else { setTimeout(waitReady, 300); }
+  })();
+})();
+
+})();
+</script>
+</body>
+</html>

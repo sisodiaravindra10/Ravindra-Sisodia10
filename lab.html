@@ -1,0 +1,1580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hero Lab · 12 ideas · Ravindra Sisodia</title>
+  <meta name="description" content="Twelve interactive hero concepts. Try each, pick a winner.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+
+  <style>
+    body { font-feature-settings: "ss01", "cv11", "tnum"; }
+
+    /* ----- lab shell ----- */
+    .lab-head {
+      padding: clamp(40px, 6vw, 80px) var(--gutter) clamp(24px, 3vw, 40px);
+      max-width: var(--max);
+      margin: 0 auto;
+      border-bottom: 1px solid var(--ink);
+    }
+    .lab-head .lab-eye {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 16px;
+      display: flex;
+      gap: 14px;
+      align-items: center;
+    }
+    .lab-head .lab-eye::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: var(--ink);
+    }
+    .lab-head h1 {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: clamp(48px, 7vw, 112px);
+      line-height: 0.92;
+      letter-spacing: -0.045em;
+      color: var(--ink);
+      margin: 0 0 14px;
+    }
+    .lab-head h1 em { color: var(--orange); font-style: normal; }
+    .lab-head p {
+      font-size: clamp(16px, 1.2vw, 20px);
+      color: var(--ink-2);
+      max-width: 60ch;
+      line-height: 1.45;
+    }
+    .lab-head .lab-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--ink-2);
+      margin-bottom: 12px;
+    }
+    .lab-head .lab-back:hover { color: var(--orange); }
+
+    .lab-grid {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: clamp(24px, 3vw, 48px) var(--gutter) clamp(40px, 6vw, 100px);
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: clamp(20px, 2.4vw, 40px);
+    }
+    @media (max-width: 880px) { .lab-grid { grid-template-columns: 1fr; } }
+
+    .demo {
+      border: 1px solid var(--ink);
+      background: var(--paper);
+      display: flex;
+      flex-direction: column;
+      min-height: 420px;
+      overflow: hidden;
+    }
+    .demo-head {
+      padding: 16px 20px 14px;
+      border-bottom: 1px solid var(--line);
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      gap: 12px;
+      align-items: baseline;
+    }
+    .demo-num {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      color: var(--orange);
+    }
+    .demo-title {
+      font-family: var(--font-display);
+      font-size: clamp(17px, 1.3vw, 22px);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+    }
+    .demo-tag {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .demo-desc {
+      padding: 0 20px 14px;
+      font-size: 13px;
+      line-height: 1.45;
+      color: var(--ink-2);
+    }
+    .demo-stage {
+      flex: 1;
+      position: relative;
+      border-top: 1px solid var(--line);
+      background: var(--paper-2);
+      overflow: hidden;
+    }
+
+    /* ===== D1 · MCP terminal builds the hero ===== */
+    .d1-stage { display: grid; grid-template-columns: 1fr 1fr; gap: 0; height: 100%; min-height: 320px; }
+    .d1-term {
+      background: oklch(0.13 0.005 60);
+      color: oklch(0.92 0.014 75);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      line-height: 1.7;
+      padding: 16px;
+      overflow: hidden;
+      border-right: 1px solid var(--ink);
+    }
+    .d1-term .line { display: block; white-space: pre; }
+    .d1-term .prompt { color: var(--orange); }
+    .d1-term .ok { color: oklch(0.78 0.16 145); }
+    .d1-term .cursor::after {
+      content: "▌";
+      animation: blink 0.9s step-end infinite;
+      color: var(--orange);
+    }
+    @keyframes blink { 50% { opacity: 0; } }
+    .d1-preview {
+      position: relative;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      background: var(--paper);
+      overflow: hidden;
+    }
+    .d1-preview .d1-img {
+      width: 80px;
+      height: 110px;
+      background: var(--paper-3);
+      border: 1px solid var(--ink);
+      opacity: 0;
+      transition: opacity 0.5s var(--ease-quart);
+      background-image: url('profile-cutout.png');
+      background-size: cover;
+      background-position: top center;
+    }
+    .d1-preview .d1-name {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: 38px;
+      line-height: 0.9;
+      letter-spacing: -0.04em;
+      color: var(--ink);
+      opacity: 0;
+      transform: translateY(6px);
+      transition: opacity 0.5s var(--ease-quart), transform 0.6s var(--ease-quart);
+    }
+    .d1-preview .d1-accent {
+      color: var(--ink);
+      transition: color 0.4s var(--ease-quart);
+    }
+    .d1-preview .d1-marq {
+      margin-top: 6px;
+      padding: 6px 10px;
+      background: var(--ink);
+      color: var(--paper);
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      opacity: 0;
+      transform: rotate(0deg);
+      transition: opacity 0.5s var(--ease-quart), transform 0.7s var(--ease-quart);
+    }
+    .d1-on .d1-img { opacity: 1; }
+    .d1-on-2 .d1-name { opacity: 1; transform: translateY(0); }
+    .d1-on-3 .d1-accent { color: var(--orange); }
+    .d1-on-4 .d1-marq { opacity: 1; transform: rotate(-6deg); }
+
+    /* ===== D2 · token retuner ===== */
+    .d2-stage { display: grid; grid-template-rows: auto 1fr; height: 100%; }
+    .d2-controls {
+      padding: 14px 20px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      border-bottom: 1px solid var(--line);
+      background: var(--paper);
+    }
+    .d2-ctl { display: flex; flex-direction: column; gap: 6px; }
+    .d2-ctl-label {
+      font-family: var(--font-mono);
+      font-size: 9px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      display: flex;
+      justify-content: space-between;
+    }
+    .d2-ctl-val { color: var(--ink); font-weight: 600; }
+    .d2-ctl input {
+      width: 100%;
+      -webkit-appearance: none;
+      appearance: none;
+      height: 4px;
+      background: var(--line);
+      border-radius: 2px;
+      outline: none;
+    }
+    .d2-ctl input::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 14px; height: 14px;
+      background: var(--orange);
+      border-radius: 50%;
+      cursor: pointer;
+    }
+    .d2-ctl input::-moz-range-thumb {
+      width: 14px; height: 14px;
+      background: var(--orange);
+      border-radius: 50%;
+      border: none;
+      cursor: pointer;
+    }
+    .d2-preview {
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: var(--d2-gap, 12px);
+      background: var(--d2-paper, var(--paper-2));
+      transition: background 0.3s ease, gap 0.3s ease;
+    }
+    .d2-eye {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--d2-accent, var(--orange));
+    }
+    .d2-name {
+      font-family: var(--font-display);
+      font-weight: var(--d2-weight, 700);
+      font-size: clamp(40px, 5vw, 80px);
+      letter-spacing: -0.04em;
+      line-height: 0.9;
+      color: var(--ink);
+      transition: font-weight 0.05s linear;
+    }
+    .d2-name span { color: var(--d2-accent, var(--orange)); }
+    .d2-line {
+      font-size: 14px;
+      color: var(--ink-2);
+    }
+
+    /* ===== D3 · drop-to-prototype ===== */
+    .d3-stage { display: grid; grid-template-columns: 1.2fr 1fr; height: 100%; min-height: 320px; }
+    .d3-canvas {
+      position: relative;
+      background:
+        linear-gradient(var(--line) 1px, transparent 1px) center / 16px 16px,
+        linear-gradient(90deg, var(--line) 1px, transparent 1px) center / 16px 16px,
+        var(--paper-2);
+      cursor: crosshair;
+      overflow: hidden;
+    }
+    .d3-canvas .d3-box {
+      position: absolute;
+      background: var(--orange);
+      border: 1px solid var(--ink);
+    }
+    .d3-canvas .d3-draft {
+      position: absolute;
+      background: oklch(0.68 0.197 42 / 0.4);
+      border: 1px dashed var(--ink);
+    }
+    .d3-canvas-hint {
+      position: absolute;
+      bottom: 12px;
+      left: 12px;
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      pointer-events: none;
+    }
+    .d3-code {
+      background: oklch(0.13 0.005 60);
+      color: oklch(0.92 0.014 75);
+      padding: 16px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      line-height: 1.55;
+      border-left: 1px solid var(--ink);
+      margin: 0;
+      white-space: pre-wrap;
+      overflow-y: auto;
+    }
+    .d3-code .k { color: oklch(0.78 0.16 145); }
+    .d3-code .s { color: var(--orange); }
+    .d3-code .c { color: oklch(0.6 0.01 75); }
+    .d3-reset {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      padding: 5px 10px;
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      background: var(--paper);
+      color: var(--ink);
+      border: 1px solid var(--ink);
+      cursor: pointer;
+    }
+    .d3-reset:hover { background: var(--orange); color: var(--paper); }
+
+    /* ===== D4 · spotlight ===== */
+    .d4-stage {
+      background: oklch(0.12 0.008 60);
+      color: var(--paper);
+      cursor: none;
+      position: relative;
+      min-height: 360px;
+    }
+    .d4-mask {
+      position: absolute; inset: 0;
+      background: oklch(0.10 0.008 60);
+      -webkit-mask-image: radial-gradient(circle 180px at var(--d4-x, 50%) var(--d4-y, 50%), transparent 30%, black 80%);
+      mask-image: radial-gradient(circle 180px at var(--d4-x, 50%) var(--d4-y, 50%), transparent 30%, black 80%);
+      pointer-events: none;
+    }
+    .d4-content {
+      position: absolute; inset: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 40px;
+      gap: 12px;
+    }
+    .d4-eye {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--orange);
+    }
+    .d4-name {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: clamp(40px, 5vw, 80px);
+      letter-spacing: -0.04em;
+      line-height: 0.9;
+      color: var(--paper);
+    }
+    .d4-name span { color: var(--orange); }
+    .d4-line {
+      font-size: 14px;
+      color: oklch(0.85 0.014 75 / 0.8);
+      max-width: 32ch;
+    }
+    .d4-cursor {
+      position: absolute;
+      width: 12px; height: 12px;
+      border-radius: 50%;
+      background: var(--orange);
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+      mix-blend-mode: difference;
+      z-index: 2;
+    }
+    .d4-hint {
+      position: absolute;
+      bottom: 14px;
+      right: 18px;
+      font-family: var(--font-mono);
+      font-size: 9px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: oklch(0.85 0.014 75 / 0.5);
+      pointer-events: none;
+    }
+
+    /* ===== D5 · magnetic name ===== */
+    .d5-stage {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px;
+      min-height: 320px;
+    }
+    .d5-name {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: clamp(56px, 8vw, 120px);
+      line-height: 0.92;
+      letter-spacing: -0.04em;
+      color: var(--ink);
+      margin: 0;
+      text-align: center;
+    }
+    .d5-name span {
+      display: inline-block;
+      transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), color 0.3s ease;
+      will-change: transform;
+    }
+    .d5-name span.near { color: var(--orange); }
+    .d5-hint {
+      position: absolute;
+      bottom: 14px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    /* ===== D6 · 3D depth photo ===== */
+    .d6-stage {
+      perspective: 1200px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      padding-bottom: 0;
+      min-height: 360px;
+      background: linear-gradient(180deg, var(--paper-2), var(--paper-3));
+      overflow: hidden;
+    }
+    .d6-scene {
+      position: relative;
+      width: 80%;
+      max-width: 240px;
+      height: 320px;
+      transform-style: preserve-3d;
+      transition: transform 0.2s ease-out;
+    }
+    .d6-layer {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+    }
+    .d6-layer img {
+      max-height: 100%;
+      object-fit: contain;
+      object-position: bottom;
+    }
+    .d6-bg {
+      transform: translateZ(-60px) scale(1.05);
+      filter: blur(8px) opacity(0.5);
+    }
+    .d6-fg {
+      transform: translateZ(40px);
+    }
+    .d6-shadow {
+      position: absolute;
+      bottom: 10px;
+      left: 50%;
+      width: 60%;
+      height: 18px;
+      background: radial-gradient(ellipse at center, oklch(0 0 0 / 0.3) 0%, transparent 70%);
+      transform: translateX(-50%);
+    }
+    .d6-hint {
+      position: absolute;
+      bottom: 12px;
+      left: 14px;
+      font-family: var(--font-mono);
+      font-size: 9px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    /* ===== D7 · cutout waves + tracks ===== */
+    .d7-stage {
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      min-height: 360px;
+      background: linear-gradient(180deg, var(--paper-2), var(--paper-3));
+      position: relative;
+      overflow: hidden;
+    }
+    .d7-img {
+      max-height: 320px;
+      object-fit: contain;
+      object-position: bottom;
+      transform-origin: 50% 90%;
+      transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+    .d7-stage.waving .d7-img {
+      animation: d7-wave 1.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    }
+    @keyframes d7-wave {
+      0%   { transform: rotate(0); }
+      20%  { transform: rotate(-3deg); }
+      45%  { transform: rotate(2deg); }
+      70%  { transform: rotate(-1deg); }
+      100% { transform: rotate(0); }
+    }
+    .d7-bubble {
+      position: absolute;
+      top: 30px;
+      right: 30px;
+      padding: 6px 12px;
+      background: var(--orange);
+      color: var(--paper);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.04em;
+      font-weight: 600;
+      transform: rotate(-6deg);
+      opacity: 0;
+      transition: opacity 0.4s var(--ease-quart);
+    }
+    .d7-stage.waving .d7-bubble { opacity: 1; }
+    .d7-bubble::before {
+      content: "";
+      position: absolute;
+      bottom: -6px;
+      left: 16px;
+      border: 6px solid transparent;
+      border-top-color: var(--orange);
+    }
+
+    /* ===== D8 · variable weight scroll ===== */
+    .d8-stage {
+      display: grid;
+      grid-template-rows: 1fr auto;
+      min-height: 360px;
+    }
+    .d8-target {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      background: var(--paper);
+      position: relative;
+    }
+    .d8-name {
+      font-family: var(--font-display);
+      font-weight: var(--d8-w, 200);
+      font-size: clamp(56px, 8vw, 120px);
+      letter-spacing: -0.045em;
+      line-height: 0.9;
+      color: var(--ink);
+      transition: font-weight 0.05s linear;
+      text-align: center;
+    }
+    .d8-name span { color: var(--orange); }
+    .d8-scroller {
+      height: 140px;
+      overflow-y: scroll;
+      border-top: 1px solid var(--line);
+      background: var(--paper-2);
+      padding: 16px 20px;
+    }
+    .d8-scroller::-webkit-scrollbar { width: 8px; }
+    .d8-scroller::-webkit-scrollbar-thumb { background: var(--orange); }
+    .d8-scroller-inner {
+      height: 800px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+    .d8-scroller-inner div { padding: 4px 0; border-bottom: 1px dotted var(--line); }
+    .d8-meter {
+      position: absolute;
+      bottom: 12px;
+      right: 14px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--orange);
+      font-weight: 700;
+      letter-spacing: 0.1em;
+    }
+
+    /* ===== D9 · konami terminal ===== */
+    .d9-stage {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 32px;
+      min-height: 360px;
+      background: var(--paper-2);
+      position: relative;
+      transition: background 0.4s ease;
+    }
+    .d9-stage.unlocked {
+      background: oklch(0.13 0.005 60);
+      color: oklch(0.85 0.16 145);
+    }
+    .d9-normal {
+      text-align: center;
+      transition: opacity 0.3s ease;
+    }
+    .d9-normal h3 {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 32px;
+      letter-spacing: -0.03em;
+      color: var(--ink);
+      margin: 0 0 8px;
+    }
+    .d9-hint {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      color: var(--muted);
+    }
+    .d9-hint kbd {
+      display: inline-block;
+      padding: 2px 6px;
+      background: var(--paper);
+      border: 1px solid var(--ink);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      margin: 0 1px;
+      color: var(--ink);
+    }
+    .d9-term {
+      display: none;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      line-height: 1.7;
+      color: oklch(0.85 0.16 145);
+      width: 100%;
+    }
+    .d9-stage.unlocked .d9-normal { display: none; }
+    .d9-stage.unlocked .d9-term { display: block; }
+    .d9-term .ok { color: oklch(0.85 0.16 145); }
+    .d9-term .accent { color: var(--orange); }
+    .d9-term .muted { color: oklch(0.6 0.014 75); }
+    .d9-progress {
+      position: absolute;
+      bottom: 12px;
+      left: 14px;
+      display: flex;
+      gap: 4px;
+    }
+    .d9-progress span {
+      width: 18px;
+      height: 4px;
+      background: var(--line);
+    }
+    .d9-progress span.on { background: var(--orange); }
+
+    /* ===== D10 · webcam ===== */
+    .d10-stage {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 16px;
+      padding: 24px;
+      min-height: 360px;
+      background: var(--paper-2);
+    }
+    .d10-frame {
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      overflow: hidden;
+      background: var(--paper-3);
+      border: 2px solid var(--ink);
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .d10-frame video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform: scaleX(-1);
+    }
+    .d10-frame .d10-placeholder {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--paper-3);
+      color: var(--muted);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+    .d10-btn {
+      padding: 9px 16px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      background: var(--ink);
+      color: var(--paper);
+      border: 1px solid var(--ink);
+      cursor: pointer;
+    }
+    .d10-btn:hover { background: var(--orange); border-color: var(--orange); }
+    .d10-cap {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-align: center;
+      max-width: 32ch;
+    }
+    .d10-frame.on .d10-placeholder { display: none; }
+
+    /* ===== D11 · voice intro ===== */
+    .d11-stage {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 20px;
+      padding: 24px;
+      min-height: 360px;
+      background: var(--paper-2);
+    }
+    .d11-btn {
+      width: 96px; height: 96px;
+      border-radius: 50%;
+      background: var(--orange);
+      color: var(--paper);
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      transition: transform 0.3s var(--ease-quart);
+    }
+    .d11-btn:hover { transform: scale(1.05); }
+    .d11-btn.on { background: var(--ink); }
+    .d11-wave {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      height: 56px;
+    }
+    .d11-wave span {
+      display: inline-block;
+      width: 4px;
+      background: var(--ink);
+      border-radius: 2px;
+      height: 8px;
+      transition: height 0.1s linear;
+    }
+    .d11-meta {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-align: center;
+    }
+    .d11-meta strong { color: var(--ink); font-weight: 700; }
+
+    /* ===== D12 · generative each visit ===== */
+    .d12-stage {
+      display: grid;
+      grid-template-rows: 1fr auto;
+      min-height: 360px;
+    }
+    .d12-canvas {
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 12px;
+      transition: background 0.5s ease;
+      background: var(--d12-bg, var(--paper-2));
+    }
+    .d12-eye {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--d12-accent, var(--orange));
+      font-weight: 700;
+    }
+    .d12-name {
+      font-family: var(--font-display);
+      font-weight: var(--d12-weight, 900);
+      font-size: clamp(40px, 5vw, 84px);
+      letter-spacing: var(--d12-track, -0.04em);
+      line-height: 0.88;
+      color: var(--ink);
+      font-style: var(--d12-style, normal);
+      transition: font-weight 0.5s ease, letter-spacing 0.5s ease;
+    }
+    .d12-name .dot { color: var(--d12-accent, var(--orange)); }
+    .d12-roles {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+    .d12-role {
+      padding: 4px 10px;
+      border: 1px solid var(--ink);
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink);
+    }
+    .d12-foot {
+      padding: 12px 20px;
+      border-top: 1px solid var(--line);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--paper);
+    }
+    .d12-variant {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      color: var(--muted);
+    }
+    .d12-variant strong { color: var(--ink); font-weight: 700; }
+    .d12-refresh {
+      padding: 7px 14px;
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      background: var(--ink);
+      color: var(--paper);
+      border: none;
+      cursor: pointer;
+    }
+    .d12-refresh:hover { background: var(--orange); }
+  </style>
+</head>
+<body>
+
+  <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme" title="Toggle theme (T)">
+    <span class="icon" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="currentColor">
+        <circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.5"/>
+        <path d="M12 3 A9 9 0 0 1 12 21 Z"/>
+      </svg>
+    </span>
+    <span class="lbl-dark">Dark</span>
+    <span class="lbl-light">Light</span>
+  </button>
+
+  <header class="lab-head">
+    <a href="index.html" class="lab-back">← Back to portfolio</a>
+    <div class="lab-eye"><span>Hero Lab</span><span>Twelve concepts · live</span></div>
+    <h1>Pick the <em>hero</em>.</h1>
+    <p>Twelve interactive hero concepts running side by side. Try each one. Tell Ravindra which to ship in the real portfolio — just say the number, or stack three.</p>
+  </header>
+
+  <main class="lab-grid">
+
+    <!-- D1 -->
+    <article class="demo" id="d1">
+      <header class="demo-head">
+        <span class="demo-num">01</span>
+        <span class="demo-title">MCP terminal builds the hero</span>
+        <span class="demo-tag">Auto · loops</span>
+      </header>
+      <p class="demo-desc">A Claude-Code-style terminal types commands at code speed. Each line executes and assembles the hero on the right. Watches design happen.</p>
+      <div class="demo-stage d1-stage" id="d1-stage">
+        <div class="d1-term" id="d1-term"></div>
+        <div class="d1-preview" id="d1-preview">
+          <div class="d1-img"></div>
+          <div class="d1-name">Ravindra<br>Sisodia<span class="d1-accent">.</span></div>
+          <div class="d1-marq">Available 2026 → Design + Code →</div>
+        </div>
+      </div>
+    </article>
+
+    <!-- D2 -->
+    <article class="demo" id="d2">
+      <header class="demo-head">
+        <span class="demo-num">02</span>
+        <span class="demo-title">Live token retuner</span>
+        <span class="demo-tag">Drag · sliders</span>
+      </header>
+      <p class="demo-desc">Three sliders for hue, weight, and density. The hero re-tunes live. Demonstrates design-system mastery in five seconds.</p>
+      <div class="demo-stage d2-stage" id="d2-stage">
+        <div class="d2-controls">
+          <div class="d2-ctl">
+            <div class="d2-ctl-label"><span>Hue</span><span class="d2-ctl-val" id="d2-hue-v">42°</span></div>
+            <input type="range" id="d2-hue" min="0" max="360" value="42">
+          </div>
+          <div class="d2-ctl">
+            <div class="d2-ctl-label"><span>Weight</span><span class="d2-ctl-val" id="d2-weight-v">900</span></div>
+            <input type="range" id="d2-weight" min="100" max="900" value="900" step="50">
+          </div>
+          <div class="d2-ctl">
+            <div class="d2-ctl-label"><span>Density</span><span class="d2-ctl-val" id="d2-density-v">12px</span></div>
+            <input type="range" id="d2-density" min="2" max="40" value="12">
+          </div>
+        </div>
+        <div class="d2-preview" id="d2-preview">
+          <span class="d2-eye">Senior Product Designer</span>
+          <div class="d2-name">Sisodia<span>.</span></div>
+          <div class="d2-line">Design at code velocity.</div>
+        </div>
+      </div>
+    </article>
+
+    <!-- D3 -->
+    <article class="demo" id="d3">
+      <header class="demo-head">
+        <span class="demo-num">03</span>
+        <span class="demo-title">Drag-to-prototype</span>
+        <span class="demo-tag">Click + drag</span>
+      </header>
+      <p class="demo-desc">Click and drag on the canvas to draw a box. The code panel generates Tailwind-style CSS in real time. Figma MCP, distilled to one motion.</p>
+      <div class="demo-stage d3-stage" id="d3-stage">
+        <div class="d3-canvas" id="d3-canvas">
+          <button class="d3-reset" id="d3-reset">Reset</button>
+          <div class="d3-canvas-hint">Drag anywhere →</div>
+        </div>
+        <pre class="d3-code" id="d3-code"><span class="c">// draw to generate</span>
+<span class="k">div</span> {
+  <span class="k">width</span>: <span class="s">0</span>px;
+  <span class="k">height</span>: <span class="s">0</span>px;
+}</pre>
+      </div>
+    </article>
+
+    <!-- D4 -->
+    <article class="demo" id="d4">
+      <header class="demo-head">
+        <span class="demo-num">04</span>
+        <span class="demo-title">Spotlight reveal</span>
+        <span class="demo-tag">Cursor · mask</span>
+      </header>
+      <p class="demo-desc">Hover the dark panel. A soft spotlight follows your cursor and reveals what's underneath. Tap-to-reveal version on touch.</p>
+      <div class="demo-stage d4-stage" id="d4-stage">
+        <div class="d4-content">
+          <span class="d4-eye">Senior Product Designer · 2026</span>
+          <div class="d4-name">Ravindra<br>Sisodia<span>.</span></div>
+          <p class="d4-line">Design at code velocity. Bengaluru, IN.</p>
+        </div>
+        <div class="d4-mask" id="d4-mask"></div>
+        <span class="d4-cursor" id="d4-cursor"></span>
+        <span class="d4-hint">Move cursor inside</span>
+      </div>
+    </article>
+
+    <!-- D5 -->
+    <article class="demo" id="d5">
+      <header class="demo-head">
+        <span class="demo-num">05</span>
+        <span class="demo-title">Magnetic name letters</span>
+        <span class="demo-tag">Cursor · physics</span>
+      </header>
+      <p class="demo-desc">Each letter of the name is attracted toward your cursor. Soft spring-back when you move away. Heavy weight, tactile, memorable.</p>
+      <div class="demo-stage d5-stage" id="d5-stage">
+        <h2 class="d5-name" id="d5-name">Ravindra Sisodia</h2>
+        <span class="d5-hint">Move your cursor across the letters</span>
+      </div>
+    </article>
+
+    <!-- D6 -->
+    <article class="demo" id="d6">
+      <header class="demo-head">
+        <span class="demo-num">06</span>
+        <span class="demo-title">3D depth photo</span>
+        <span class="demo-tag">Mouse · parallax</span>
+      </header>
+      <p class="demo-desc">Your cutout sits on a 3D plane. The scene tilts with mouse position. Feels like you're stepping out of the page.</p>
+      <div class="demo-stage d6-stage" id="d6-stage">
+        <div class="d6-scene" id="d6-scene">
+          <div class="d6-layer d6-bg"><img src="profile-cutout.png" alt=""></div>
+          <div class="d6-layer d6-fg"><img src="profile-cutout.png" alt="Ravindra Sisodia"></div>
+        </div>
+        <span class="d6-hint">Move cursor over the figure</span>
+      </div>
+    </article>
+
+    <!-- D7 -->
+    <article class="demo" id="d7">
+      <header class="demo-head">
+        <span class="demo-num">07</span>
+        <span class="demo-title">Cutout waves + tracks</span>
+        <span class="demo-tag">Auto + hover</span>
+      </header>
+      <p class="demo-desc">On load the figure waves. After, it subtly tilts toward your cursor like a head-turn. Human, quiet, unexpected.</p>
+      <div class="demo-stage d7-stage waving" id="d7-stage">
+        <img class="d7-img" id="d7-img" src="profile-cutout.png" alt="Ravindra Sisodia">
+        <span class="d7-bubble">Hi 👋</span>
+      </div>
+    </article>
+
+    <!-- D8 -->
+    <article class="demo" id="d8">
+      <header class="demo-head">
+        <span class="demo-num">08</span>
+        <span class="demo-title">Variable weight on scroll</span>
+        <span class="demo-tag">Scroll · variable font</span>
+      </header>
+      <p class="demo-desc">As you scroll inside the panel below, the name morphs from hairline 200 to ultra-black 900. By the time it's bold it feels earned.</p>
+      <div class="demo-stage d8-stage" id="d8-stage">
+        <div class="d8-target">
+          <h2 class="d8-name" id="d8-name">Sisodia<span>.</span></h2>
+          <span class="d8-meter" id="d8-meter">200</span>
+        </div>
+        <div class="d8-scroller" id="d8-scroller">
+          <div class="d8-scroller-inner">
+            <div>scroll-trigger: 0%</div><div>weight: hairline</div>
+            <div>tokens engaged → light</div><div>tokens engaged → regular</div>
+            <div>tokens engaged → medium</div><div>tokens engaged → semibold</div>
+            <div>tokens engaged → bold</div><div>tokens engaged → extrabold</div>
+            <div>scroll-trigger: 100%</div><div>weight: 900</div>
+            <div>variable font: Inter</div><div>axis: wght</div>
+            <div>range: 200 → 900</div><div>tactile: yes</div>
+            <div>scroll-trigger: bottom</div><div>complete</div>
+            <div>complete</div><div>complete</div><div>complete</div><div>complete</div>
+            <div>complete</div><div>complete</div><div>complete</div><div>complete</div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- D9 -->
+    <article class="demo" id="d9">
+      <header class="demo-head">
+        <span class="demo-num">09</span>
+        <span class="demo-title">Konami code terminal</span>
+        <span class="demo-tag">Keypress</span>
+      </header>
+      <p class="demo-desc">Hidden Easter egg. Press the sequence to unlock terminal mode showing recent shipped projects as ls output. Memes well.</p>
+      <div class="demo-stage d9-stage" id="d9-stage">
+        <div class="d9-normal">
+          <h3>Public site</h3>
+          <span class="d9-hint">
+            Press
+            <kbd>↑</kbd><kbd>↑</kbd><kbd>↓</kbd><kbd>↓</kbd>
+            <kbd>←</kbd><kbd>→</kbd><kbd>←</kbd><kbd>→</kbd>
+            <kbd>B</kbd><kbd>A</kbd>
+          </span>
+        </div>
+        <div class="d9-term" id="d9-term">
+<span class="ok">$</span> ls -la ./shipped/ <span class="accent">--year=2025</span>
+<span class="muted">total 7</span>
+drwxr-xr-x  brand-kit.html        <span class="accent">29 templates</span>
+drwxr-xr-x  zopdev-homepage.html  <span class="accent">v1.5</span>
+drwxr-xr-x  recommendation        <span class="accent">$53.5K+ saved</span>
+drwxr-xr-x  onboarding            <span class="accent">65% faster</span>
+drwxr-xr-x  design-system         <span class="accent">20+ modules</span>
+drwxr-xr-x  banking-ux            <span class="accent">M+ users</span>
+drwxr-xr-x  design-in-code        <span class="accent">days → mins</span>
+
+<span class="ok">$</span> whoami
+<span class="muted">ravindra@bengaluru ~ %</span> <span class="accent">sr. product designer</span>
+<span class="muted">availability:</span> <span class="accent">open · 2026</span>
+        </div>
+        <div class="d9-progress" id="d9-progress">
+          <span></span><span></span><span></span><span></span><span></span>
+          <span></span><span></span><span></span><span></span><span></span>
+        </div>
+      </div>
+    </article>
+
+    <!-- D10 -->
+    <article class="demo" id="d10">
+      <header class="demo-head">
+        <span class="demo-num">10</span>
+        <span class="demo-title">Webcam moment</span>
+        <span class="demo-tag">Opt-in · camera</span>
+      </header>
+      <p class="demo-desc">Visitor gives camera permission, briefly sees themselves in the figure's circular frame. Wild flex if it works, awkward if it doesn't.</p>
+      <div class="demo-stage d10-stage" id="d10-stage">
+        <div class="d10-frame" id="d10-frame">
+          <video id="d10-video" autoplay muted playsinline></video>
+          <div class="d10-placeholder">Camera off</div>
+        </div>
+        <button class="d10-btn" id="d10-btn">Enable camera</button>
+        <span class="d10-cap">Mirrors locally only. Nothing leaves your device.</span>
+      </div>
+    </article>
+
+    <!-- D11 -->
+    <article class="demo" id="d11">
+      <header class="demo-head">
+        <span class="demo-num">11</span>
+        <span class="demo-title">Voice intro</span>
+        <span class="demo-tag">Click to play</span>
+      </header>
+      <p class="demo-desc">A 10-second recorded intro. Most skip it, the ones who play remember. Sample uses synthesized tones until you record.</p>
+      <div class="demo-stage d11-stage" id="d11-stage">
+        <button class="d11-btn" id="d11-btn" aria-label="Play intro">▶</button>
+        <div class="d11-wave" id="d11-wave">
+          <span></span><span></span><span></span><span></span><span></span>
+          <span></span><span></span><span></span><span></span><span></span>
+          <span></span><span></span><span></span><span></span><span></span>
+          <span></span><span></span><span></span><span></span><span></span>
+          <span></span><span></span><span></span><span></span>
+        </div>
+        <span class="d11-meta"><strong>00:10</strong> · placeholder synth tone</span>
+      </div>
+    </article>
+
+    <!-- D12 -->
+    <article class="demo" id="d12">
+      <header class="demo-head">
+        <span class="demo-num">12</span>
+        <span class="demo-title">Generative each visit</span>
+        <span class="demo-tag">Auto · refresh</span>
+      </header>
+      <p class="demo-desc">Every reload rebuilds the hero with a different randomized tone — hue, weight, layout, motion — same tokens, infinite outputs. Click to roll another variant.</p>
+      <div class="demo-stage d12-stage" id="d12-stage">
+        <div class="d12-canvas" id="d12-canvas">
+          <span class="d12-eye" id="d12-eye">Sr. Product Designer</span>
+          <div class="d12-name" id="d12-name">Sisodia<span class="dot">.</span></div>
+          <div class="d12-roles" id="d12-roles">
+            <span class="d12-role">Figma MCP</span>
+            <span class="d12-role">Claude Code</span>
+            <span class="d12-role">Design Systems</span>
+          </div>
+        </div>
+        <div class="d12-foot">
+          <span class="d12-variant">Variant <strong id="d12-variant">#0001</strong></span>
+          <button class="d12-refresh" id="d12-refresh">Roll another →</button>
+        </div>
+      </div>
+    </article>
+
+  </main>
+
+  <script src="scripts.js"></script>
+  <script>
+    /* ============= D1 · MCP terminal ============= */
+    (function () {
+      const term = document.getElementById('d1-term');
+      const preview = document.getElementById('d1-preview');
+      const wait = (ms) => new Promise(r => setTimeout(r, ms));
+
+      const seq = [
+        { cmd: "claude-code init --hero", out: "✓ session ready" },
+        { cmd: "load profile-cutout.png", out: "✓ 239 × 429", stage: 1 },
+        { cmd: "set --name 'Ravindra Sisodia'",  out: "✓ inter-900", stage: 2 },
+        { cmd: "apply tokens.accent.orange", out: "✓ oklch(0.68 0.197 42)", stage: 3 },
+        { cmd: "rotate marquee -5deg", out: "✓ marquee.diag()", stage: 4 },
+        { cmd: "ship", out: "✓ deployed" },
+      ];
+
+      async function typeLine(text, cls = '') {
+        const line = document.createElement('span');
+        line.className = 'line ' + cls;
+        term.appendChild(line);
+        for (let i = 0; i < text.length; i++) {
+          line.textContent = text.slice(0, i + 1);
+          await wait(18 + Math.random() * 16);
+        }
+      }
+
+      async function run() {
+        term.innerHTML = '';
+        preview.classList.remove('d1-on', 'd1-on-2', 'd1-on-3', 'd1-on-4');
+        for (const step of seq) {
+          await typeLine('› ' + step.cmd, 'prompt');
+          await wait(280);
+          await typeLine('  ' + step.out, 'ok');
+          if (step.stage === 1) preview.classList.add('d1-on');
+          if (step.stage === 2) preview.classList.add('d1-on-2');
+          if (step.stage === 3) preview.classList.add('d1-on-3');
+          if (step.stage === 4) preview.classList.add('d1-on-4');
+          await wait(540);
+        }
+        await wait(2400);
+        run();
+      }
+      run();
+    })();
+
+    /* ============= D2 · token retuner ============= */
+    (function () {
+      const hueIn = document.getElementById('d2-hue');
+      const weightIn = document.getElementById('d2-weight');
+      const densityIn = document.getElementById('d2-density');
+      const hueV = document.getElementById('d2-hue-v');
+      const weightV = document.getElementById('d2-weight-v');
+      const densityV = document.getElementById('d2-density-v');
+      const stage = document.getElementById('d2-preview');
+
+      function apply() {
+        const h = hueIn.value;
+        const w = weightIn.value;
+        const d = densityIn.value;
+        stage.style.setProperty('--d2-accent', `oklch(0.68 0.197 ${h})`);
+        stage.style.setProperty('--d2-weight', w);
+        stage.style.setProperty('--d2-gap', d + 'px');
+        hueV.textContent = h + '°';
+        weightV.textContent = w;
+        densityV.textContent = d + 'px';
+      }
+      [hueIn, weightIn, densityIn].forEach(el => el.addEventListener('input', apply));
+      apply();
+    })();
+
+    /* ============= D3 · drag-to-prototype ============= */
+    (function () {
+      const canvas = document.getElementById('d3-canvas');
+      const code = document.getElementById('d3-code');
+      const reset = document.getElementById('d3-reset');
+      let dragging = false, sx = 0, sy = 0, draft = null;
+
+      function rect() { return canvas.getBoundingClientRect(); }
+
+      canvas.addEventListener('mousedown', (e) => {
+        if (e.target === reset) return;
+        const r = rect();
+        sx = e.clientX - r.left;
+        sy = e.clientY - r.top;
+        draft = document.createElement('div');
+        draft.className = 'd3-draft';
+        draft.style.left = sx + 'px';
+        draft.style.top = sy + 'px';
+        draft.style.width = '0px';
+        draft.style.height = '0px';
+        canvas.appendChild(draft);
+        dragging = true;
+        e.preventDefault();
+      });
+
+      canvas.addEventListener('mousemove', (e) => {
+        if (!dragging || !draft) return;
+        const r = rect();
+        const cx = e.clientX - r.left;
+        const cy = e.clientY - r.top;
+        const x = Math.min(sx, cx);
+        const y = Math.min(sy, cy);
+        const w = Math.abs(cx - sx);
+        const h = Math.abs(cy - sy);
+        draft.style.left = x + 'px';
+        draft.style.top = y + 'px';
+        draft.style.width = w + 'px';
+        draft.style.height = h + 'px';
+        renderCode(w, h, x, y);
+      });
+
+      function renderCode(w, h, x, y) {
+        const ww = Math.round(w);
+        const hh = Math.round(h);
+        const px = Math.round(x);
+        const py = Math.round(y);
+        code.innerHTML = `<span class="c">// generated</span>
+<span class="k">div</span> {
+  <span class="k">width</span>: <span class="s">${ww}</span>px;
+  <span class="k">height</span>: <span class="s">${hh}</span>px;
+  <span class="k">background</span>: <span class="s">var(--orange)</span>;
+  <span class="k">transform</span>: <span class="s">translate(${px}px, ${py}px)</span>;
+}
+
+<span class="c">// tailwind</span>
+&lt;<span class="k">div</span> <span class="k">class</span>=<span class="s">"w-[${ww}px] h-[${hh}px] bg-orange"</span>/&gt;`;
+      }
+
+      window.addEventListener('mouseup', () => {
+        if (!dragging || !draft) return;
+        draft.classList.remove('d3-draft');
+        draft.classList.add('d3-box');
+        draft = null;
+        dragging = false;
+      });
+
+      reset.addEventListener('click', (e) => {
+        e.stopPropagation();
+        canvas.querySelectorAll('.d3-box, .d3-draft').forEach(el => el.remove());
+        code.innerHTML = `<span class="c">// draw to generate</span>
+<span class="k">div</span> {
+  <span class="k">width</span>: <span class="s">0</span>px;
+  <span class="k">height</span>: <span class="s">0</span>px;
+}`;
+      });
+    })();
+
+    /* ============= D4 · spotlight ============= */
+    (function () {
+      const stage = document.getElementById('d4-stage');
+      const cursor = document.getElementById('d4-cursor');
+      stage.addEventListener('mousemove', (e) => {
+        const r = stage.getBoundingClientRect();
+        const x = e.clientX - r.left;
+        const y = e.clientY - r.top;
+        stage.style.setProperty('--d4-x', x + 'px');
+        stage.style.setProperty('--d4-y', y + 'px');
+        cursor.style.left = x + 'px';
+        cursor.style.top = y + 'px';
+      });
+    })();
+
+    /* ============= D5 · magnetic name ============= */
+    (function () {
+      const stage = document.getElementById('d5-stage');
+      const name = document.getElementById('d5-name');
+      const text = name.textContent;
+      name.innerHTML = '';
+      [...text].forEach((ch) => {
+        const span = document.createElement('span');
+        span.textContent = ch === ' ' ? ' ' : ch;
+        name.appendChild(span);
+      });
+      const spans = name.querySelectorAll('span');
+
+      stage.addEventListener('mousemove', (e) => {
+        spans.forEach((s) => {
+          const r = s.getBoundingClientRect();
+          const cx = r.left + r.width / 2;
+          const cy = r.top + r.height / 2;
+          const dx = e.clientX - cx;
+          const dy = e.clientY - cy;
+          const dist = Math.hypot(dx, dy);
+          if (dist < 110) {
+            const force = (110 - dist) / 110;
+            s.style.transform = `translate(${dx * force * 0.45}px, ${dy * force * 0.45}px) scale(${1 + force * 0.16})`;
+            s.classList.add('near');
+          } else {
+            s.style.transform = '';
+            s.classList.remove('near');
+          }
+        });
+      });
+      stage.addEventListener('mouseleave', () => {
+        spans.forEach((s) => { s.style.transform = ''; s.classList.remove('near'); });
+      });
+    })();
+
+    /* ============= D6 · 3D depth photo ============= */
+    (function () {
+      const stage = document.getElementById('d6-stage');
+      const scene = document.getElementById('d6-scene');
+      stage.addEventListener('mousemove', (e) => {
+        const r = stage.getBoundingClientRect();
+        const px = (e.clientX - r.left) / r.width;
+        const py = (e.clientY - r.top) / r.height;
+        const rx = (0.5 - py) * 16;
+        const ry = (px - 0.5) * 22;
+        scene.style.transform = `rotateX(${rx}deg) rotateY(${ry}deg)`;
+      });
+      stage.addEventListener('mouseleave', () => {
+        scene.style.transform = '';
+      });
+    })();
+
+    /* ============= D7 · cutout waves + tracks ============= */
+    (function () {
+      const stage = document.getElementById('d7-stage');
+      const img = document.getElementById('d7-img');
+      // initial wave already playing via .waving class
+      setTimeout(() => stage.classList.remove('waving'), 1700);
+
+      stage.addEventListener('mousemove', (e) => {
+        const r = stage.getBoundingClientRect();
+        const px = (e.clientX - r.left) / r.width;
+        const tilt = (px - 0.5) * 8;
+        img.style.transform = `rotate(${tilt}deg)`;
+      });
+      stage.addEventListener('mouseleave', () => { img.style.transform = ''; });
+
+      // periodic re-wave every 12 seconds
+      setInterval(() => {
+        if (stage.matches(':hover')) return;
+        stage.classList.add('waving');
+        setTimeout(() => stage.classList.remove('waving'), 1700);
+      }, 12000);
+    })();
+
+    /* ============= D8 · variable weight on scroll ============= */
+    (function () {
+      const scroller = document.getElementById('d8-scroller');
+      const target = document.getElementById('d8-stage');
+      const meter = document.getElementById('d8-meter');
+      scroller.addEventListener('scroll', () => {
+        const max = scroller.scrollHeight - scroller.clientHeight;
+        const p = max > 0 ? scroller.scrollTop / max : 0;
+        const w = Math.round(200 + p * 700);
+        const weight = Math.min(900, Math.max(200, w));
+        target.style.setProperty('--d8-w', weight);
+        meter.textContent = weight;
+      });
+    })();
+
+    /* ============= D9 · konami code ============= */
+    (function () {
+      const stage = document.getElementById('d9-stage');
+      const progress = document.getElementById('d9-progress').children;
+      const seq = ['ArrowUp','ArrowUp','ArrowDown','ArrowDown','ArrowLeft','ArrowRight','ArrowLeft','ArrowRight','b','a'];
+      let i = 0;
+      function reset() {
+        i = 0;
+        Array.from(progress).forEach(s => s.classList.remove('on'));
+      }
+      window.addEventListener('keydown', (e) => {
+        // only listen when this panel is on screen
+        const r = stage.getBoundingClientRect();
+        if (r.bottom < 0 || r.top > window.innerHeight) return;
+        const k = e.key.toLowerCase();
+        if (k === seq[i].toLowerCase() || k === seq[i]) {
+          progress[i].classList.add('on');
+          i++;
+          if (i === seq.length) {
+            stage.classList.add('unlocked');
+            setTimeout(reset, 200);
+          }
+        } else {
+          reset();
+        }
+      });
+      // also expose click-to-reset
+      stage.addEventListener('dblclick', () => {
+        stage.classList.remove('unlocked');
+        reset();
+      });
+    })();
+
+    /* ============= D10 · webcam ============= */
+    (function () {
+      const btn = document.getElementById('d10-btn');
+      const video = document.getElementById('d10-video');
+      const frame = document.getElementById('d10-frame');
+      let stream = null;
+      btn.addEventListener('click', async () => {
+        if (stream) {
+          stream.getTracks().forEach(t => t.stop());
+          stream = null;
+          video.srcObject = null;
+          frame.classList.remove('on');
+          btn.textContent = 'Enable camera';
+          return;
+        }
+        try {
+          stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'user' }, audio: false });
+          video.srcObject = stream;
+          frame.classList.add('on');
+          btn.textContent = 'Stop camera';
+        } catch (err) {
+          btn.textContent = 'Permission denied';
+          setTimeout(() => btn.textContent = 'Enable camera', 1800);
+        }
+      });
+    })();
+
+    /* ============= D11 · voice intro (synth tone placeholder) ============= */
+    (function () {
+      const btn = document.getElementById('d11-btn');
+      const wave = document.getElementById('d11-wave');
+      const bars = wave.querySelectorAll('span');
+      let ctx = null, osc = null, gain = null, analyser = null, raf = null, playing = false;
+      let stopAt = 0;
+
+      function animate() {
+        const t = performance.now() / 200;
+        bars.forEach((b, i) => {
+          const v = Math.abs(Math.sin(t + i * 0.4)) * (playing ? 1 : 0.12);
+          b.style.height = (10 + v * 42) + 'px';
+        });
+        raf = requestAnimationFrame(animate);
+      }
+      animate();
+
+      btn.addEventListener('click', () => {
+        if (playing) {
+          if (osc) osc.stop();
+          playing = false;
+          btn.textContent = '▶';
+          btn.classList.remove('on');
+          return;
+        }
+        ctx = ctx || new (window.AudioContext || window.webkitAudioContext)();
+        osc = ctx.createOscillator();
+        gain = ctx.createGain();
+        osc.type = 'sine';
+        // play a little melody of tones
+        const start = ctx.currentTime;
+        const notes = [220, 247, 277, 294, 330, 349, 392, 440];
+        notes.forEach((f, i) => osc.frequency.setValueAtTime(f, start + i * 1.0));
+        gain.gain.setValueAtTime(0.0001, start);
+        gain.gain.exponentialRampToValueAtTime(0.12, start + 0.05);
+        gain.gain.exponentialRampToValueAtTime(0.0001, start + 9.95);
+        osc.connect(gain).connect(ctx.destination);
+        osc.start(start);
+        osc.stop(start + 10);
+        playing = true;
+        btn.textContent = '■';
+        btn.classList.add('on');
+        osc.onended = () => {
+          playing = false;
+          btn.textContent = '▶';
+          btn.classList.remove('on');
+        };
+      });
+    })();
+
+    /* ============= D12 · generative each visit ============= */
+    (function () {
+      const canvas = document.getElementById('d12-canvas');
+      const name = document.getElementById('d12-name');
+      const variant = document.getElementById('d12-variant');
+      const refresh = document.getElementById('d12-refresh');
+      const eye = document.getElementById('d12-eye');
+      const roles = document.getElementById('d12-roles');
+
+      const palettes = [
+        { bg: 'oklch(0.965 0.014 75)', accent: 'oklch(0.68 0.197 42)' },
+        { bg: 'oklch(0.93 0.014 75)',  accent: 'oklch(0.62 0.18 250)' },
+        { bg: 'oklch(0.88 0.016 75)',  accent: 'oklch(0.58 0.18 145)' },
+        { bg: 'oklch(0.18 0.009 60)',  accent: 'oklch(0.78 0.16 42)' },
+        { bg: 'oklch(0.92 0.04 80)',   accent: 'oklch(0.5 0.22 28)' },
+      ];
+      const eyes = ['Sr. Product Designer', 'Senior Designer · 2026', 'Designer / Code', 'Designer at Zop.Dev', 'Sr · Product · Code'];
+      const roleSets = [
+        ['Figma MCP', 'Claude Code', 'Design Systems'],
+        ['B2B SaaS', 'FinTech', 'Brand'],
+        ['Tokens', 'Markdown', 'Tailwind'],
+        ['UI · UX', 'Motion', 'Type'],
+        ['Bengaluru', 'Open 2026', 'Sr.'],
+      ];
+
+      let n = 1;
+      function roll() {
+        const pal = palettes[Math.floor(Math.random() * palettes.length)];
+        const weight = [400, 500, 600, 700, 800, 900][Math.floor(Math.random() * 6)];
+        const track = [-0.06, -0.04, -0.025, -0.015][Math.floor(Math.random() * 4)];
+        const style = Math.random() < 0.15 ? 'italic' : 'normal';
+        const e = eyes[Math.floor(Math.random() * eyes.length)];
+        const r = roleSets[Math.floor(Math.random() * roleSets.length)];
+
+        canvas.style.setProperty('--d12-bg', pal.bg);
+        canvas.style.setProperty('--d12-accent', pal.accent);
+        canvas.style.setProperty('--d12-weight', weight);
+        canvas.style.setProperty('--d12-track', track + 'em');
+        canvas.style.setProperty('--d12-style', style);
+
+        // for dark bgs, switch ink color too
+        const isDark = pal.bg.includes('0.18') || pal.bg.includes('0.13');
+        name.style.color = isDark ? 'oklch(0.965 0.014 75)' : 'oklch(0.18 0.009 60)';
+
+        eye.textContent = e;
+        roles.innerHTML = r.map(rl => `<span class="d12-role" style="border-color: ${pal.accent}; color: ${isDark ? 'oklch(0.965 0.014 75)' : 'oklch(0.18 0.009 60)'}">${rl}</span>`).join('');
+        variant.textContent = '#' + String(Math.floor(1000 + Math.random() * 9000)).padStart(4, '0');
+        n++;
+      }
+      refresh.addEventListener('click', roll);
+      roll();
+    })();
+  </script>
+</body>
+</html>
